@@ -9,7 +9,9 @@ interface ProductsProps {
 function Products({ products }: ProductsProps) {
   return (
     <section className="w-full flex flex-col justify-start items-center gap-10">
-      <div className="w-full flex justify-between items-center gap-5 md:gap-10">
+      <h1 className="text-h2 font-custom block md:hidden">Best Sellers</h1>
+      {/* Products */}
+      <div className="w-full flex justify-between items-center gap-5 md:gap-10 flex-wrap">
         {products.map((product) => (
           <ProductThumb key={product.id} product={product} />
         ))}

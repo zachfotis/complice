@@ -16,7 +16,7 @@ function SocialMedia({ color = 'text-white', size = 'text-2xl', gap = 'gap-5' }:
         className={`${size} ${color} hover:text-red-500 transition-all duration-300 ease-in-out cursor-pointer`}
       />
       <BsInstagram
-        className={`${size} ${color} text-2xl text-white hover:text-pink-500 transition-all duration-300 ease-in-out cursor-pointer`}
+        className={`${size} ${color} hover:text-pink-500 transition-all duration-300 ease-in-out cursor-pointer`}
       />
     </div>
   );

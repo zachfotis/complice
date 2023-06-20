@@ -24,8 +24,6 @@ export default function Home() {
         <Hero />
         <CategoriesThumb categories={categoryThumbData} />
         <Banner />
-      </PageBody>
-      <PageBody>
         <Products products={productThumbData} />
         <StayTuned />
       </PageBody>

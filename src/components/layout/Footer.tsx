@@ -5,12 +5,12 @@ function Footer() {
   return (
     <footer className="w-full bg-primary text-whiteGrey">
       <div className="w-full max-w-[1680px] mx-auto flex flex-col justify-start items-center">
-        <div className="flex-1 w-full flex justify-evenly items-start gap-10 flex-wrap py-5">
+        <div className="flex-1 w-full flex justify-evenly items-stretch gap-10 flex-wrap py-5">
           {/* Newsletter */}
           <div className="flex flex-col justify-start items-start gap-5 flex-wrap p-5">
             <h1 className="text-h4 font-custom">NEWSLETTER</h1>
             <p className="text-sm text-accent">Sign up to be the first to know about drops, special offers and more.</p>
-            <div className="flex justify-center items-stretch gap-2">
+            <div className="flex justify-center items-stretch gap-2 mt-5">
               <input
                 type="email"
                 placeholder="Enter your email"
