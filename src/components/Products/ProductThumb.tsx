@@ -7,7 +7,7 @@ interface ProductThumbProps {
 }
 function ProductThumb({ product }: ProductThumbProps) {
   return (
-    <div className="relative flex-1 min-w-[250px] flex flex-col justify-start items-center gap-2 snap-center">
+    <div className="relative flex-1 min-w-[300px] flex flex-col justify-start items-center gap-2 snap-center">
       <div className="w-full h-[315px] overflow-hidden">
         <Image
           src={product.image}

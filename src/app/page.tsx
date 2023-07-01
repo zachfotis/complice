@@ -11,7 +11,6 @@ import Hero from '@/components/Home/Hero';
 import Products from '@/components/Products/Products';
 import StayTuned from '@/components/common/StayTuned';
 import Categories from '@/components/layout/Categories';
-import Footer from '@/components/layout/Footer';
 import PageBody from '@/components/layout/PageBody';
 import PageTemplate from '@/components/layout/PageTemplate';
 import { CategoryThumbType, ProductThumbType } from '../../typings';
@@ -24,10 +23,9 @@ export default function Home() {
         <Hero />
         <CategoriesThumb categories={categoryThumbData} />
         <Banner />
-        <Products products={productThumbData} />
+        <Products products={productThumbData} title="Best Sellers" />
         <StayTuned />
       </PageBody>
-      <Footer />
     </PageTemplate>
   );
 }
@@ -64,18 +62,21 @@ const productThumbData: ProductThumbType[] = [
   {
     id: '1',
     title: 'Iron Gym T-Shirt',
+    type: 't-shirt',
     price: 15.99,
     image: ProductThumb1,
   },
   {
     id: '2',
     title: 'Waterproof Shorts',
+    type: 'shorts',
     price: 24.99,
     image: ProductThumb2,
   },
   {
     id: '3',
     title: 'Black Socks',
+    type: 'socks',
     price: 9.99,
     image: ProductThumb3,
   },

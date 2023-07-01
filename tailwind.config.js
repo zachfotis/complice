@@ -12,6 +12,7 @@ module.exports = {
         secondary: 'rgba(49, 49, 49, 1)',
         accent: 'rgba(199, 195, 186, 1)',
         whiteGrey: 'rgba(240, 238, 239, 1)',
+        lightGrey: '#F8F8F8',
       },
       fontSize: {
         h1: '2.5rem',
