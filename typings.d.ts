@@ -11,6 +11,7 @@ type ProductThumbType = {
   id: string;
   title: string;
   type: string;
+  sizes: string[];
   price: number;
   image: string | StaticImageData;
 };

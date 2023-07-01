@@ -1,0 +1,98 @@
+[
+  {
+    "id": "1",
+    "title": "Iron Gym T-Shirt",
+    "type": "t-shirt",
+    "sizes": ["S", "M", "L", "XL"],
+    "price": 15.99,
+    "image": "https://images.unsplash.com/photo-1503341455253-b2e723bb3dbb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2370&q=80"
+  },
+  {
+    "id": "2",
+    "title": "Waterproof Shorts",
+    "type": "shorts",
+    "sizes": ["XS", "S", "M"],
+    "price": 24.99,
+    "image": "https://images.unsplash.com/photo-1596902115451-aa4564f19457?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2370&q=80"
+  },
+  {
+    "id": "3",
+    "title": "Black Socks",
+    "type": "socks",
+    "sizes": ["S", "M", "L"],
+    "price": 9.99,
+    "image": "https://images.unsplash.com/photo-1472186422470-1f3fbde547aa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2367&q=80"
+  },
+  {
+    "id": "4",
+    "title": "Iron Gym T-Shirt",
+    "type": "t-shirt",
+    "sizes": ["XS"],
+    "price": 15.99,
+    "image": "https://images.unsplash.com/photo-1503341455253-b2e723bb3dbb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2370&q=80"
+  },
+  {
+    "id": "5",
+    "title": "Waterproof Shorts",
+    "type": "shorts",
+    "sizes": ["XL"],
+    "price": 24.99,
+    "image": "https://images.unsplash.com/photo-1596902115451-aa4564f19457?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2370&q=80"
+  },
+  {
+    "id": "6",
+    "title": "Black Socks",
+    "type": "socks",
+    "sizes": ["XS", "S", "M", "L", "XL"],
+    "price": 9.99,
+    "image": "https://images.unsplash.com/photo-1472186422470-1f3fbde547aa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2367&q=80"
+  },
+  {
+    "id": "7",
+    "title": "Iron Gym T-Shirt",
+    "type": "t-shirt",
+    "sizes": ["M", "L"],
+    "price": 15.99,
+    "image": "https://images.unsplash.com/photo-1503341455253-b2e723bb3dbb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2370&q=80"
+  },
+  {
+    "id": "8",
+    "title": "Waterproof Shorts",
+    "type": "shorts",
+    "sizes": ["XS", "L"],
+    "price": 24.99,
+    "image": "https://images.unsplash.com/photo-1596902115451-aa4564f19457?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2370&q=80"
+  },
+  {
+    "id": "9",
+    "title": "Black Socks",
+    "type": "socks",
+    "sizes": ["XS", "S", "M", "L", "XL"],
+    "price": 9.99,
+    "image": "https://images.unsplash.com/photo-1472186422470-1f3fbde547aa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2367&q=80"
+  },
+  {
+    "id": "10",
+    "title": "Iron Gym T-Shirt",
+    "type": "t-shirt",
+    "sizes": ["M", "L"],
+    "price": 15.99,
+    "image": "https://images.unsplash.com/photo-1503341455253-b2e723bb3dbb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2370&q=80"
+  },
+  {
+    "id": "11",
+    "title": "Waterproof Shorts",
+    "type": "shorts",
+    "sizes": ["XS", "S", "M", "L", "XL"],
+    "price": 24.99,
+    "image": "https://images.unsplash.com/photo-1596902115451-aa4564f19457?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2370&q=80"
+  },
+  {
+    "id": "12",
+    "title": "Black Socks",
+    "type": "socks",
+    "sizes": ["XS", "S", "M", "L", "XL"],
+    "price": 9.99,
+    "image": "https://images.unsplash.com/photo-1472186422470-1f3fbde547aa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2367&q=80"
+  }
+]
