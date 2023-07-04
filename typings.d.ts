@@ -13,7 +13,8 @@ type ProductThumbType = {
   type: string;
   sizes: string[];
   price: number;
-  image: string | StaticImageData;
+  thumb: string | StaticImageData;
+  images: string[];
 };
 
 type ClothingCategoryThumbType = {

@@ -11,7 +11,7 @@ import { useState } from 'react';
 import { ProductThumbType } from '../../../typings';
 import DATA from '../../assets/dummy/products.json';
 
-async function Page() {
+function Page() {
   const [products, setProducts] = useState<ProductThumbType[]>(DATA);
   const [sortedProducts, setSortedProducts] = useState<ProductThumbType[]>([]);
 

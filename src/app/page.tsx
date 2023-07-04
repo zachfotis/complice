@@ -23,7 +23,7 @@ export default function Home() {
         <Hero />
         <CategoriesThumb categories={categoryThumbData} />
         <Banner />
-        <Products products={productThumbData} title="Best Sellers" />
+        <Products products={productThumbData} title="Best Sellers" isInitialScreen={true} />
         <StayTuned />
       </PageBody>
     </PageTemplate>
@@ -63,21 +63,27 @@ const productThumbData: ProductThumbType[] = [
     id: '1',
     title: 'Iron Gym T-Shirt',
     type: 't-shirt',
+    sizes: ['S', 'M', 'L', 'XL'],
     price: 15.99,
-    image: ProductThumb1,
+    thumb: ProductThumb1,
+    images: [],
   },
   {
     id: '2',
     title: 'Waterproof Shorts',
     type: 'shorts',
+    sizes: ['S', 'M', 'L', 'XL'],
     price: 24.99,
-    image: ProductThumb2,
+    thumb: ProductThumb2,
+    images: [],
   },
   {
     id: '3',
     title: 'Black Socks',
     type: 'socks',
+    sizes: ['S', 'M', 'L', 'XL'],
     price: 9.99,
-    image: ProductThumb3,
+    thumb: ProductThumb3,
+    images: [],
   },
 ];

@@ -11,11 +11,8 @@ function ClothingThumb({ index, category }: ClothingThumbProps) {
   const isFullWidth = index % 3 === 0 || index === 0;
 
   return (
-    <Link
-      href={`/clothing/${category.title}`}
-      className={`relative ${isFullWidth ? 'flex-auto w-full' : 'flex-auto'} h-[300px] shadow-md group`}
-    >
-      <div className="w-full h-[300px] overflow-hidden">
+    <Link href={`/clothing/${category.title}`} className={`relative ${isFullWidth ? 'flex-auto w-full' : 'flex-auto'} shadow-md group`}>
+      <div className="w-full h-[400px] overflow-hidden">
         <Image
           src={category.image}
           width={1680}
