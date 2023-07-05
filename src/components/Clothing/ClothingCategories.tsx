@@ -1,8 +1,8 @@
-import { ClothingCategoryThumbType } from '../../../typings';
+import { ClothingCategoryType } from '../../../typings';
 import ClothingThumb from './ClothingThumb';
 
 interface ClothingCategoriesProps {
-  categories: ClothingCategoryThumbType[];
+  categories: ClothingCategoryType[];
 }
 
 function ClothingCategories({ categories }: ClothingCategoriesProps) {

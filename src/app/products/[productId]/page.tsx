@@ -1,5 +1,7 @@
 import Carousel from '@/components/Product/Carousel';
+import Details from '@/components/Product/Details';
 import NotFound from '@/components/Product/NotFound';
+import Similar from '@/components/Product/Similar';
 import Categories from '@/components/layout/Categories';
 import PageBody from '@/components/layout/PageBody';
 import PageTemplate from '@/components/layout/PageTemplate';
@@ -21,10 +23,13 @@ function page({ params: { productId } }: PageProps) {
         {!product ? (
           <NotFound />
         ) : (
-          <div className="flex flex-col md:flex-row justify-between items-center gap-10">
-            <Carousel thumb={product.thumb} images={product.images} />
-            <Carousel thumb={product.thumb} images={product.images} />
-          </div>
+          <>
+            <div className="flex flex-col lg:flex-row justify-between items-stretch gap-10">
+              <Carousel thumb={product.thumb} images={product.images} />
+              <Details product={product} />
+            </div>
+            <Similar />
+          </>
         )}
       </PageBody>
     </PageTemplate>

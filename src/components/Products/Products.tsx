@@ -1,9 +1,9 @@
-import { ProductThumbType } from '../../../typings';
+import { ProductType } from '../../../typings';
 import Button from '../common/Button';
 import ProductThumb from './ProductThumb';
 
 interface ProductsProps {
-  products: ProductThumbType[];
+  products: ProductType[];
   title?: string;
   showViewAll?: boolean;
   isInitialScreen?: boolean;

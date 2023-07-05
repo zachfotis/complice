@@ -8,7 +8,7 @@ import PageTemplate from '@/components/layout/PageTemplate';
 import PageTitle from '@/components/layout/PageTitle';
 import Paginator from '@/components/layout/Paginator';
 import { useState } from 'react';
-import { ProductThumbType } from '../../../../typings';
+import { ProductType } from '../../../../typings';
 import DATA from '../../../assets/dummy/products.json';
 
 interface PageProps {
@@ -18,8 +18,8 @@ interface PageProps {
 }
 
 function Page({ params }: PageProps) {
-  const [products, setProducts] = useState<ProductThumbType[]>(DATA);
-  const [sortedProducts, setSortedProducts] = useState<ProductThumbType[]>([]);
+  const [products, setProducts] = useState<ProductType[]>(DATA);
+  const [sortedProducts, setSortedProducts] = useState<ProductType[]>([]);
 
   return (
     <PageTemplate>

@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react';
-import { ProductThumbType } from '../../../typings';
+import { ProductType } from '../../../typings';
 import Size from './Size';
 import SortBy from './SortBy';
 
 interface SorterProps {
-  products: ProductThumbType[];
-  sortedProducts: ProductThumbType[];
-  setSortedProducts: React.Dispatch<React.SetStateAction<ProductThumbType[]>>;
+  products: ProductType[];
+  sortedProducts: ProductType[];
+  setSortedProducts: React.Dispatch<React.SetStateAction<ProductType[]>>;
 }
 
 function Sorter({ products, sortedProducts, setSortedProducts }: SorterProps) {
@@ -27,12 +27,7 @@ function Sorter({ products, sortedProducts, setSortedProducts }: SorterProps) {
 
   return (
     <nav className="w-full bg-lightGrey px-5 py-3 flex justify-start items-center gap-7 shadow-sm">
-      <Size
-        products={products}
-        setSortedProducts={setSortedProducts}
-        isSizeExpanded={isSizeExpanded}
-        setIsSizeExpanded={setIsSizeExpanded}
-      />
+      <Size products={products} setSortedProducts={setSortedProducts} isSizeExpanded={isSizeExpanded} setIsSizeExpanded={setIsSizeExpanded} />
       <SortBy
         products={products}
         sortedProducts={sortedProducts}

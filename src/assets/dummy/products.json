@@ -4,6 +4,12 @@
     "title": "Iron Gym T-Shirt",
     "type": "t-shirt",
     "sizes": ["S", "M", "L", "XL"],
+    "quantity": {
+      "S": 0,
+      "M": 2,
+      "L": 9,
+      "XL": 3
+    },
     "price": 15.99,
     "thumb": "https://images.unsplash.com/photo-1503341455253-b2e723bb3dbb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2370&q=80",
     "images": [
@@ -11,13 +17,19 @@
       "https://images.unsplash.com/photo-1596902115451-aa4564f19457?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2370&q=80",
       "https://images.unsplash.com/photo-1472186422470-1f3fbde547aa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2367&q=80",
       "https://images.unsplash.com/photo-1503341455253-b2e723bb3dbb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2370&q=80"
-    ]
+    ],
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla euismod, nisl sed aliquam ultricies, nunc sapien ultricies nunc, quis ultricies nisl nunc sit amet nunc."
   },
   {
     "id": "2",
     "title": "Waterproof Shorts",
     "type": "shorts",
     "sizes": ["XS", "S", "M"],
+    "quantity": {
+      "XS": 2,
+      "S": 3,
+      "M": 8
+    },
     "price": 24.99,
     "thumb": "https://images.unsplash.com/photo-1596902115451-aa4564f19457?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2370&q=80",
     "images": [
@@ -25,13 +37,19 @@
       "https://images.unsplash.com/photo-1596902115451-aa4564f19457?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2370&q=80",
       "https://images.unsplash.com/photo-1472186422470-1f3fbde547aa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2367&q=80",
       "https://images.unsplash.com/photo-1503341455253-b2e723bb3dbb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2370&q=80"
-    ]
+    ],
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla euismod, nisl sed aliquam ultricies, nunc sapien ultricies nunc, quis ultricies nisl nunc sit amet nunc."
   },
   {
     "id": "3",
     "title": "Black Socks",
     "type": "socks",
     "sizes": ["S", "M", "L"],
+    "quantity": {
+      "S": 5,
+      "M": 7,
+      "L": 2
+    },
     "price": 9.99,
     "thumb": "https://images.unsplash.com/photo-1472186422470-1f3fbde547aa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2367&q=80",
     "images": [
@@ -39,13 +57,17 @@
       "https://images.unsplash.com/photo-1596902115451-aa4564f19457?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2370&q=80",
       "https://images.unsplash.com/photo-1472186422470-1f3fbde547aa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2367&q=80",
       "https://images.unsplash.com/photo-1503341455253-b2e723bb3dbb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2370&q=80"
-    ]
+    ],
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla euismod, nisl sed aliquam ultricies, nunc sapien ultricies nunc, quis ultricies nisl nunc sit amet nunc."
   },
   {
     "id": "4",
     "title": "Iron Gym T-Shirt",
     "type": "t-shirt",
     "sizes": ["XS"],
+    "quantity": {
+      "XS": 3
+    },
     "price": 15.99,
     "thumb": "https://images.unsplash.com/photo-1503341455253-b2e723bb3dbb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2370&q=80",
     "images": [
@@ -53,13 +75,17 @@
       "https://images.unsplash.com/photo-1596902115451-aa4564f19457?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2370&q=80",
       "https://images.unsplash.com/photo-1472186422470-1f3fbde547aa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2367&q=80",
       "https://images.unsplash.com/photo-1503341455253-b2e723bb3dbb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2370&q=80"
-    ]
+    ],
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla euismod, nisl sed aliquam ultricies, nunc sapien ultricies nunc, quis ultricies nisl nunc sit amet nunc."
   },
   {
     "id": "5",
     "title": "Waterproof Shorts",
     "type": "shorts",
     "sizes": ["XL"],
+    "quantity": {
+      "XL": 4
+    },
     "price": 24.99,
     "thumb": "https://images.unsplash.com/photo-1596902115451-aa4564f19457?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2370&q=80",
     "images": [
@@ -67,13 +93,21 @@
       "https://images.unsplash.com/photo-1596902115451-aa4564f19457?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2370&q=80",
       "https://images.unsplash.com/photo-1472186422470-1f3fbde547aa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2367&q=80",
       "https://images.unsplash.com/photo-1503341455253-b2e723bb3dbb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2370&q=80"
-    ]
+    ],
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla euismod, nisl sed aliquam ultricies, nunc sapien ultricies nunc, quis ultricies nisl nunc sit amet nunc."
   },
   {
     "id": "6",
     "title": "Black Socks",
     "type": "socks",
     "sizes": ["XS", "S", "M", "L", "XL"],
+    "quantity": {
+      "XS": 3,
+      "S": 4,
+      "M": 5,
+      "L": 6,
+      "XL": 7
+    },
     "price": 9.99,
     "thumb": "https://images.unsplash.com/photo-1472186422470-1f3fbde547aa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2367&q=80",
     "images": [
@@ -81,13 +115,18 @@
       "https://images.unsplash.com/photo-1596902115451-aa4564f19457?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2370&q=80",
       "https://images.unsplash.com/photo-1472186422470-1f3fbde547aa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2367&q=80",
       "https://images.unsplash.com/photo-1503341455253-b2e723bb3dbb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2370&q=80"
-    ]
+    ],
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla euismod, nisl sed aliquam ultricies, nunc sapien ultricies nunc, quis ultricies nisl nunc sit amet nunc."
   },
   {
     "id": "7",
     "title": "Iron Gym T-Shirt",
     "type": "t-shirt",
     "sizes": ["M", "L"],
+    "quantity": {
+      "M": 5,
+      "L": 6
+    },
     "price": 15.99,
     "thumb": "https://images.unsplash.com/photo-1503341455253-b2e723bb3dbb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2370&q=80",
     "images": [
@@ -95,13 +134,18 @@
       "https://images.unsplash.com/photo-1596902115451-aa4564f19457?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2370&q=80",
       "https://images.unsplash.com/photo-1472186422470-1f3fbde547aa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2367&q=80",
       "https://images.unsplash.com/photo-1503341455253-b2e723bb3dbb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2370&q=80"
-    ]
+    ],
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla euismod, nisl sed aliquam ultricies, nunc sapien ultricies nunc, quis ultricies nisl nunc sit amet nunc."
   },
   {
     "id": "8",
     "title": "Waterproof Shorts",
     "type": "shorts",
     "sizes": ["XS", "L"],
+    "quantity": {
+      "XS": 5,
+      "L": 6
+    },
     "price": 24.99,
     "thumb": "https://images.unsplash.com/photo-1596902115451-aa4564f19457?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2370&q=80",
     "images": [
@@ -109,13 +153,21 @@
       "https://images.unsplash.com/photo-1596902115451-aa4564f19457?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2370&q=80",
       "https://images.unsplash.com/photo-1472186422470-1f3fbde547aa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2367&q=80",
       "https://images.unsplash.com/photo-1503341455253-b2e723bb3dbb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2370&q=80"
-    ]
+    ],
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla euismod, nisl sed aliquam ultricies, nunc sapien ultricies nunc, quis ultricies nisl nunc sit amet nunc."
   },
   {
     "id": "9",
     "title": "Black Socks",
     "type": "socks",
     "sizes": ["XS", "S", "M", "L", "XL"],
+    "quantity": {
+      "XS": 0,
+      "S": 2,
+      "M": 5,
+      "L": 0,
+      "XL": 5
+    },
     "price": 9.99,
     "thumb": "https://images.unsplash.com/photo-1472186422470-1f3fbde547aa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2367&q=80",
     "images": [
@@ -123,13 +175,18 @@
       "https://images.unsplash.com/photo-1596902115451-aa4564f19457?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2370&q=80",
       "https://images.unsplash.com/photo-1472186422470-1f3fbde547aa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2367&q=80",
       "https://images.unsplash.com/photo-1503341455253-b2e723bb3dbb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2370&q=80"
-    ]
+    ],
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla euismod, nisl sed aliquam ultricies, nunc sapien ultricies nunc, quis ultricies nisl nunc sit amet nunc."
   },
   {
     "id": "10",
     "title": "Iron Gym T-Shirt",
     "type": "t-shirt",
     "sizes": ["M", "L"],
+    "quantity": {
+      "M": 1,
+      "L": 4
+    },
     "price": 15.99,
     "thumb": "https://images.unsplash.com/photo-1503341455253-b2e723bb3dbb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2370&q=80",
     "images": [
@@ -137,13 +194,21 @@
       "https://images.unsplash.com/photo-1596902115451-aa4564f19457?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2370&q=80",
       "https://images.unsplash.com/photo-1472186422470-1f3fbde547aa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2367&q=80",
       "https://images.unsplash.com/photo-1503341455253-b2e723bb3dbb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2370&q=80"
-    ]
+    ],
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla euismod, nisl sed aliquam ultricies, nunc sapien ultricies nunc, quis ultricies nisl nunc sit amet nunc."
   },
   {
     "id": "11",
     "title": "Waterproof Shorts",
     "type": "shorts",
     "sizes": ["XS", "S", "M", "L", "XL"],
+    "quantity": {
+      "XS": 2,
+      "S": 5,
+      "M": 6,
+      "L": 7,
+      "XL": 1
+    },
     "price": 24.99,
     "thumb": "https://images.unsplash.com/photo-1596902115451-aa4564f19457?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2370&q=80",
     "images": [
@@ -151,13 +216,21 @@
       "https://images.unsplash.com/photo-1596902115451-aa4564f19457?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2370&q=80",
       "https://images.unsplash.com/photo-1472186422470-1f3fbde547aa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2367&q=80",
       "https://images.unsplash.com/photo-1503341455253-b2e723bb3dbb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2370&q=80"
-    ]
+    ],
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla euismod, nisl sed aliquam ultricies, nunc sapien ultricies nunc, quis ultricies nisl nunc sit amet nunc."
   },
   {
     "id": "12",
     "title": "Black Socks",
     "type": "socks",
     "sizes": ["XS", "S", "M", "L", "XL"],
+    "quantity": {
+      "XS": 2,
+      "S": 5,
+      "M": 6,
+      "L": 7,
+      "XL": 1
+    },
     "price": 9.99,
     "thumb": "https://images.unsplash.com/photo-1472186422470-1f3fbde547aa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2367&q=80",
     "images": [
@@ -165,6 +238,7 @@
       "https://images.unsplash.com/photo-1596902115451-aa4564f19457?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2370&q=80",
       "https://images.unsplash.com/photo-1472186422470-1f3fbde547aa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2367&q=80",
       "https://images.unsplash.com/photo-1503341455253-b2e723bb3dbb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2370&q=80"
-    ]
+    ],
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla euismod, nisl sed aliquam ultricies, nunc sapien ultricies nunc, quis ultricies nisl nunc sit amet nunc."
   }
 ]

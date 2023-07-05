@@ -1,11 +1,11 @@
 import { FaSortAmountDownAlt, FaSortAmountUp } from 'react-icons/fa';
 import { IoIosArrowDown } from 'react-icons/io';
-import { ProductThumbType } from '../../../typings';
+import { ProductType } from '../../../typings';
 
 interface SortByProps {
-  products: ProductThumbType[];
-  sortedProducts: ProductThumbType[];
-  setSortedProducts: React.Dispatch<React.SetStateAction<ProductThumbType[]>>;
+  products: ProductType[];
+  sortedProducts: ProductType[];
+  setSortedProducts: React.Dispatch<React.SetStateAction<ProductType[]>>;
   isSortByExpanded: boolean;
   setIsSortByExpanded: React.Dispatch<React.SetStateAction<boolean>>;
 }
@@ -19,10 +19,7 @@ function SortBy({ products, sortedProducts, setSortedProducts, isSortByExpanded,
         <p className="text-h4 text-secondary">Sort by</p>
         <IoIosArrowDown className="text-2xl text-secondary cursor-pointer" />
       </button>
-      <div
-        className="absolute top-11 left-0 w-[200px] bg-white shadow-sm z-10 border border-whiteGrey"
-        style={{ display: isSortByExpanded ? 'block' : 'none' }}
-      >
+      <div className="absolute top-11 left-0 w-[200px] bg-white shadow-sm z-10 border border-whiteGrey" style={{ display: isSortByExpanded ? 'block' : 'none' }}>
         {sortByLabels.map((label) => (
           <div
             key={label}

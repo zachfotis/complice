@@ -1,10 +1,10 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { ClothingCategoryThumbType } from '../../../typings';
+import { ClothingCategoryType } from '../../../typings';
 
 interface ClothingThumbProps {
   index: number;
-  category: ClothingCategoryThumbType;
+  category: ClothingCategoryType;
 }
 
 function ClothingThumb({ index, category }: ClothingThumbProps) {

@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import { ProductThumbType } from '../../../typings';
+import { ProductType } from '../../../typings';
 
 interface SorterProps {
-  products: ProductThumbType[];
-  setSortedProducts: React.Dispatch<React.SetStateAction<ProductThumbType[]>>;
+  products: ProductType[];
+  setSortedProducts: React.Dispatch<React.SetStateAction<ProductType[]>>;
 }
 
 function Sorter({ products, setSortedProducts }: SorterProps) {
@@ -18,11 +18,7 @@ function Sorter({ products, setSortedProducts }: SorterProps) {
       </p>
       <button
         className={`text-h4 font-medium text-secondary p-1 min-w-[50px]
-          ${
-            selectedType === 'All'
-              ? 'border-b-2 border-primary'
-              : 'hover:outline-2 hover:outline-primary hover:outline-dashed'
-          }`}
+          ${selectedType === 'All' ? 'border-b-2 border-primary' : 'hover:outline-2 hover:outline-primary hover:outline-dashed'}`}
         onClick={() => {
           setSortedProducts([]);
           setSelectedType('All');
@@ -34,11 +30,7 @@ function Sorter({ products, setSortedProducts }: SorterProps) {
         <button
           key={type}
           className={`text-h4 font-medium text-secondary p-1 min-w-[50px]
-          ${
-            selectedType === type
-              ? 'border-b-2 border-primary'
-              : 'hover:outline-2 hover:outline-primary hover:outline-dashed'
-          }`}
+          ${selectedType === type ? 'border-b-2 border-primary' : 'hover:outline-2 hover:outline-primary hover:outline-dashed'}`}
           onClick={() => {
             setSortedProducts(products.filter((product) => product.type === type));
             setSelectedType(type);

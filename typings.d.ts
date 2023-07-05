@@ -1,23 +1,36 @@
 import { StaticImageData } from 'next/image';
 
-type CategoryThumbType = {
+type CategoryType = {
   id: string;
   title: string;
   description: string;
   image: string | StaticImageData;
 };
 
-type ProductThumbType = {
+enum Sizes {
+  XS = 'XS',
+  S = 'S',
+  M = 'M',
+  L = 'L',
+  XL = 'XL',
+  XXL = 'XXL',
+}
+
+type ProductType = {
   id: string;
   title: string;
   type: string;
+  description: string;
   sizes: string[];
+  quantity: {
+    [key: Sizes]: number;
+  };
   price: number;
   thumb: string | StaticImageData;
   images: string[];
 };
 
-type ClothingCategoryThumbType = {
+type ClothingCategoryType = {
   id: string;
   title: string;
   image: string | StaticImageData;

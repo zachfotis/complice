@@ -1,10 +1,10 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { HiOutlineHeart } from 'react-icons/hi2';
-import { ProductThumbType } from '../../../typings';
+import { ProductType } from '../../../typings';
 
 interface ProductThumbProps {
-  product: ProductThumbType;
+  product: ProductType;
 }
 function ProductThumb({ product }: ProductThumbProps) {
   return (

@@ -1,8 +1,8 @@
 import Image from 'next/image';
-import { CategoryThumbType } from '../../../typings';
+import { CategoryType } from '../../../typings';
 
 interface CategoryThumbProps {
-  category: CategoryThumbType;
+  category: CategoryType;
 }
 function CategoryThumb({ category }: CategoryThumbProps) {
   return (

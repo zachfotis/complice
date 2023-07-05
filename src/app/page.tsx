@@ -1,9 +1,7 @@
 import ImageThumb4 from '@/assets/dummy/caps_categorie.jpg';
+import DATA from '@/assets/dummy/products.json';
 import ImageThumb2 from '@/assets/dummy/shorts_categorie.jpg';
 import ImageThumb3 from '@/assets/dummy/socks_categorie.jpg';
-import ProductThumb1 from '@/assets/dummy/tshirt-example1.jpg';
-import ProductThumb2 from '@/assets/dummy/tshirt-example2.jpg';
-import ProductThumb3 from '@/assets/dummy/tshirt-example3.jpg';
 import ImageThumb from '@/assets/dummy/tshirt_categorie.jpg';
 import Banner from '@/components/Home/Banner';
 import CategoriesThumb from '@/components/Home/CategoriesThumb';
@@ -13,7 +11,7 @@ import StayTuned from '@/components/common/StayTuned';
 import Categories from '@/components/layout/Categories';
 import PageBody from '@/components/layout/PageBody';
 import PageTemplate from '@/components/layout/PageTemplate';
-import { CategoryThumbType, ProductThumbType } from '../../typings';
+import { CategoryType } from '../../typings';
 
 export default function Home() {
   return (
@@ -23,7 +21,7 @@ export default function Home() {
         <Hero />
         <CategoriesThumb categories={categoryThumbData} />
         <Banner />
-        <Products products={productThumbData} title="Best Sellers" isInitialScreen={true} />
+        <Products products={DATA.splice(0, 3)} title="Best Sellers" isInitialScreen={true} />
         <StayTuned />
       </PageBody>
     </PageTemplate>
@@ -31,7 +29,7 @@ export default function Home() {
 }
 
 // TODO: Fetch data from API
-const categoryThumbData: CategoryThumbType[] = [
+const categoryThumbData: CategoryType[] = [
   {
     id: '1',
     title: 'T-Shirt',
@@ -55,35 +53,5 @@ const categoryThumbData: CategoryThumbType[] = [
     title: 'Caps',
     description: 'Lorem ipsum dolor sit amet.',
     image: ImageThumb4,
-  },
-];
-
-const productThumbData: ProductThumbType[] = [
-  {
-    id: '1',
-    title: 'Iron Gym T-Shirt',
-    type: 't-shirt',
-    sizes: ['S', 'M', 'L', 'XL'],
-    price: 15.99,
-    thumb: ProductThumb1,
-    images: [],
-  },
-  {
-    id: '2',
-    title: 'Waterproof Shorts',
-    type: 'shorts',
-    sizes: ['S', 'M', 'L', 'XL'],
-    price: 24.99,
-    thumb: ProductThumb2,
-    images: [],
-  },
-  {
-    id: '3',
-    title: 'Black Socks',
-    type: 'socks',
-    sizes: ['S', 'M', 'L', 'XL'],
-    price: 9.99,
-    thumb: ProductThumb3,
-    images: [],
   },
 ];
