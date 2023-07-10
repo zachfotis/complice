@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react';
-import { IoIosArrowDown } from 'react-icons/io';
-import { ProductType } from '../../../typings';
+import {useEffect, useState} from 'react';
+import {IoIosArrowDown} from 'react-icons/io';
+import {ProductType} from '../../../typings';
 
 interface SizeProps {
   products: ProductType[];
@@ -43,25 +43,27 @@ function Size({ products, setSortedProducts, isSizeExpanded, setIsSizeExpanded }
 
   return (
     <div className="relative">
-      <button className="flex justify-start items-center gap-2" onClick={() => setIsSizeExpanded(!isSizeExpanded)}>
-        <p className="text-h4 text-secondary">Filter Size</p>
-        <IoIosArrowDown className="text-2xl text-secondary cursor-pointer" />
+      <button className="flex items-center justify-start gap-2" onClick={() => setIsSizeExpanded(!isSizeExpanded)}>
+          <p className="text-h4 text-secondary">Filter Size</p>
+          <IoIosArrowDown className="cursor-pointer text-2xl text-secondary"/>
       </button>
-      <div className="absolute top-11 left-0 w-full bg-white shadow-sm py-3 px-5 z-10" style={{ display: isSizeExpanded ? 'block' : 'none' }}>
-        {uniqueSizes.map((size) => (
-          <div
-            key={size}
-            className={`flex justify-start items-center gap-2 py-1 cursor-pointer ${selectedSizes.includes(size) ? 'font-[500]' : 'text-secondary'}`}
-            onClick={() => {
-              if (selectedSizes.includes(size)) {
-                setSelectedSizes(selectedSizes.filter((selectedSize) => selectedSize !== size));
-              } else {
-                setSelectedSizes([...selectedSizes, size]);
-              }
+        <div className="absolute top-11 left-0 z-10 w-full bg-white px-5 py-3 shadow-sm"
+             style={{display: isSizeExpanded ? 'block' : 'none'}}>
+            {uniqueSizes.map((size) => (
+                <div
+                    key={size}
+                    className={`flex justify-start items-center gap-2 py-1 cursor-pointer ${selectedSizes.includes(size) ? 'font-[500]' : 'text-secondary'}`}
+                    onClick={() => {
+                        if (selectedSizes.includes(size)) {
+                            setSelectedSizes(selectedSizes.filter((selectedSize) => selectedSize !== size));
+                        } else {
+                            setSelectedSizes([...selectedSizes, size]);
+                        }
             }}
           >
-            <input type="checkbox" className="w-4 h-4 border border-secondary rounded-sm" checked={selectedSizes.includes(size)} readOnly />
-            <p className="text-base">{size}</p>
+                    <input type="checkbox" className="h-4 w-4 rounded-sm border border-secondary"
+                           checked={selectedSizes.includes(size)} readOnly/>
+                    <p className="text-base">{size}</p>
           </div>
         ))}
       </div>

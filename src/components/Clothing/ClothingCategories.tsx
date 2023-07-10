@@ -1,4 +1,4 @@
-import { ClothingCategoryType } from '../../../typings';
+import {ClothingCategoryType} from '../../../typings';
 import ClothingThumb from './ClothingThumb';
 
 interface ClothingCategoriesProps {
@@ -7,11 +7,11 @@ interface ClothingCategoriesProps {
 
 function ClothingCategories({ categories }: ClothingCategoriesProps) {
   return (
-    <section className="w-full flex justify-center items-center gap-10 flex-wrap">
-      {categories.map((category, index) => (
-        <ClothingThumb key={category.id} index={index} category={category} />
-      ))}
-    </section>
+      <section className="flex w-full flex-wrap items-center justify-center gap-10">
+        {categories.map((category, index) => (
+            <ClothingThumb key={category.id} index={index} category={category}/>
+        ))}
+      </section>
   );
 }
 

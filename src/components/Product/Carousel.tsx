@@ -1,6 +1,6 @@
 'use client';
 import Image from 'next/image';
-import { useEffect, useState } from 'react';
+import {useEffect, useState} from 'react';
 
 interface CarouselProps {
   thumb: string;
@@ -49,35 +49,38 @@ function Carousel({ thumb, images }: CarouselProps) {
   }, []);
 
   return (
-    <div id="carousel" className="relative flex-auto w-full flex flex-col justify-start items-center gap-2">
+    <div id="carousel" className="relative flex w-full flex-auto flex-col items-center justify-start gap-2">
       {!isCollapsed && (
-        <div className="w-full h-[400px]">
-          <Image src={thumb} alt="Product" width={1680} height={800} className="w-full h-full object-cover object-center" />
-        </div>
+          <div className="w-full h-[400px]">
+            <Image src={thumb} alt="Product" width={1680} height={800}
+                   className="h-full w-full object-cover object-center"/>
+          </div>
       )}
       <div
-        id="carousel__images"
-        className={`w-full ${isCollapsed ? 'h-full flex flex-row justify-start items-center overflow-x-scroll snap-x snap-mandatory' : 'grid grid-cols-4 gap-2'}`}
+          id="carousel__images"
+          className={`w-full ${isCollapsed ? 'h-full flex flex-row justify-start items-center overflow-x-scroll snap-x snap-mandatory' : 'grid grid-cols-4 gap-2'}`}
       >
-        {isCollapsed && <Image id="carousel__img_0" src={thumb} alt="Product" width={1680} height={800} className="w-full h-full object-cover object-center snap-center" />}
+        {isCollapsed && <Image id="carousel__img_0" src={thumb} alt="Product" width={1680} height={800}
+                               className="h-full w-full snap-center object-cover object-center"/>}
         {images.map((image, index) => (
-          <Image
-            id={`carousel__img_${index + 1}`}
-            key={index}
-            src={image}
-            alt="Product"
-            width={1680}
-            height={800}
-            className="w-full h-full object-cover object-center snap-center"
-          />
+            <Image
+                id={`carousel__img_${index + 1}`}
+                key={index}
+                src={image}
+                alt="Product"
+                width={1680}
+                height={800}
+                className="h-full w-full snap-center object-cover object-center"
+            />
         ))}
         {/* Bullets*/}
         {isCollapsed && (
-          <div className="absolute bottom-6 left-0 w-full flex justify-center items-center gap-3">
-            {Array.from({ length: images.length + 1 }).map((_, index) => (
-              <div key={index} className={`w-4 h-4 rounded-full ${showingImage === index ? 'bg-black border-2 border-white' : 'bg-white border border-black'}`} />
-            ))}
-          </div>
+            <div className="absolute bottom-6 left-0 flex w-full items-center justify-center gap-3">
+              {Array.from({length: images.length + 1}).map((_, index) => (
+                  <div key={index}
+                       className={`w-4 h-4 rounded-full ${showingImage === index ? 'bg-black border-2 border-white' : 'bg-white border border-black'}`}/>
+              ))}
+            </div>
         )}
       </div>
     </div>

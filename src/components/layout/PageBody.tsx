@@ -4,7 +4,7 @@ interface PageBodyProps {
 
 function PageBody({ children }: PageBodyProps) {
   return (
-    <div className="w-full max-w-[1680px] mx-auto flex flex-col justify-start items-center gap-10 p-5">{children}</div>
+    <div className="mx-auto flex w-full flex-col items-center justify-start gap-10 p-5 max-w-[1680px]">{children}</div>
   );
 }
 

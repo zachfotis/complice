@@ -24,11 +24,11 @@ function page({ params: { productId } }: PageProps) {
           <NotFound />
         ) : (
           <>
-            <div className="flex flex-col lg:flex-row justify-between items-stretch gap-10">
-              <Carousel thumb={product.thumb} images={product.images} />
-              <Details product={product} />
+            <div className="flex flex-col items-stretch justify-between gap-10 lg:flex-row">
+                <Carousel thumb={product.thumb} images={product.images}/>
+                <Details product={product}/>
             </div>
-            <Similar />
+              <Similar/>
           </>
         )}
       </PageBody>

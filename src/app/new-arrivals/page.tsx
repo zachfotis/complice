@@ -7,8 +7,8 @@ import PageBody from '@/components/layout/PageBody';
 import PageTemplate from '@/components/layout/PageTemplate';
 import PageTitle from '@/components/layout/PageTitle';
 import Paginator from '@/components/layout/Paginator';
-import { useState } from 'react';
-import { ProductType } from '../../../typings';
+import {useState} from 'react';
+import {ProductType} from '../../../typings';
 import DATA from '../../assets/dummy/products.json';
 
 function Page() {

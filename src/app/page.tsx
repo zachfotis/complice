@@ -11,7 +11,7 @@ import StayTuned from '@/components/common/StayTuned';
 import Categories from '@/components/layout/Categories';
 import PageBody from '@/components/layout/PageBody';
 import PageTemplate from '@/components/layout/PageTemplate';
-import { CategoryType } from '../../typings';
+import {CategoryType} from '../../typings';
 
 export default function Home() {
   return (

@@ -1,6 +1,6 @@
-import { FaSortAmountDownAlt, FaSortAmountUp } from 'react-icons/fa';
-import { IoIosArrowDown } from 'react-icons/io';
-import { ProductType } from '../../../typings';
+import {FaSortAmountDownAlt, FaSortAmountUp} from 'react-icons/fa';
+import {IoIosArrowDown} from 'react-icons/io';
+import {ProductType} from '../../../typings';
 
 interface SortByProps {
   products: ProductType[];
@@ -15,25 +15,26 @@ function SortBy({ products, sortedProducts, setSortedProducts, isSortByExpanded,
 
   return (
     <div className="relative">
-      <button className="flex justify-start items-center gap-2" onClick={() => setIsSortByExpanded(!isSortByExpanded)}>
-        <p className="text-h4 text-secondary">Sort by</p>
-        <IoIosArrowDown className="text-2xl text-secondary cursor-pointer" />
+      <button className="flex items-center justify-start gap-2" onClick={() => setIsSortByExpanded(!isSortByExpanded)}>
+          <p className="text-h4 text-secondary">Sort by</p>
+          <IoIosArrowDown className="cursor-pointer text-2xl text-secondary"/>
       </button>
-      <div className="absolute top-11 left-0 w-[200px] bg-white shadow-sm z-10 border border-whiteGrey" style={{ display: isSortByExpanded ? 'block' : 'none' }}>
-        {sortByLabels.map((label) => (
-          <div
-            key={label}
-            className="flex justify-start items-center gap-2 cursor-pointer py-3 px-5 hover:bg-lightGrey"
-            onClick={() => {
-              setIsSortByExpanded(false);
-              if (label === 'Newest') {
-                if (sortedProducts.length > 0) {
-                  setSortedProducts(sortedProducts);
-                } else {
-                  setSortedProducts(products);
-                }
-              } else if (label === 'Price: Low to High') {
-                if (sortedProducts.length > 0) {
+        <div className="absolute top-11 left-0 z-10 border bg-white shadow-sm w-[200px] border-whiteGrey"
+             style={{display: isSortByExpanded ? 'block' : 'none'}}>
+            {sortByLabels.map((label) => (
+                <div
+                    key={label}
+                    className="flex cursor-pointer items-center justify-start gap-2 px-5 py-3 hover:bg-lightGrey"
+                    onClick={() => {
+                        setIsSortByExpanded(false);
+                        if (label === 'Newest') {
+                            if (sortedProducts.length > 0) {
+                                setSortedProducts(sortedProducts);
+                            } else {
+                                setSortedProducts(products);
+                            }
+                        } else if (label === 'Price: Low to High') {
+                            if (sortedProducts.length > 0) {
                   const sortedProductsByPrice = [...sortedProducts].sort((a, b) => a.price - b.price);
                   setSortedProducts(sortedProductsByPrice);
                 } else {
@@ -51,11 +52,11 @@ function SortBy({ products, sortedProducts, setSortedProducts, isSortByExpanded,
               }
             }}
           >
-            <p className="text-base cursor-pointer">{label}</p>
+                    <p className="cursor-pointer text-base">{label}</p>
             {label === 'Newest' ? null : label === 'Price: Low to High' ? (
-              <FaSortAmountDownAlt className="text-xl text-secondary cursor-pointer" />
+                <FaSortAmountDownAlt className="cursor-pointer text-xl text-secondary"/>
             ) : (
-              <FaSortAmountUp className="text-xl text-secondary cursor-pointer" />
+                <FaSortAmountUp className="cursor-pointer text-xl text-secondary"/>
             )}
           </div>
         ))}

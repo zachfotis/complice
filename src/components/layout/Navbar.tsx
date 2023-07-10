@@ -2,8 +2,8 @@
 import Logo from '@/assets/logo.png';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
-import { HiMagnifyingGlass, HiOutlineHeart, HiOutlineShoppingBag, HiOutlineUser, HiSquares2X2 } from 'react-icons/hi2';
+import {useEffect, useState} from 'react';
+import {HiMagnifyingGlass, HiOutlineHeart, HiOutlineShoppingBag, HiOutlineUser, HiSquares2X2} from 'react-icons/hi2';
 import Menu from './Menu';
 
 function Navbar() {
@@ -54,27 +54,27 @@ function Navbar() {
   }, [isMenuOpen]);
 
   return (
-    <nav className="sticky top-0 left-0 bg-white w-full shadow-md z-50">
-      <section className="w-full mx-auto max-w-[1680px] flex justify-between items-center p-5">
-        {/* Small Menu */}
-        <h1 className="text-h3 font-custom hidden md:block">About Us</h1>
-        {/* Logo */}
-        <div className="w-full md:w-fit flex justify-start items-center gap-3">
-          <HiSquares2X2
-            className="text-2xl md:hidden cursor-pointer hover:scale-110 hover:rotate-90 transform transition-all"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-          />
-          <Link href="/">
-            <Image alt="logo" src={Logo} width={170} height={50} className="w-[95px] md:w-[150px]" />
-          </Link>
-        </div>
+      <nav className="sticky top-0 left-0 z-50 w-full bg-white shadow-md">
+          <section className="mx-auto flex w-full items-center justify-between p-5 max-w-[1680px]">
+              {/* Small Menu */}
+              <h1 className="hidden text-h3 font-custom md:block">About Us</h1>
+              {/* Logo */}
+              <div className="flex w-full items-center justify-start gap-3 md:w-fit">
+                  <HiSquares2X2
+                      className="transform cursor-pointer text-2xl transition-all hover:rotate-90 hover:scale-110 md:hidden"
+                      onClick={() => setIsMenuOpen(!isMenuOpen)}
+                  />
+                  <Link href="/">
+                      <Image alt="logo" src={Logo} width={170} height={50} className="w-[95px] md:w-[150px]"/>
+                  </Link>
+              </div>
         {/* Menu */}
-        <div className="flex justify-start items-center gap-4 md:gap-5">
-          <HiMagnifyingGlass className="text-xl md:text-2xl" />
-          <HiOutlineUser className="text-xl md:text-2xl" />
-          <HiOutlineHeart className="text-xl md:text-2xl" />
-          <HiOutlineShoppingBag className="text-xl md:text-2xl" />
-        </div>
+              <div className="flex items-center justify-start gap-4 md:gap-5">
+                  <HiMagnifyingGlass className="text-xl md:text-2xl"/>
+                  <HiOutlineUser className="text-xl md:text-2xl"/>
+                  <HiOutlineHeart className="text-xl md:text-2xl"/>
+                  <HiOutlineShoppingBag className="text-xl md:text-2xl"/>
+              </div>
       </section>
       {isMenuOpen && isMobile && <Menu setIsMenuOpen={setIsMenuOpen} />}
     </nav>
