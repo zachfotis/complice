@@ -13,22 +13,22 @@ interface PageProps {
   };
 }
 
-function page({ params: { productId } }: PageProps) {
+function page({params: {productId}}: PageProps) {
   const product = DATA.find((product) => product.id === productId);
 
   return (
     <PageTemplate>
       <PageBody>
-        <Categories />
+        <Categories/>
         {!product ? (
-          <NotFound />
+          <NotFound/>
         ) : (
           <>
             <div className="flex flex-col items-stretch justify-between gap-10 lg:flex-row">
-                <Carousel thumb={product.thumb} images={product.images}/>
-                <Details product={product}/>
+              <Carousel thumb={product.thumb} images={product.images}/>
+              <Details product={product}/>
             </div>
-              <Similar/>
+            <Similar/>
           </>
         )}
       </PageBody>

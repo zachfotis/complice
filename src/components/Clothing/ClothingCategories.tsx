@@ -5,13 +5,13 @@ interface ClothingCategoriesProps {
   categories: ClothingCategoryType[];
 }
 
-function ClothingCategories({ categories }: ClothingCategoriesProps) {
+function ClothingCategories({categories}: ClothingCategoriesProps) {
   return (
-      <section className="flex w-full flex-wrap items-center justify-center gap-10">
-        {categories.map((category, index) => (
-            <ClothingThumb key={category.id} index={index} category={category}/>
-        ))}
-      </section>
+    <section className="flex w-full flex-wrap items-center justify-center gap-10">
+      {categories.map((category, index) => (
+        <ClothingThumb key={category.id} index={index} category={category}/>
+      ))}
+    </section>
   );
 }
 

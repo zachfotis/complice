@@ -6,7 +6,7 @@ interface Props {
   gap?: string;
 }
 
-function SocialMedia({ color = 'text-white', size = 'text-2xl', gap = 'gap-5' }: Props) {
+function SocialMedia({color = 'text-white', size = 'text-2xl', gap = 'gap-5'}: Props) {
   return (
     <div className={`flex justify-center items-center ${gap}`}>
       <BsFacebook

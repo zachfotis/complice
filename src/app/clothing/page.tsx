@@ -4,14 +4,16 @@ import PageBody from '@/components/layout/PageBody';
 import PageTemplate from '@/components/layout/PageTemplate';
 import PageTitle from '@/components/layout/PageTitle';
 import {ClothingCategoryType} from '../../../typings';
+import NavMap from "@/components/layout/NavMap";
 
 function page() {
   return (
     <PageTemplate>
       <PageBody>
-        <Categories />
-        <PageTitle title="Clothing" />
-        <ClothingCategories categories={clothingCategoryType} />
+        <Categories/>
+        <NavMap/>
+        <PageTitle title="Clothing"/>
+        <ClothingCategories categories={clothingCategoryType}/>
       </PageBody>
     </PageTemplate>
   );

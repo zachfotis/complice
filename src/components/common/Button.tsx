@@ -3,7 +3,7 @@ interface ButtonProps {
   variant?: 'lg-light' | 'lg-black' | 'sm-light' | 'sm-black' | 'xs-outline' | 'md-outline' | 'md-bottom-line';
 }
 
-function Button({ text, variant = 'sm-light' }: ButtonProps) {
+function Button({text, variant = 'sm-light'}: ButtonProps) {
   const getVariant = () => {
     switch (variant) {
       case 'lg-light':

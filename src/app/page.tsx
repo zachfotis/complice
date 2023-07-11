@@ -17,12 +17,12 @@ export default function Home() {
   return (
     <PageTemplate>
       <PageBody>
-        <Categories />
-        <Hero />
-        <CategoriesThumb categories={categoryThumbData} />
-        <Banner />
-        <Products products={DATA.splice(0, 3)} title="Best Sellers" isInitialScreen={true} />
-        <StayTuned />
+        <Categories/>
+        <Hero/>
+        <CategoriesThumb categories={categoryThumbData}/>
+        <Banner/>
+        <Products products={DATA.splice(0, 3)} title="Best Sellers" isInitialScreen={true}/>
+        <StayTuned/>
       </PageBody>
     </PageTemplate>
   );

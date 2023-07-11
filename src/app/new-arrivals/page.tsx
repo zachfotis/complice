@@ -10,6 +10,7 @@ import Paginator from '@/components/layout/Paginator';
 import {useState} from 'react';
 import {ProductType} from '../../../typings';
 import DATA from '../../assets/dummy/products.json';
+import NavMap from "@/components/layout/NavMap";
 
 function Page() {
   const [products, setProducts] = useState<ProductType[]>(DATA);
@@ -18,11 +19,12 @@ function Page() {
   return (
     <PageTemplate>
       <PageBody>
-        <Categories />
-        <PageTitle title="New Arrivals" />
-        <Sorter products={products} setSortedProducts={setSortedProducts} />
-        <Products products={sortedProducts.length === 0 ? products : sortedProducts} showViewAll={false} />
-        <Paginator productsShown={products.length} totalProducts={products.length} />
+        <Categories/>
+        <NavMap/>
+        <PageTitle title="New Arrivals"/>
+        <Sorter products={products} setSortedProducts={setSortedProducts}/>
+        <Products products={sortedProducts.length === 0 ? products : sortedProducts} showViewAll={false}/>
+        <Paginator productsShown={products.length} totalProducts={products.length}/>
       </PageBody>
     </PageTemplate>
   );

@@ -24,7 +24,8 @@ function Navbar() {
       }
     });
     // Remove listener on unmount
-    return () => window.removeEventListener('resize', () => {});
+    return () => window.removeEventListener('resize', () => {
+    });
   }, []);
 
   // Check if isMenuOpen on mount and on resize
@@ -41,7 +42,8 @@ function Navbar() {
     });
 
     // Remove listener on unmount
-    return () => window.removeEventListener('resize', () => {});
+    return () => window.removeEventListener('resize', () => {
+    });
   }, []);
 
   // Check if isMenuOpen and prevent scrolling on body
@@ -54,29 +56,29 @@ function Navbar() {
   }, [isMenuOpen]);
 
   return (
-      <nav className="sticky top-0 left-0 z-50 w-full bg-white shadow-md">
-          <section className="mx-auto flex w-full items-center justify-between p-5 max-w-[1680px]">
-              {/* Small Menu */}
-              <h1 className="hidden text-h3 font-custom md:block">About Us</h1>
-              {/* Logo */}
-              <div className="flex w-full items-center justify-start gap-3 md:w-fit">
-                  <HiSquares2X2
-                      className="transform cursor-pointer text-2xl transition-all hover:rotate-90 hover:scale-110 md:hidden"
-                      onClick={() => setIsMenuOpen(!isMenuOpen)}
-                  />
-                  <Link href="/">
-                      <Image alt="logo" src={Logo} width={170} height={50} className="w-[95px] md:w-[150px]"/>
-                  </Link>
-              </div>
+    <nav className="sticky top-0 left-0 z-50 w-full bg-white shadow-md">
+      <section className="mx-auto flex w-full items-center justify-between p-5 max-w-[1680px]">
+        {/* Small Menu */}
+        <h1 className="hidden text-h3 font-custom md:block">About Us</h1>
+        {/* Logo */}
+        <div className="flex w-full items-center justify-start gap-3 md:w-fit">
+          <HiSquares2X2
+            className="transform cursor-pointer text-2xl transition-all hover:rotate-90 hover:scale-110 md:hidden"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+          />
+          <Link href="/">
+            <Image alt="logo" src={Logo} width={170} height={50} className="w-[95px] md:w-[150px]"/>
+          </Link>
+        </div>
         {/* Menu */}
-              <div className="flex items-center justify-start gap-4 md:gap-5">
-                  <HiMagnifyingGlass className="text-xl md:text-2xl"/>
-                  <HiOutlineUser className="text-xl md:text-2xl"/>
-                  <HiOutlineHeart className="text-xl md:text-2xl"/>
-                  <HiOutlineShoppingBag className="text-xl md:text-2xl"/>
-              </div>
+        <div className="flex items-center justify-start gap-4 md:gap-5">
+          <HiMagnifyingGlass className="text-xl md:text-2xl"/>
+          <HiOutlineUser className="text-xl md:text-2xl"/>
+          <HiOutlineHeart className="text-xl md:text-2xl"/>
+          <HiOutlineShoppingBag className="text-xl md:text-2xl"/>
+        </div>
       </section>
-      {isMenuOpen && isMobile && <Menu setIsMenuOpen={setIsMenuOpen} />}
+      {isMenuOpen && isMobile && <Menu setIsMenuOpen={setIsMenuOpen}/>}
     </nav>
   );
 }
