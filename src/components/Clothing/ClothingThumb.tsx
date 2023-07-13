@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import {ClothingCategoryType} from '../../../typings';
+import { ClothingCategoryType } from '../../../typings';
 
 interface ClothingThumbProps {
   index: number;

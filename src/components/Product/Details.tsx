@@ -1,7 +1,7 @@
 'use client';
 
-import {useEffect, useState} from 'react';
-import {ProductType} from '../../../typings';
+import { useEffect, useState } from 'react';
+import { ProductType } from '../../../typings';
 
 interface DetailsProps {
   product: ProductType;

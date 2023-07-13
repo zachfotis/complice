@@ -1,6 +1,6 @@
 'use client';
 
-import {usePathname} from 'next/navigation';
+import { usePathname } from 'next/navigation';
 import Link from "next/link";
 
 function NavMap() {
@@ -36,14 +36,14 @@ function NavMap() {
   capitalizedSegments.shift()
 
   return (
-    <div className="flex w-full justify-start items-center text-base md:-my-5 whitespace-nowrap">
-      <Link href='/'>Home</Link>
-      {capitalizedSegments.map((segment, index) => (
-        <div key={index} className="flex">
+    <div className="flex w-full items-center justify-start whitespace-nowrap text-base md:-my-5">
+      <Link href="/">Home</Link>
+      { capitalizedSegments.map((segment, index) => (
+        <div key={ index } className="flex">
           <div className="px-2">&gt;</div>
-          <Link href={`/${capitalizedSegments.slice(0, index + 1).map((segment) => segment.url).join('/')}`}>{segment.label}</Link>
+          <Link href={ `/${ capitalizedSegments.slice(0, index + 1).map((segment) => segment.url).join('/') }` }>{ segment.label }</Link>
         </div>
-      ))}
+      )) }
     </div>
   );
 }

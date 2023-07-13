@@ -2,13 +2,15 @@
 import Logo from '@/assets/logo.png';
 import Image from 'next/image';
 import Link from 'next/link';
-import {useEffect, useState} from 'react';
-import {HiMagnifyingGlass, HiOutlineHeart, HiOutlineShoppingBag, HiOutlineUser, HiSquares2X2} from 'react-icons/hi2';
+import { useEffect, useState } from 'react';
+import { HiMagnifyingGlass, HiOutlineHeart, HiOutlineShoppingBag, HiOutlineUser, HiSquares2X2 } from 'react-icons/hi2';
 import Menu from './Menu';
+import SearchBar from '@/components/layout/SearchBar';
 
 function Navbar() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
+  const [ isMenuOpen, setIsMenuOpen ] = useState(false);
+  const [ isMobile, setIsMobile ] = useState(false);
+  const [ isSearchBarOpen, setIsSearchBarOpen ] = useState(false);
 
   // Check if mobile on mount and on resize
   useEffect(() => {
@@ -50,35 +52,40 @@ function Navbar() {
   useEffect(() => {
     if (isMenuOpen) {
       document.body.style.overflow = 'hidden';
+      if (isSearchBarOpen) {
+        setIsSearchBarOpen(false);
+      }
     } else {
       document.body.style.overflow = 'auto';
     }
-  }, [isMenuOpen]);
+  }, [ isMenuOpen ]);
 
   return (
     <nav className="sticky top-0 left-0 z-50 w-full bg-white shadow-md">
-      <section className="mx-auto flex w-full items-center justify-between p-5 max-w-[1680px]">
-        {/* Small Menu */}
+      <section className="relative mx-auto flex w-full items-center justify-between p-5 max-w-[1680px]">
+        {/* Small Menu */ }
         <h1 className="hidden text-h3 font-custom md:block">About Us</h1>
-        {/* Logo */}
+        {/* Logo */ }
         <div className="flex w-full items-center justify-start gap-3 md:w-fit">
           <HiSquares2X2
             className="transform cursor-pointer text-2xl transition-all hover:rotate-90 hover:scale-110 md:hidden"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            onClick={ () => setIsMenuOpen(!isMenuOpen) }
           />
           <Link href="/">
-            <Image alt="logo" src={Logo} width={170} height={50} className="w-[95px] md:w-[150px]"/>
+            <Image alt="logo" src={ Logo } width={ 170 } height={ 50 } className="w-[95px] md:w-[150px]" />
           </Link>
         </div>
-        {/* Menu */}
+        {/*SearchBar*/ }
+        { isSearchBarOpen && <SearchBar setIsSearchBarOpen={ setIsSearchBarOpen } /> }
+        {/* Menu */ }
         <div className="flex items-center justify-start gap-4 md:gap-5">
-          <HiMagnifyingGlass className="text-xl md:text-2xl"/>
-          <HiOutlineUser className="text-xl md:text-2xl"/>
-          <HiOutlineHeart className="text-xl md:text-2xl"/>
-          <HiOutlineShoppingBag className="text-xl md:text-2xl"/>
+          <HiMagnifyingGlass className="cursor-pointer text-xl md:text-2xl" onClick={ () => setIsSearchBarOpen(!isSearchBarOpen) } />
+          <HiOutlineUser className="text-xl md:text-2xl" />
+          <HiOutlineHeart className="text-xl md:text-2xl" />
+          <HiOutlineShoppingBag className="text-xl md:text-2xl" />
         </div>
       </section>
-      {isMenuOpen && isMobile && <Menu setIsMenuOpen={setIsMenuOpen}/>}
+      { isMenuOpen && isMobile && <Menu setIsMenuOpen={ setIsMenuOpen } /> }
     </nav>
   );
 }

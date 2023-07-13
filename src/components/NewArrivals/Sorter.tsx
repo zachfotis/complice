@@ -1,5 +1,5 @@
-import {useState} from 'react';
-import {ProductType} from '../../../typings';
+import { useState } from 'react';
+import { ProductType } from '../../../typings';
 
 interface SorterProps {
   products: ProductType[];
@@ -12,17 +12,17 @@ function Sorter({products, setSortedProducts}: SorterProps) {
   const uniqueProductTypes = [...new Set(productTypes)];
 
   return (
-    <nav className="flex w-full items-center justify-start gap-5 px-2 md:px-5 py-3 shadow-sm bg-lightGrey snap-x overflow-y-auto whitespace-nowrap">
-      <p className='hidden md:block'>
+    <nav className="flex w-full snap-x items-center justify-start gap-5 overflow-y-auto whitespace-nowrap px-2 py-3 shadow-sm bg-lightGrey md:px-5">
+      <p className="hidden md:block">
         <span className="text-base text-secondary">Sort by:</span>
       </p>
       <button
-        className={`text-base font-medium text-secondary p-1 min-w-[50px]
-          ${selectedType === 'All' ? 'border-b-2 border-primary' : 'hover:outline-2 hover:outline-primary hover:outline-dashed'}`}
-        onClick={() => {
+        className={ `text-base font-medium text-secondary p-1 min-w-[50px]
+          ${ selectedType === 'All' ? 'border-b-2 border-primary' : 'hover:outline-2 hover:outline-primary hover:outline-dashed' }` }
+        onClick={ () => {
           setSortedProducts([]);
           setSelectedType('All');
-        }}
+        } }
       >
         All
       </button>

@@ -1,7 +1,7 @@
 import Logo from '@/assets/logo.png';
 import Image from 'next/image';
 import Link from 'next/link';
-import {AiOutlineCloseSquare} from 'react-icons/ai';
+import { AiOutlineCloseSquare } from 'react-icons/ai';
 import SocialMedia from '../common/SocialMedia';
 
 interface Props {

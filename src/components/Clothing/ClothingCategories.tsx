@@ -1,4 +1,4 @@
-import {ClothingCategoryType} from '../../../typings';
+import { ClothingCategoryType } from '../../../typings';
 import ClothingThumb from './ClothingThumb';
 
 interface ClothingCategoriesProps {

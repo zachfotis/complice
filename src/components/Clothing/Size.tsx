@@ -1,6 +1,6 @@
-import {useEffect, useState} from 'react';
-import {IoIosArrowDown} from 'react-icons/io';
-import {ProductType} from '../../../typings';
+import { useEffect, useState } from 'react';
+import { IoIosArrowDown } from 'react-icons/io';
+import { ProductType } from '../../../typings';
 
 interface SizeProps {
   products: ProductType[];

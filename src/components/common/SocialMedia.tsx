@@ -1,4 +1,4 @@
-import {BsFacebook, BsInstagram, BsPinterest} from 'react-icons/bs';
+import { BsFacebook, BsInstagram, BsPinterest } from 'react-icons/bs';
 
 interface Props {
   color?: string;

@@ -1,4 +1,4 @@
-import {CategoryType} from '../../../typings';
+import { CategoryType } from '../../../typings';
 import CategoryThumb from './CategoryThumb';
 
 interface CategoriesThumbProps {

@@ -1,4 +1,4 @@
-import {StaticImageData} from 'next/image';
+import { StaticImageData } from 'next/image';
 
 type CategoryType = {
   id: string;
@@ -26,7 +26,7 @@ type ProductType = {
     [key: Sizes]: number;
   };
   price: number;
-  thumb: string | StaticImageData;
+  thumb: string;
   images: string[];
 };
 

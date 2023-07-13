@@ -1,6 +1,5 @@
 'use client';
 
-import Sorter from '@/components/NewArrivals/Sorter';
 import Products from '@/components/Products/Products';
 import Categories from '@/components/layout/Categories';
 import PageBody from '@/components/layout/PageBody';
@@ -14,16 +13,14 @@ import NavMap from "@/components/layout/NavMap";
 
 function Page() {
   const [ products, setProducts ] = useState<ProductType[]>(DATA);
-  const [ sortedProducts, setSortedProducts ] = useState<ProductType[]>([]);
 
   return (
     <PageTemplate>
       <PageBody>
         <Categories />
         <NavMap />
-        <PageTitle title="New Arrivals" />
-        <Sorter products={ products } setSortedProducts={ setSortedProducts } />
-        <Products products={ sortedProducts.length === 0 ? products : sortedProducts } showViewAll={ false } />
+        <PageTitle title="Accessories" />
+        <Products products={ products } showViewAll={ false } />
         <Paginator productsShown={ products.length } totalProducts={ products.length } />
       </PageBody>
     </PageTemplate>

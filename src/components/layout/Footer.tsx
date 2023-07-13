@@ -25,7 +25,6 @@ function Footer() {
           <div className="flex flex-1 flex-col flex-wrap items-start justify-start gap-5 p-5">
             <h1 className="text-h4 font-custom">INFORMATION</h1>
             <ul className="flex flex-col items-start justify-start gap-5">
-              <li className="text-base text-accent">Help</li>
               <li className="text-base text-accent">FAQ</li>
               <li className="text-base text-accent">Shipping</li>
               <li className="text-base text-accent">Terms & Conditions</li>
