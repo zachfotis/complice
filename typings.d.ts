@@ -35,3 +35,30 @@ type ClothingCategoryType = {
   title: string;
   image: string | StaticImageData;
 };
+
+type ShippingAddressType = {
+  firstName: string;
+  lastName: string;
+  address: string;
+  city: string;
+  postalCode: string;
+  country: string;
+  phoneNumber: string;
+  email: string;
+};
+
+type OrderProductType = {
+  id: string;
+  title: string;
+  size: string;
+  quantity: number;
+  price: number;
+  thumb: string;
+};
+
+type OrderType = {
+  id?: string;
+  userId?: string;
+  products: OrderProductType[];
+  shippingAddress: ShippingAddressType;
+};

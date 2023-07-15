@@ -82,7 +82,9 @@ function Navbar() {
           <HiMagnifyingGlass className="cursor-pointer text-xl md:text-2xl" onClick={ () => setIsSearchBarOpen(!isSearchBarOpen) } />
           <HiOutlineUser className="text-xl md:text-2xl" />
           <HiOutlineHeart className="text-xl md:text-2xl" />
-          <HiOutlineShoppingBag className="text-xl md:text-2xl" />
+          <Link href="/cart">
+            <HiOutlineShoppingBag className="text-xl md:text-2xl" />
+          </Link>
         </div>
       </section>
       { isMenuOpen && isMobile && <Menu setIsMenuOpen={ setIsMenuOpen } /> }
