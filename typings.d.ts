@@ -47,11 +47,19 @@ type ShippingAddressType = {
   email: string;
 };
 
+type ShippingCountryType = {
+  id: string;
+  name: string;
+  code: string;
+  cost: number;
+}
+
 type OrderProductType = {
   id: string;
   title: string;
   size: string;
   quantity: number;
+  maxQuantity: number;
   price: number;
   thumb: string;
 };

@@ -79,11 +79,11 @@ function Navbar() {
         { isSearchBarOpen && <SearchBar setIsSearchBarOpen={ setIsSearchBarOpen } /> }
         {/* Menu */ }
         <div className="flex items-center justify-start gap-4 md:gap-5">
-          <HiMagnifyingGlass className="cursor-pointer text-xl md:text-2xl" onClick={ () => setIsSearchBarOpen(!isSearchBarOpen) } />
-          <HiOutlineUser className="text-xl md:text-2xl" />
-          <HiOutlineHeart className="text-xl md:text-2xl" />
+          <HiMagnifyingGlass className="cursor-pointer text-2xl" onClick={ () => setIsSearchBarOpen(!isSearchBarOpen) } />
+          <HiOutlineUser className="text-2xl" />
+          <HiOutlineHeart className="text-2xl" />
           <Link href="/cart">
-            <HiOutlineShoppingBag className="text-xl md:text-2xl" />
+            <HiOutlineShoppingBag className="text-2xl" />
           </Link>
         </div>
       </section>

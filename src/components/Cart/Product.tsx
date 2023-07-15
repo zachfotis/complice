@@ -2,19 +2,44 @@ import { OrderProductType } from '../../../typings';
 import Image from 'next/image';
 
 interface ProductProps {
-  product: OrderProductType;
+  cartProduct: OrderProductType;
+  cartProducts: OrderProductType[];
+  setCartProducts: React.Dispatch<React.SetStateAction<OrderProductType[]>>;
 }
 
-function Product({ product }: ProductProps) {
+function Product({ cartProduct, cartProducts, setCartProducts }: ProductProps) {
+
+  // Decrease quantity
+  const decreaseQuantity = () => {
+    const cartProductsCopy = [...cartProducts];
+    const index = cartProductsCopy.findIndex((p) => p.id === cartProduct.id);
+    if (index !== -1) {
+      if (cartProductsCopy[index].quantity <= 1) return;
+      cartProductsCopy[index].quantity--;
+      setCartProducts(cartProductsCopy);
+    }
+  }
+
+  // Increase quantity up to maxQuantity
+  const increaseQuantity = () => {
+    const cartProductsCopy = [...cartProducts];
+    const index = cartProductsCopy.findIndex((p) => p.id === cartProduct.id);
+    if (index !== -1) {
+      if (cartProductsCopy[index].quantity >= cartProductsCopy[index].maxQuantity) return;
+      cartProductsCopy[index].quantity++;
+      setCartProducts(cartProductsCopy);
+    }
+  }
+
   return (
-    <div className="w-full flex justify-start items-stretch gap-10">
+    <div className="w-full flex flex-col md:flex-row justify-start items-stretch gap-10">
       {/* Image */ }
-      <Image src={ product.thumb } alt={ product.title } width={ 700 } height={ 500 } className="w-[250px] min-h-[200px] object-cover" />
+      <Image src={ cartProduct.thumb } alt={ cartProduct.title } width={ 700 } height={ 500 } className="w-full md:w-[250px] min-h-[200px] object-cover" />
       <div className="flex w-full flex-col items-start justify-start gap-5 bg-white">
         {/* Title */ }
         <div>
-          <h1 className="font-custom text-h3">{ product.title }</h1>
-          <p className="text-sm">{ product.id }</p>
+          <h1 className="font-custom text-h3">{ cartProduct.title }</h1>
+          <p className="text-sm">{ cartProduct.id }</p>
         </div>
         {/* Size */ }
         <div className="relative flex w-full items-start justify-between gap-10">
@@ -22,7 +47,7 @@ function Product({ product }: ProductProps) {
           <div className="flex flex-row flex-wrap items-center justify-start gap-1 max-w-[80%]">
             <div
               className="py-1 w-20 flex justify-center items-center border border-black bg-white text-primary">
-              <p className="text-sm">{ product.size }</p>
+              <p className="text-sm">{ cartProduct.size }</p>
             </div>
           </div>
         </div>
@@ -32,12 +57,14 @@ function Product({ product }: ProductProps) {
           <div className="flex flex-row items-center justify-start">
             <button
               className="flex h-8 w-8 items-center justify-center border border-black hover:bg-black hover:text-white"
+              onClick={ decreaseQuantity }
             >
               <p className="text-base font-[500]">-</p>
             </button>
-            <p className="flex h-8 w-28 items-center justify-center border-y text-center text-sm border-primary">{ product.quantity }</p>
+            <p className="flex h-8 w-28 items-center justify-center border-y text-center text-sm border-primary">{ cartProduct.quantity }</p>
             <button
               className="flex h-8 w-8 items-center justify-center border border-black hover:bg-black hover:text-white"
+              onClick={ increaseQuantity }
             >
               <p className="text-base font-[500]">+</p>
             </button>
@@ -46,7 +73,7 @@ function Product({ product }: ProductProps) {
         {/* Price */ }
         <div className="relative flex w-full items-start justify-between">
           <p className="text-base">Price</p>
-          <p className="text-base">{ product.quantity } x { product.price } &euro;</p>
+          <p className="text-base">{ cartProduct.quantity } x { cartProduct.price } &euro;</p>
         </div>
 
       </div>
