@@ -6,13 +6,17 @@ import PageBody from '@/components/layout/PageBody';
 import PageTemplate from '@/components/layout/PageTemplate';
 import PageTitle from '@/components/layout/PageTitle';
 import Paginator from '@/components/layout/Paginator';
-import { useState } from 'react';
-import { ProductType } from '../../../typings';
-import DATA from '../../assets/dummy/products.json';
 import NavMap from "@/components/layout/NavMap";
 
-function Page() {
-  const [ products, setProducts ] = useState<ProductType[]>(DATA);
+const fetchProducts = async () => {
+  const url = new URL(process.env.host + '/api/products');
+  const response = await fetch(url);
+  const data = await response.json();
+  return data
+};
+
+async function Page() {
+  const products = await fetchProducts();
 
   return (
     <PageTemplate>

@@ -1,20 +1,20 @@
-'use client';
-
-import Sorter from '@/components/NewArrivals/Sorter';
-import Products from '@/components/Products/Products';
 import Categories from '@/components/layout/Categories';
 import PageBody from '@/components/layout/PageBody';
 import PageTemplate from '@/components/layout/PageTemplate';
 import PageTitle from '@/components/layout/PageTitle';
 import Paginator from '@/components/layout/Paginator';
-import { useState } from 'react';
-import { ProductType } from '../../../typings';
-import DATA from '../../assets/dummy/products.json';
 import NavMap from "@/components/layout/NavMap";
+import NewArrivals from '@/components/NewArrivals/NewArrivals';
 
-function Page() {
-  const [ products, setProducts ] = useState<ProductType[]>(DATA);
-  const [ sortedProducts, setSortedProducts ] = useState<ProductType[]>([]);
+const fetchProducts = async () => {
+  const url = new URL(process.env.host + '/api/products');
+  const response = await fetch(url);
+  const data = await response.json();
+  return data
+};
+
+async function Page() {
+  const products = await fetchProducts();
 
   return (
     <PageTemplate>
@@ -22,8 +22,7 @@ function Page() {
         <Categories />
         <NavMap />
         <PageTitle title="New Arrivals" />
-        <Sorter products={ products } setSortedProducts={ setSortedProducts } />
-        <Products products={ sortedProducts.length === 0 ? products : sortedProducts } showViewAll={ false } />
+        <NewArrivals products={ products } />
         <Paginator productsShown={ products.length } totalProducts={ products.length } />
       </PageBody>
     </PageTemplate>

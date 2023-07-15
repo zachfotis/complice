@@ -3,8 +3,9 @@ import { StaticImageData } from 'next/image';
 type CategoryType = {
   id: string;
   title: string;
+  type: 'clothing' | 'accessories';
   description: string;
-  image: string | StaticImageData;
+  image: string;
 };
 
 enum Sizes {
