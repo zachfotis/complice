@@ -1,11 +1,9 @@
-import Carousel from '@/components/Product/Carousel';
-import Details from '@/components/Product/Details';
-import NotFound from '@/components/Product/NotFound';
 import Similar from '@/components/Product/Similar';
 import Categories from '@/components/layout/Categories';
 import PageBody from '@/components/layout/PageBody';
 import PageTemplate from '@/components/layout/PageTemplate';
-import { fetchProduct, fetchProducts } from '@/utils/api';
+import { fetchProduct } from '@/utils/api';
+import ProductPage from '@/components/Products/ProductPage';
 
 interface PageProps {
   params: {
@@ -13,32 +11,23 @@ interface PageProps {
   };
 }
 
-export async function generateStaticParams() {
-  const products = await fetchProducts()
+// export async function generateStaticParams() {
+//   const products = await fetchProducts()
+//
+//   return products.map((productId) => ({
+//     productId: productId.id
+//   }))
+// }
 
-  return products.map((productId) => ({
-    productId: productId.id
-  }))
-}
-
-async function page({ params: { productId } }: PageProps) {
-  const product = await fetchProduct(productId);
+async function page({ params }: PageProps) {
+  const product = await fetchProduct(params.productId)
 
   return (
     <PageTemplate>
       <PageBody>
         <Categories />
-        { !product ? (
-          <NotFound />
-        ) : (
-          <>
-            <div className="flex flex-col items-stretch justify-between gap-10 lg:flex-row">
-              <Carousel thumb={ product.thumb } images={ product.images } />
-              <Details product={ product } />
-            </div>
-            <Similar />
-          </>
-        ) }
+        <ProductPage product={ product } />
+        <Similar />
       </PageBody>
     </PageTemplate>
   );

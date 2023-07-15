@@ -1,5 +1,6 @@
 import PRODUCTS from '@/assets/dummy/products.json';
 import CATEGORIES from '@/assets/dummy/categories.json';
+import { ProductType } from '../../typings';
 
 export const fetchProducts = async (type: string | null = null) => {
   if (type) {
@@ -10,7 +11,8 @@ export const fetchProducts = async (type: string | null = null) => {
 };
 
 export const fetchProduct = async (productId: string) => {
-  return PRODUCTS.find((item) => item.id === productId)
+  const product = PRODUCTS.find((item) => item.id === productId) as ProductType;
+  return product
 };
 
 export const fetchCategories = async (categoryType: string | null = null) => {
