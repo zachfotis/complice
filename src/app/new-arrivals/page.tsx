@@ -5,13 +5,7 @@ import PageTitle from '@/components/layout/PageTitle';
 import Paginator from '@/components/layout/Paginator';
 import NavMap from "@/components/layout/NavMap";
 import NewArrivals from '@/components/NewArrivals/NewArrivals';
-
-const fetchProducts = async () => {
-  const url = new URL(process.env.host + '/api/products');
-  const response = await fetch(url);
-  const data = await response.json();
-  return data
-};
+import { fetchProducts } from '@/utils/api';
 
 async function Page() {
   const products = await fetchProducts();

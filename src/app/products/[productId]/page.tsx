@@ -5,6 +5,7 @@ import Similar from '@/components/Product/Similar';
 import Categories from '@/components/layout/Categories';
 import PageBody from '@/components/layout/PageBody';
 import PageTemplate from '@/components/layout/PageTemplate';
+import { fetchProduct, fetchProducts } from '@/utils/api';
 
 interface PageProps {
   params: {
@@ -12,28 +13,13 @@ interface PageProps {
   };
 }
 
-const fetchProduct = async (productId: string) => {
-  // Add productId as search param
-  const url = new URL(process.env.host + '/api/product');
-  url.searchParams.append('productId', productId);
+export async function generateStaticParams() {
+  const products = await fetchProducts()
 
-  const response = await fetch(url);
-  const data = await response.json();
-
-  if (data.error) {
-    return null
-  }
-  return data;
-};
-
-// export async function generateStaticParams() {
-//   const response = await fetch(process.env.host + '/api/products')
-//   const data = await response.json() as ProductType[]
-//
-//   return data.map((productId) => ({
-//     productId: productId.id
-//   }))
-// }
+  return products.map((productId) => ({
+    productId: productId.id
+  }))
+}
 
 async function page({ params: { productId } }: PageProps) {
   const product = await fetchProduct(productId);

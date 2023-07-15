@@ -5,6 +5,7 @@ import Paginator from '@/components/layout/Paginator';
 import NavMap from "@/components/layout/NavMap";
 import PageTitle from "@/components/layout/PageTitle";
 import Clothing from '@/components/Clothing/Clothing';
+import { fetchCategories, fetchProducts } from '@/utils/api';
 
 interface PageProps {
   params: {
@@ -12,31 +13,15 @@ interface PageProps {
   };
 }
 
-const fetchCategoryProducts = async (type: string) => {
-  const url = new URL(process.env.host + '/api/products');
-  url.searchParams.append('type', type);
-
-  const response = await fetch(url);
-  const data = await response.json();
-
-  if (data.error) {
-    return []
-  }
-  return data;
-};
-
-// export async function generateStaticParams() {
-//   const url = new URL(process.env.host + '/api/categories');
-//   const response = await fetch(url)
-//   const data = await response.json() as CategoryType[]
-//
-//   return data.map((category) => ({
-//     category: category.title
-//   }))
-// }
+export async function generateStaticParams() {
+  const categories = await fetchCategories('clothing');
+  return categories.map((category) => ({
+    category: category.title
+  }))
+}
 
 async function Page({ params }: PageProps) {
-  const products = await fetchCategoryProducts(params.category);
+  const products = await fetchProducts(params.category);
 
   return (
     <PageTemplate>

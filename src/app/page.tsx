@@ -7,20 +7,7 @@ import Categories from '@/components/layout/Categories';
 import PageBody from '@/components/layout/PageBody';
 import PageTemplate from '@/components/layout/PageTemplate';
 import { CategoryType, ProductType } from '../../typings';
-
-const fetchProducts = async () => {
-  const url = new URL(process.env.host + '/api/products');
-  const response = await fetch(url);
-  const data = await response.json();
-  return data
-};
-
-const fetchCategories = async () => {
-  const url = new URL(process.env.host + '/api/categories');
-  const response = await fetch(url);
-  const data = await response.json();
-  return data
-}
+import { fetchCategories, fetchProducts } from '@/utils/api';
 
 export default async function Home() {
   const products: ProductType[] = await fetchProducts();

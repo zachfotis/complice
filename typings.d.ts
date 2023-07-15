@@ -3,7 +3,7 @@ import { StaticImageData } from 'next/image';
 type CategoryType = {
   id: string;
   title: string;
-  type: 'clothing' | 'accessories';
+  categoryType: string;
   description: string;
   image: string;
 };

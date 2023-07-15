@@ -4,22 +4,10 @@ import PageBody from '@/components/layout/PageBody';
 import PageTemplate from '@/components/layout/PageTemplate';
 import PageTitle from '@/components/layout/PageTitle';
 import NavMap from "@/components/layout/NavMap";
-
-const fetchClothingCategories = async (categoryType: string) => {
-  const url = new URL(process.env.host + '/api/categories');
-  url.searchParams.append('categoryType', categoryType);
-
-  const response = await fetch(url);
-  const data = await response.json();
-
-  if (data.error) {
-    return []
-  }
-  return data;
-};
+import { fetchCategories } from '@/utils/api';
 
 async function page() {
-  const clothingCategories = await fetchClothingCategories('clothing');
+  const clothingCategories = await fetchCategories('clothing');
   return (
     <PageTemplate>
       <PageBody>
