@@ -1,6 +1,6 @@
 import { HiOutlineShoppingBag } from 'react-icons/hi2';
 import { LiaShippingFastSolid } from 'react-icons/lia';
-import { MdDone } from 'react-icons/md';
+import { MdDone, MdPayment } from 'react-icons/md';
 
 interface CheckoutBarProps {
   currentStep: number;
@@ -23,7 +23,7 @@ function CheckoutBar({ currentStep, setCurrentStep }: CheckoutBarProps) {
         <div className={ `flex items-center justify-center w-10 h-10 rounded-full ${ currentStep === 1 ? 'bg-primary' : 'bg-gray-200' }` }>
           { currentStep > 1 ? <MdDone className="text-2xl" /> : <HiOutlineShoppingBag className={ `text-2xl ${ currentStep === 1 ? 'text-white' : 'text-primary' }` } /> }
         </div>
-        <p className="text-primary text-sm">Shopping Cart</p>
+        <p className="text-primary text-base">Shopping Cart</p>
       </button>
       {/*  Line */ }
       <div className="w-[100px] h-px bg-gray-200"></div>
@@ -38,9 +38,9 @@ function CheckoutBar({ currentStep, setCurrentStep }: CheckoutBarProps) {
               }
       >
         <div className={ `flex items-center justify-center w-10 h-10 rounded-full ${ currentStep === 2 ? 'bg-primary' : 'bg-gray-200' }` }>
-          { currentStep > 2 ? <MdDone className="text-2xl" /> : <HiOutlineShoppingBag className={ `text-2xl ${ currentStep === 2 ? 'text-white' : 'text-primary' }` } /> }
+          { currentStep > 2 ? <MdDone className="text-2xl" /> : <LiaShippingFastSolid className={ `text-2xl ${ currentStep === 2 ? 'text-white' : 'text-primary' }` } /> }
         </div>
-        <p className="text-primary text-sm">Shipping Details</p>
+        <p className="text-primary text-base">Shipping Details</p>
       </button>
       {/*  Line */ }
       <div className="w-[100px] h-px bg-gray-200"></div>
@@ -55,9 +55,9 @@ function CheckoutBar({ currentStep, setCurrentStep }: CheckoutBarProps) {
               }
       >
         <div className={ `flex items-center justify-center w-10 h-10 rounded-full ${ currentStep === 3 ? 'bg-primary' : 'bg-gray-200' }` }>
-          { currentStep > 3 ? <MdDone className="text-2xl" /> : <LiaShippingFastSolid className={ `text-2xl ${ currentStep === 3 ? 'text-white' : 'text-primary' }` } /> }
+          { currentStep > 3 ? <MdDone className="text-2xl" /> : <MdPayment className={ `text-2xl ${ currentStep === 3 ? 'text-white' : 'text-primary' }` } /> }
         </div>
-        <p className="text-primary text-sm">Payment</p>
+        <p className="text-primary text-base">Payment</p>
       </button>
     </div>
   );
