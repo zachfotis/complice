@@ -20,7 +20,7 @@ enum Sizes {
 type ProductType = {
   id: string;
   title: string;
-  type: string;
+  category: string;
   description: string;
   sizes: string[];
   quantity: {
@@ -29,6 +29,11 @@ type ProductType = {
   price: number;
   thumb: string;
   images: string[];
+  isNew: boolean;
+  onSale: {
+    isOnSale: boolean;
+    discount: number;
+  }
 };
 
 type ClothingCategoryType = {

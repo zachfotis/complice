@@ -8,7 +8,7 @@ interface ProductPageProps {
 
 function ProductPage({ product }: ProductPageProps) {
   return (
-    <div className="flex flex-col items-stretch justify-between gap-10 lg:flex-row">
+    <div className="flex flex-col items-stretch justify-between gap-5 md:gap-10 lg:flex-row">
       <Carousel thumb={ product.thumb } images={ product.images } />
       <Details product={ product } />
     </div>

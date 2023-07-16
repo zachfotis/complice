@@ -6,9 +6,9 @@ interface SorterProps {
   setSortedProducts: React.Dispatch<React.SetStateAction<ProductType[]>>;
 }
 
-function Sorter({products, setSortedProducts}: SorterProps) {
+function Sorter({ products, setSortedProducts }: SorterProps) {
   const [selectedType, setSelectedType] = useState('All');
-  const productTypes = products.map((product) => product.type);
+  const productTypes = products.map((product) => product.category);
   const uniqueProductTypes = [...new Set(productTypes)];
 
   return (
@@ -26,19 +26,19 @@ function Sorter({products, setSortedProducts}: SorterProps) {
       >
         All
       </button>
-      {uniqueProductTypes.map((type) => (
+      { uniqueProductTypes.map((category) => (
         <button
-          key={type}
-          className={`text-base font-medium text-secondary p-1 min-w-[50px]
-          ${selectedType === type ? 'border-b-2 border-primary' : 'hover:outline-2 hover:outline-primary hover:outline-dashed'}`}
-          onClick={() => {
-            setSortedProducts(products.filter((product) => product.type === type));
-            setSelectedType(type);
-          }}
+          key={ category }
+          className={ `text-base font-medium text-secondary p-1 min-w-[50px]
+          ${ selectedType === category ? 'border-b-2 border-primary' : 'hover:outline-2 hover:outline-primary hover:outline-dashed' }` }
+          onClick={ () => {
+            setSortedProducts(products.filter((product) => product.category === category));
+            setSelectedType(category);
+          } }
         >
-          {type.charAt(0).toUpperCase() + type.slice(1)}
+          { category.charAt(0).toUpperCase() + category.slice(1) }
         </button>
-      ))}
+      )) }
     </nav>
   );
 }

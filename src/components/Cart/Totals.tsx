@@ -7,7 +7,7 @@ interface TotalsProps {
 
 function Totals({ discount, shippingCost, total, grandTotal }: TotalsProps) {
   return (
-    <div className="w-full max-w-[1000px] flex flex-col justify-start items-start gap-5 mt-5">
+    <div className="w-full max-w-[1000px] flex flex-col justify-start items-start gap-5 mt-2 md:mt-5">
       {/*  Cart Total*/ }
       <div className="w-full flex justify-between items-center gap-10">
         <p className="text-h4 font-custom">Cart Total</p>

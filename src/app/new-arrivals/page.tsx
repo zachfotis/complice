@@ -8,7 +8,7 @@ import NewArrivals from '@/components/NewArrivals/NewArrivals';
 import { fetchProducts } from '@/utils/api';
 
 async function Page() {
-  const products = await fetchProducts();
+  const products = await fetchProducts(null, true);
 
   return (
     <PageTemplate>

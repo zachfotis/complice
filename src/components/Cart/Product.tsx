@@ -32,7 +32,7 @@ function Product({ cartProduct, cartProducts, setCartProducts }: ProductProps) {
   }
 
   return (
-    <div className="w-full flex flex-col md:flex-row justify-start items-stretch gap-10">
+    <div className="w-full flex flex-col md:flex-row justify-start items-stretch gap-5 md:gap-10">
       {/* Image */ }
       <Image src={ cartProduct.thumb } alt={ cartProduct.title } width={ 700 } height={ 500 } className="w-full md:w-[250px] min-h-[200px] object-cover" />
       <div className="flex w-full flex-col items-start justify-start gap-5 bg-white">

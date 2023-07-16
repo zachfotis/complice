@@ -24,7 +24,7 @@ export async function generateStaticParams() {
 
 async function page({ params }: PageProps) {
   const product = await fetchProduct(params.productId)
-  const products = await fetchProducts(product ? product.type : '')
+  const products = await fetchProducts(product ? product.category : '')
 
   return (
     <PageTemplate>

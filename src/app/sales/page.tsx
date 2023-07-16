@@ -10,7 +10,7 @@ import NavMap from "@/components/layout/NavMap";
 import { fetchProducts } from '@/utils/api';
 
 async function Page() {
-  const products = await fetchProducts();
+  const products = await fetchProducts(null, false, true);
 
   return (
     <PageTemplate>

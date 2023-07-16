@@ -2,7 +2,7 @@
   {
     "id": "001",
     "title": "Iron Gym T-Shirt",
-    "type": "t-shirt",
+    "category": "t-shirt",
     "sizes": [
       "S",
       "M",
@@ -23,12 +23,17 @@
       "https://images.unsplash.com/photo-1472186422470-1f3fbde547aa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2367&q=80",
       "https://images.unsplash.com/photo-1503341455253-b2e723bb3dbb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2370&q=80"
     ],
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla euismod, nisl sed aliquam ultricies, nunc sapien ultricies nunc, quis ultricies nisl nunc sit amet nunc."
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla euismod, nisl sed aliquam ultricies, nunc sapien ultricies nunc, quis ultricies nisl nunc sit amet nunc.",
+    "isNew": false,
+    "onSale": {
+      "isOnSale": true,
+      "discount": 0.2
+    }
   },
   {
     "id": "002",
     "title": "Waterproof Shorts",
-    "type": "shorts",
+    "category": "shorts",
     "sizes": [
       "XS",
       "S",
@@ -47,12 +52,17 @@
       "https://images.unsplash.com/photo-1472186422470-1f3fbde547aa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2367&q=80",
       "https://images.unsplash.com/photo-1503341455253-b2e723bb3dbb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2370&q=80"
     ],
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla euismod, nisl sed aliquam ultricies, nunc sapien ultricies nunc, quis ultricies nisl nunc sit amet nunc."
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla euismod, nisl sed aliquam ultricies, nunc sapien ultricies nunc, quis ultricies nisl nunc sit amet nunc.",
+    "isNew": true,
+    "onSale": {
+      "isOnSale": true,
+      "discount": 0.15
+    }
   },
   {
     "id": "003",
     "title": "Black Socks",
-    "type": "socks",
+    "category": "socks",
     "sizes": [
       "S",
       "M",
@@ -71,12 +81,17 @@
       "https://images.unsplash.com/photo-1472186422470-1f3fbde547aa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2367&q=80",
       "https://images.unsplash.com/photo-1503341455253-b2e723bb3dbb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2370&q=80"
     ],
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla euismod, nisl sed aliquam ultricies, nunc sapien ultricies nunc, quis ultricies nisl nunc sit amet nunc."
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla euismod, nisl sed aliquam ultricies, nunc sapien ultricies nunc, quis ultricies nisl nunc sit amet nunc.",
+    "isNew": false,
+    "onSale": {
+      "isOnSale": true,
+      "discount": 0.2
+    }
   },
   {
     "id": "004",
     "title": "Iron Gym T-Shirt",
-    "type": "t-shirt",
+    "category": "t-shirt",
     "sizes": [
       "XS"
     ],
@@ -91,12 +106,17 @@
       "https://images.unsplash.com/photo-1472186422470-1f3fbde547aa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2367&q=80",
       "https://images.unsplash.com/photo-1503341455253-b2e723bb3dbb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2370&q=80"
     ],
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla euismod, nisl sed aliquam ultricies, nunc sapien ultricies nunc, quis ultricies nisl nunc sit amet nunc."
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla euismod, nisl sed aliquam ultricies, nunc sapien ultricies nunc, quis ultricies nisl nunc sit amet nunc.",
+    "isNew": false,
+    "onSale": {
+      "isOnSale": true,
+      "discount": 0.3
+    }
   },
   {
     "id": "005",
     "title": "Waterproof Shorts",
-    "type": "shorts",
+    "category": "shorts",
     "sizes": [
       "XL"
     ],
@@ -111,12 +131,17 @@
       "https://images.unsplash.com/photo-1472186422470-1f3fbde547aa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2367&q=80",
       "https://images.unsplash.com/photo-1503341455253-b2e723bb3dbb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2370&q=80"
     ],
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla euismod, nisl sed aliquam ultricies, nunc sapien ultricies nunc, quis ultricies nisl nunc sit amet nunc."
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla euismod, nisl sed aliquam ultricies, nunc sapien ultricies nunc, quis ultricies nisl nunc sit amet nunc.",
+    "isNew": true,
+    "onSale": {
+      "isOnSale": true,
+      "discount": 0.25
+    }
   },
   {
     "id": "006",
     "title": "Black Socks",
-    "type": "socks",
+    "category": "socks",
     "sizes": [
       "XS",
       "S",
@@ -139,12 +164,17 @@
       "https://images.unsplash.com/photo-1472186422470-1f3fbde547aa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2367&q=80",
       "https://images.unsplash.com/photo-1503341455253-b2e723bb3dbb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2370&q=80"
     ],
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla euismod, nisl sed aliquam ultricies, nunc sapien ultricies nunc, quis ultricies nisl nunc sit amet nunc."
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla euismod, nisl sed aliquam ultricies, nunc sapien ultricies nunc, quis ultricies nisl nunc sit amet nunc.",
+    "isNew": true,
+    "onSale": {
+      "isOnSale": false,
+      "discount": 0
+    }
   },
   {
     "id": "007",
     "title": "Iron Gym T-Shirt",
-    "type": "t-shirt",
+    "category": "t-shirt",
     "sizes": [
       "M",
       "L"
@@ -161,12 +191,17 @@
       "https://images.unsplash.com/photo-1472186422470-1f3fbde547aa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2367&q=80",
       "https://images.unsplash.com/photo-1503341455253-b2e723bb3dbb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2370&q=80"
     ],
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla euismod, nisl sed aliquam ultricies, nunc sapien ultricies nunc, quis ultricies nisl nunc sit amet nunc."
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla euismod, nisl sed aliquam ultricies, nunc sapien ultricies nunc, quis ultricies nisl nunc sit amet nunc.",
+    "isNew": false,
+    "onSale": {
+      "isOnSale": false,
+      "discount": 0
+    }
   },
   {
     "id": "008",
     "title": "Waterproof Shorts",
-    "type": "shorts",
+    "category": "shorts",
     "sizes": [
       "XS",
       "L"
@@ -183,12 +218,17 @@
       "https://images.unsplash.com/photo-1472186422470-1f3fbde547aa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2367&q=80",
       "https://images.unsplash.com/photo-1503341455253-b2e723bb3dbb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2370&q=80"
     ],
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla euismod, nisl sed aliquam ultricies, nunc sapien ultricies nunc, quis ultricies nisl nunc sit amet nunc."
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla euismod, nisl sed aliquam ultricies, nunc sapien ultricies nunc, quis ultricies nisl nunc sit amet nunc.",
+    "isNew": false,
+    "onSale": {
+      "isOnSale": false,
+      "discount": 0
+    }
   },
   {
     "id": "009",
     "title": "Black Socks",
-    "type": "socks",
+    "category": "socks",
     "sizes": [
       "XS",
       "S",
@@ -211,12 +251,17 @@
       "https://images.unsplash.com/photo-1472186422470-1f3fbde547aa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2367&q=80",
       "https://images.unsplash.com/photo-1503341455253-b2e723bb3dbb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2370&q=80"
     ],
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla euismod, nisl sed aliquam ultricies, nunc sapien ultricies nunc, quis ultricies nisl nunc sit amet nunc."
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla euismod, nisl sed aliquam ultricies, nunc sapien ultricies nunc, quis ultricies nisl nunc sit amet nunc.",
+    "isNew": false,
+    "onSale": {
+      "isOnSale": false,
+      "discount": 0
+    }
   },
   {
     "id": "010",
     "title": "Iron Gym T-Shirt",
-    "type": "t-shirt",
+    "category": "t-shirt",
     "sizes": [
       "M",
       "L"
@@ -233,12 +278,17 @@
       "https://images.unsplash.com/photo-1472186422470-1f3fbde547aa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2367&q=80",
       "https://images.unsplash.com/photo-1503341455253-b2e723bb3dbb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2370&q=80"
     ],
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla euismod, nisl sed aliquam ultricies, nunc sapien ultricies nunc, quis ultricies nisl nunc sit amet nunc."
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla euismod, nisl sed aliquam ultricies, nunc sapien ultricies nunc, quis ultricies nisl nunc sit amet nunc.",
+    "isNew": false,
+    "onSale": {
+      "isOnSale": false,
+      "discount": 0
+    }
   },
   {
     "id": "011",
     "title": "Waterproof Shorts",
-    "type": "shorts",
+    "category": "shorts",
     "sizes": [
       "XS",
       "S",
@@ -261,12 +311,17 @@
       "https://images.unsplash.com/photo-1472186422470-1f3fbde547aa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2367&q=80",
       "https://images.unsplash.com/photo-1503341455253-b2e723bb3dbb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2370&q=80"
     ],
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla euismod, nisl sed aliquam ultricies, nunc sapien ultricies nunc, quis ultricies nisl nunc sit amet nunc."
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla euismod, nisl sed aliquam ultricies, nunc sapien ultricies nunc, quis ultricies nisl nunc sit amet nunc.",
+    "isNew": true,
+    "onSale": {
+      "isOnSale": false,
+      "discount": 0
+    }
   },
   {
     "id": "012",
     "title": "Black Socks",
-    "type": "socks",
+    "category": "socks",
     "sizes": [
       "XS",
       "S",
@@ -289,6 +344,140 @@
       "https://images.unsplash.com/photo-1472186422470-1f3fbde547aa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2367&q=80",
       "https://images.unsplash.com/photo-1503341455253-b2e723bb3dbb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2370&q=80"
     ],
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla euismod, nisl sed aliquam ultricies, nunc sapien ultricies nunc, quis ultricies nisl nunc sit amet nunc."
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla euismod, nisl sed aliquam ultricies, nunc sapien ultricies nunc, quis ultricies nisl nunc sit amet nunc.",
+    "isNew": false,
+    "onSale": {
+      "isOnSale": false,
+      "discount": 0
+    }
+  },
+  {
+    "id": "013",
+    "title": "Leather Belt",
+    "category": "accessories",
+    "sizes": [
+      "S",
+      "M",
+      "L"
+    ],
+    "quantity": {
+      "S": 10,
+      "M": 15,
+      "L": 12
+    },
+    "price": 19.99,
+    "thumb": "https://images.unsplash.com/photo-1534215754734-18e55d13e346?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1304&q=80",
+    "images": [
+      "https://images.unsplash.com/photo-1620327467532-6ebaca6273ed?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2370&q=80",
+      "https://images.unsplash.com/photo-1589831377283-33cb1cc6bd5d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80",
+      "https://images.unsplash.com/photo-1592367630397-65872fe016e9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2370&q=80",
+      "https://images.unsplash.com/photo-1592367630397-65872fe016e9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2370&q=80"
+    ],
+    "description": "<product_description>",
+    "isNew": true,
+    "onSale": {
+      "isOnSale": false,
+      "discount": 0
+    }
+  },
+  {
+    "id": "014",
+    "title": "Silk Scarf",
+    "category": "accessories",
+    "sizes": [
+      "One Size"
+    ],
+    "quantity": {
+      "One Size": 20
+    },
+    "price": 29.99,
+    "thumb": "https://images.unsplash.com/photo-1620327467532-6ebaca6273ed?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2370&q=80",
+    "images": [
+      "https://images.unsplash.com/photo-1534215754734-18e55d13e346?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1304&q=80",
+      "https://images.unsplash.com/photo-1620327467532-6ebaca6273ed?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2370&q=80",
+      "https://images.unsplash.com/photo-1592367630397-65872fe016e9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2370&q=80",
+      "https://images.unsplash.com/photo-1592367630397-65872fe016e9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2370&q=80"
+    ],
+    "description": "<product_description>",
+    "isNew": true,
+    "onSale": {
+      "isOnSale": false,
+      "discount": 0
+    }
+  },
+  {
+    "id": "015",
+    "title": "Leather Wallet",
+    "category": "accessories",
+    "sizes": [
+      "One Size"
+    ],
+    "quantity": {
+      "One Size": 30
+    },
+    "price": 39.99,
+    "thumb": "https://images.unsplash.com/photo-1592367630397-65872fe016e9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2370&q=80",
+    "images": [
+      "https://images.unsplash.com/photo-1534215754734-18e55d13e346?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1304&q=80",
+      "https://images.unsplash.com/photo-1620327467532-6ebaca6273ed?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2370&q=80",
+      "https://images.unsplash.com/photo-1592367630397-65872fe016e9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2370&q=80",
+      "https://images.unsplash.com/photo-1592367630397-65872fe016e9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2370&q=80"
+    ],
+    "description": "<product_description>",
+    "isNew": true,
+    "onSale": {
+      "isOnSale": false,
+      "discount": 0
+    }
+  },
+  {
+    "id": "016",
+    "title": "Sunglasses",
+    "category": "accessories",
+    "sizes": [
+      "One Size"
+    ],
+    "quantity": {
+      "One Size": 40
+    },
+    "price": 49.99,
+    "thumb": "https://images.unsplash.com/photo-1589831377283-33cb1cc6bd5d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80",
+    "images": [
+      "https://images.unsplash.com/photo-1534215754734-18e55d13e346?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1304&q=80",
+      "https://images.unsplash.com/photo-1620327467532-6ebaca6273ed?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2370&q=80",
+      "https://images.unsplash.com/photo-1592367630397-65872fe016e9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2370&q=80",
+      "https://images.unsplash.com/photo-1592367630397-65872fe016e9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2370&q=80"
+    ],
+    "description": "<product_description>",
+    "isNew": true,
+    "onSale": {
+      "isOnSale": false,
+      "discount": 0
+    }
+  },
+  {
+    "id": "017",
+    "title": "Wrist Watch",
+    "category": "accessories",
+    "sizes": [
+      "One Size"
+    ],
+    "quantity": {
+      "One Size": 50
+    },
+    "price": 59.99,
+    "thumb": "https://images.unsplash.com/photo-1527813972756-2890936000e9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=991&q=80",
+    "images": [
+      "https://images.unsplash.com/photo-1534215754734-18e55d13e346?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1304&q=80",
+      "https://images.unsplash.com/photo-1620327467532-6ebaca6273ed?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2370&q=80",
+      "https://images.unsplash.com/photo-1592367630397-65872fe016e9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2370&q=80",
+      "https://images.unsplash.com/photo-1592367630397-65872fe016e9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2370&q=80"
+    ],
+    "description": "<product_description>",
+    "isNew": true,
+    "onSale": {
+      "isOnSale": false,
+      "discount": 0
+    }
   }
 ]
