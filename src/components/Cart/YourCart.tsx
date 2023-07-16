@@ -3,7 +3,7 @@ import Product from '@/components/Cart/Product';
 
 interface YourCartProps {
   cartProducts: OrderProductType[];
-  setCartProducts: React.Dispatch<React.SetStateAction<OrderProductType[]>>;
+  setCartProducts: (value: OrderProductType[]) => void;
 }
 
 function YourCart({ cartProducts, setCartProducts }: YourCartProps) {
@@ -17,7 +17,7 @@ function YourCart({ cartProducts, setCartProducts }: YourCartProps) {
       {/*  Products */ }
       <div className="w-full flex flex-col justify-start items-start gap-10 mt-5">
         { cartProducts.map((cartProduct) => (
-          <div key={ cartProduct.id + ' container' } className="w-full flex flex-col justify-start items-start gap-5">
+          <div key={ cartProduct.id + cartProduct.size + ' container' } className="w-full flex flex-col justify-start items-start gap-5">
             <Product cartProduct={ cartProduct } cartProducts={ cartProducts } setCartProducts={ setCartProducts } />
             <div className="w-full border-b border-gray-200" />
           </div>

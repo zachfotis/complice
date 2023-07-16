@@ -1,10 +1,11 @@
 import { OrderProductType } from '../../../typings';
 import Image from 'next/image';
+import { MdDelete } from "react-icons/md";
 
 interface ProductProps {
   cartProduct: OrderProductType;
   cartProducts: OrderProductType[];
-  setCartProducts: React.Dispatch<React.SetStateAction<OrderProductType[]>>;
+  setCartProducts: (value: OrderProductType[]) => void;
 }
 
 function Product({ cartProduct, cartProducts, setCartProducts }: ProductProps) {
@@ -12,7 +13,7 @@ function Product({ cartProduct, cartProducts, setCartProducts }: ProductProps) {
   // Decrease quantity
   const decreaseQuantity = () => {
     const cartProductsCopy = [...cartProducts];
-    const index = cartProductsCopy.findIndex((p) => p.id === cartProduct.id);
+    const index = cartProductsCopy.findIndex((p) => p.id === cartProduct.id && p.size === cartProduct.size);
     if (index !== -1) {
       if (cartProductsCopy[index].quantity <= 1) return;
       cartProductsCopy[index].quantity--;
@@ -23,7 +24,7 @@ function Product({ cartProduct, cartProducts, setCartProducts }: ProductProps) {
   // Increase quantity up to maxQuantity
   const increaseQuantity = () => {
     const cartProductsCopy = [...cartProducts];
-    const index = cartProductsCopy.findIndex((p) => p.id === cartProduct.id);
+    const index = cartProductsCopy.findIndex((p) => p.id === cartProduct.id && p.size === cartProduct.size);
     if (index !== -1) {
       if (cartProductsCopy[index].quantity >= cartProductsCopy[index].maxQuantity) return;
       cartProductsCopy[index].quantity++;
@@ -35,7 +36,7 @@ function Product({ cartProduct, cartProducts, setCartProducts }: ProductProps) {
     <div className="w-full flex flex-col md:flex-row justify-start items-stretch gap-5 md:gap-10">
       {/* Image */ }
       <Image src={ cartProduct.thumb } alt={ cartProduct.title } width={ 700 } height={ 500 } className="w-full md:w-[250px] min-h-[200px] object-cover" />
-      <div className="flex w-full flex-col items-start justify-start gap-5 bg-white">
+      <div className="relative flex w-full flex-col items-start justify-start gap-5 bg-white">
         {/* Title */ }
         <div>
           <h1 className="font-custom text-h3">{ cartProduct.title }</h1>
@@ -75,7 +76,15 @@ function Product({ cartProduct, cartProducts, setCartProducts }: ProductProps) {
           <p className="text-base">Price</p>
           <p className="text-base">{ cartProduct.quantity } x { cartProduct.price } &euro;</p>
         </div>
-
+        {/*  Close Button */ }
+        <MdDelete className="absolute top-1 right-0 text-xl text-red-300 hover:text-red-600 cursor-pointer" onClick={ () => {
+          const cartProductsCopy = [...cartProducts];
+          const index = cartProductsCopy.findIndex((p) => p.id === cartProduct.id);
+          if (index !== -1) {
+            cartProductsCopy.splice(index, 1);
+            setCartProducts(cartProductsCopy);
+          }
+        } } />
       </div>
     </div>
   );

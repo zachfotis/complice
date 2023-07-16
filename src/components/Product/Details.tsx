@@ -1,19 +1,60 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { ProductType } from '../../../typings';
+import { OrderProductType, ProductType } from '../../../typings';
+import useLocalStorage from '@/hooks/useLocalStorage';
+import { toast } from 'react-toastify';
+import { useRouter } from 'next/navigation';
 
 interface DetailsProps {
   product: ProductType;
 }
 
-function Details({product}: DetailsProps) {
+function Details({ product }: DetailsProps) {
+  const router = useRouter();
   const [selectedSize, setSelectedSize] = useState(product.sizes.find((size) => product.quantity[size as keyof typeof product.quantity] > 0) || '');
   const [quantity, setQuantity] = useState(1);
+  const [cartProducts, setCartProducts] = useLocalStorage<OrderProductType[]>('cartProducts', []);
 
   useEffect(() => {
     setQuantity(1);
   }, [selectedSize]);
+
+  const handleAddToCart = () => {
+    const productIndex = cartProducts.findIndex((cartProduct) => cartProduct.id === product.id && cartProduct.size === selectedSize);
+
+    if (productIndex === -1) {
+      const newCartProducts: OrderProductType[] = [
+        ...cartProducts,
+        {
+          id: product.id,
+          title: product.title,
+          size: selectedSize,
+          quantity,
+          maxQuantity: product.quantity[selectedSize as keyof typeof product.quantity],
+          price: product.price,
+          thumb: product.thumb
+        }
+      ];
+      setCartProducts(newCartProducts);
+    } else {
+      if (cartProducts[productIndex].quantity + quantity > cartProducts[productIndex].maxQuantity) {
+        toast.error('Quantity exceeds the stock available');
+        return;
+      }
+      const newCartProducts: OrderProductType[] = [
+        ...cartProducts.slice(0, productIndex),
+        {
+          ...cartProducts[productIndex],
+          quantity: cartProducts[productIndex].quantity + quantity
+        },
+        ...cartProducts.slice(productIndex + 1)
+      ];
+      setCartProducts(newCartProducts);
+    }
+    router.push('/cart');
+    toast.success('Product added to cart');
+  }
 
   return (
     <div className="flex w-full flex-col items-start justify-start gap-5 md:gap-8 bg-white lg:max-w-[600px]">
@@ -67,7 +108,9 @@ function Details({product}: DetailsProps) {
       </div>
       {/* Add to cart */}
       <button
-        className="flex h-12 w-full items-center justify-center border border-black bg-black text-white hover:bg-white hover:text-black">
+        className="flex h-12 w-full items-center justify-center border border-black bg-black text-white hover:bg-white hover:text-black"
+        onClick={ handleAddToCart }
+      >
         <p className="text-base font-[500]">Add to cart</p>
       </button>
     </div>
