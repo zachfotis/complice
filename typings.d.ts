@@ -67,6 +67,10 @@ type OrderProductType = {
   quantity: number;
   maxQuantity: number;
   price: number;
+  onSale: {
+    isOnSale: boolean;
+    discount: number;
+  }
   thumb: string;
 };
 

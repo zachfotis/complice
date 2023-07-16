@@ -26,8 +26,8 @@ function ProductThumb({ product, isShort = false }: ProductThumbProps) {
         <h3 className="text-center text-base font-[500]">{ product.title }</h3>
         { product.onSale.isOnSale ? (
           <div className="flex items-center justify-center gap-2">
-            <p className="text-center text-base text-secondary opacity-70 line-through">{ product.price } €</p>
-            <p className="text-center text-base text-primary">{ (product.price - product.onSale.discount * product.price).toFixed(2) } €</p>
+            <p className="text-center text-base text-secondary opacity-70 line-through">{ product.price } &euro;</p>
+            <p className="text-center text-base text-primary">{ (product.price - product.onSale.discount * product.price).toFixed(2) } &euro;</p>
           </div>
         ) : (
           <p className="text-center text-base text-secondary">{ product.price } €</p>

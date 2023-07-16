@@ -33,6 +33,7 @@ function Details({ product }: DetailsProps) {
           quantity,
           maxQuantity: product.quantity[selectedSize as keyof typeof product.quantity],
           price: product.price,
+          onSale: product.onSale,
           thumb: product.thumb
         }
       ];
@@ -104,7 +105,10 @@ function Details({ product }: DetailsProps) {
       {/* Price */}
       <div className="relative flex w-full items-start justify-between">
         <p className="font-custom text-h4">Price</p>
-        <p className="text-base">{product.price} &euro;</p>
+        <div className="flex items-center justify-center gap-2">
+          <p className="text-center text-base text-secondary opacity-70 line-through">{ product.price } &euro;</p>
+          <p className="text-center text-base text-primary">{ (product.price - product.onSale.discount * product.price).toFixed(2) } &euro;</p>
+        </div>
       </div>
       {/* Add to cart */}
       <button

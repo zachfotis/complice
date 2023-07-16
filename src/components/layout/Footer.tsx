@@ -11,13 +11,13 @@ function Footer() {
             <h1 className="text-h4 font-custom">NEWSLETTER</h1>
             <p className="text-sm text-accent">Sign up to be the first to know about drops, special offers and
               more.</p>
-            <div className="mt-5 flex items-stretch justify-center gap-2">
+            <div className="w-full mt-5 flex items-stretch justify-center gap-3">
               <input
                 type="email"
                 placeholder="Enter your email"
-                className="w-full px-5 text-sm text-black max-w-[300px] bg-whiteGrey"
+                className="w-full px-5 text-sm text-black  bg-whiteGrey"
               />
-              <Button text="Subscribe" variant="sm-light"/>
+              <Button text="Subscribe" variant="sm-light" />
             </div>
           </div>
 

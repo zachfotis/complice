@@ -74,7 +74,10 @@ function Product({ cartProduct, cartProducts, setCartProducts }: ProductProps) {
         {/* Price */ }
         <div className="relative flex w-full items-start justify-between">
           <p className="text-base">Price</p>
-          <p className="text-base">{ cartProduct.quantity } x { cartProduct.price } &euro;</p>
+          <div className="flex items-center justify-center gap-2">
+            <p className="text-center text-base text-secondary opacity-70 line-through">{ cartProduct.price } &euro;</p>
+            <p className="text-center text-base text-primary">{ (cartProduct.price - cartProduct.onSale.discount * cartProduct.price).toFixed(2) } &euro;</p>
+          </div>
         </div>
         {/*  Close Button */ }
         <MdDelete className="absolute top-1 right-0 text-xl text-red-300 hover:text-red-600 cursor-pointer" onClick={ () => {

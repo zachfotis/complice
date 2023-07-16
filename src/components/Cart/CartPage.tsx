@@ -37,7 +37,11 @@ function CartPage() {
   useEffect(() => {
     let total = 0;
     cartProducts.forEach((cartProduct) => {
-      total += cartProduct.price * cartProduct.quantity;
+      if (cartProduct.onSale.isOnSale) {
+        total += Number((cartProduct.price - cartProduct.onSale.discount * cartProduct.price).toFixed(2)) * cartProduct.quantity;
+      } else {
+        total += cartProduct.price * cartProduct.quantity;
+      }
     });
     setTotal(total);
 

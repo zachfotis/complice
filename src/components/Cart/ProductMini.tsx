@@ -31,7 +31,8 @@ function ProductMini({ cartProduct }: ProductMiniProps) {
         {/* Price */ }
         <div className="relative flex w-full items-start justify-between">
           <p className="text-base">Price</p>
-          <p className="text-base">{ cartProduct.quantity } x { cartProduct.price } &euro;</p>
+          <p
+            className="text-base">{ cartProduct.quantity } x { cartProduct.onSale.isOnSale ? (cartProduct.price - cartProduct.onSale.discount * cartProduct.price).toFixed(2) : cartProduct.price } &euro;</p>
         </div>
 
       </div>
