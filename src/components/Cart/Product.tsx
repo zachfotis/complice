@@ -1,6 +1,7 @@
 import { OrderProductType } from '../../../typings';
 import Image from 'next/image';
 import { MdDelete } from "react-icons/md";
+import Link from 'next/link';
 
 interface ProductProps {
   cartProduct: OrderProductType;
@@ -35,11 +36,13 @@ function Product({ cartProduct, cartProducts, setCartProducts }: ProductProps) {
   return (
     <div className="w-full flex flex-col md:flex-row justify-start items-stretch gap-5 md:gap-10">
       {/* Image */ }
-      <Image src={ cartProduct.thumb } alt={ cartProduct.title } width={ 700 } height={ 500 } className="w-full md:w-[250px] min-h-[200px] object-cover" />
+      <Link href={ `/products/${ cartProduct.id }` } className="w-full md:w-auto">
+        <Image src={ cartProduct.thumb } alt={ cartProduct.title } width={ 700 } height={ 500 } className="w-full md:w-[350px] h-[200px] object-cover" />
+      </Link>
       <div className="relative flex w-full flex-col items-start justify-start gap-5 bg-white">
         {/* Title */ }
         <div>
-          <h1 className="font-custom text-h3">{ cartProduct.title }</h1>
+          <Link href={ `/products/${ cartProduct.id }` } className="font-custom text-h3">{ cartProduct.title }</Link>
           <p className="text-sm">{ cartProduct.id }</p>
         </div>
         {/* Size */ }
