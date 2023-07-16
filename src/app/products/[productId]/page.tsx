@@ -30,8 +30,12 @@ async function page({ params }: PageProps) {
     <PageTemplate>
       <PageBody>
         <Categories />
-        { product ? (<ProductPage product={ product } />) : (<NotFound />) }
-        <Similar products={ products } />
+        { product ? (
+          <>
+            <ProductPage product={ product } />
+            <Similar products={ products } />
+          </>
+        ) : (<NotFound />) }
       </PageBody>
     </PageTemplate>
   );

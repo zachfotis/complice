@@ -9,6 +9,7 @@ import ShippingDetails from '@/components/Cart/ShippingDetails';
 import PlaceOrder from '@/components/Cart/PlaceOrder';
 import useLocalStorage from '@/hooks/useLocalStorage';
 import { toast } from 'react-toastify';
+import { BsCartX } from 'react-icons/bs';
 
 const initialShippingAddress: ShippingAddressType = {
   firstName: '',
@@ -62,16 +63,23 @@ function CartPage() {
   }, [])
 
   return (
-    <>
-      <CheckoutBar currentStep={ currentStep } setCurrentStep={ setCurrentStep } />
-      { currentStep === 1 && (<YourCart cartProducts={ cartProducts } setCartProducts={ setCartProducts } />) }
-      { currentStep === 2 && (
-        <ShippingDetails shippingAddress={ shippingAddress } setShippingAddress={ setShippingAddress } shippingCountries={ shippingCountries }
-                         setShippingCost={ setShippingCost } />) }
-      { currentStep === 3 && (<PlaceOrder cartProducts={ cartProducts } shippingAddress={ shippingAddress } />) }
-      <Totals discount={ discount } shippingCost={ shippingCost } total={ total } grandTotal={ grandTotal } />
-      <ProceedStep currentStep={ currentStep } setCurrentStep={ setCurrentStep } cartProducts={ cartProducts } shippingAddress={ shippingAddress } />
-    </>
+    cartProducts.length === 0 ? (
+      <div className="flex-auto min-h-full flex flex-col justify-center items-center gap-5">
+        <BsCartX className="text-5xl text-primary" />
+        <h1 className="text-h3 font-custom">Your cart is empty</h1>
+      </div>
+    ) : (
+      <>
+        <CheckoutBar currentStep={ currentStep } setCurrentStep={ setCurrentStep } />
+        { currentStep === 1 && (<YourCart cartProducts={ cartProducts } setCartProducts={ setCartProducts } />) }
+        { currentStep === 2 && (
+          <ShippingDetails shippingAddress={ shippingAddress } setShippingAddress={ setShippingAddress } shippingCountries={ shippingCountries }
+                           setShippingCost={ setShippingCost } />) }
+        { currentStep === 3 && (<PlaceOrder cartProducts={ cartProducts } shippingAddress={ shippingAddress } />) }
+        <Totals discount={ discount } shippingCost={ shippingCost } total={ total } grandTotal={ grandTotal } />
+        <ProceedStep currentStep={ currentStep } setCurrentStep={ setCurrentStep } cartProducts={ cartProducts } shippingAddress={ shippingAddress } />
+      </>
+    )
   );
 }
 

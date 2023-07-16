@@ -3,7 +3,7 @@ interface PageTemplateProps {
 }
 
 function PageTemplate({children}: PageTemplateProps) {
-  return <main className="mx-auto mb-10 flex w-full flex-1 flex-col items-start justify-start gap-10 overflow-hidden">{children}</main>;
+  return <main className="mx-auto mb-10 flex w-full flex-1 flex-col justify-start items-stretch gap-10 overflow-hidden">{ children }</main>;
 }
 
 export default PageTemplate;
