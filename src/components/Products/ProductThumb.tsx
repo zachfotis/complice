@@ -5,12 +5,14 @@ import { ProductType } from '../../../typings';
 
 interface ProductThumbProps {
   product: ProductType;
+  isShort?: boolean;
 }
 
-function ProductThumb({product}: ProductThumbProps) {
+function ProductThumb({ product, isShort = false }: ProductThumbProps) {
+  const heightClass = isShort ? 'h-[250px] md:h-[250px]' : 'h-[250px] md:h-[375px]';
   return (
     <div className="relative flex w-full snap-center flex-col items-center justify-start gap-2 overflow-hidden">
-      <Link href={ `/products/${ product.id }` } className="w-full overflow-hidden h-[250px] md:h-[375px]">
+      <Link href={ `/products/${ product.id }` } className={ `w-full overflow-hidden ${ heightClass }` }>
         <Image
           src={ product.thumb }
           alt="Category"

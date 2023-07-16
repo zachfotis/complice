@@ -51,7 +51,7 @@ function Carousel({thumb, images}: CarouselProps) {
   return (
     <div id="carousel" className="relative flex-auto flex w-full flex-col items-center justify-start gap-2">
       { !isCollapsed && (
-        <div className="w-full h-[250px] md:h-[400px]">
+        <div className="w-full h-[300px] md:h-[400px]">
           <Image src={ thumb } alt="Product" width={ 1680 } height={ 800 }
                  className="h-full w-full object-cover object-center" />
         </div>
@@ -61,7 +61,7 @@ function Carousel({thumb, images}: CarouselProps) {
         className={ `w-full ${ isCollapsed ? 'h-full flex flex-row justify-start items-center overflow-x-scroll snap-x snap-mandatory' : 'grid grid-cols-4 gap-2' }` }
       >
         { isCollapsed && <Image id="carousel__img_0" src={ thumb } alt="Product" width={ 1680 } height={ 800 }
-                                className="h-[250px] md:h-[400px] w-full min-w-full snap-center object-cover object-center" /> }
+                                className="h-[300px] md:h-[400px] w-full min-w-full snap-center object-cover object-center" /> }
         { images.map((image, index) => (
           <Image
             id={ `carousel__img_${ index + 1 }` }
@@ -70,7 +70,7 @@ function Carousel({thumb, images}: CarouselProps) {
             alt="Product"
             width={ 1680 }
             height={ 800 }
-            className={ `${ isCollapsed ? 'w-full min-w-full h-[250px] md:h-[400px]' : 'h-full max-h-[150px]' } snap-center object-cover object-center` }
+            className={ `${ isCollapsed ? 'w-full min-w-full h-[300px] md:h-[400px]' : 'h-full max-h-[150px]' } snap-center object-cover object-center` }
           />
         )) }
         {/* Bullets*/ }
