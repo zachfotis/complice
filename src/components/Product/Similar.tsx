@@ -1,10 +1,14 @@
-import DATA from '@/assets/dummy/products.json';
 import Products from '../Products/Products';
+import { ProductType } from '../../../typings';
 
-function Similar() {
+interface SimilarProps {
+  products: ProductType[]
+}
+
+function Similar({ products }: SimilarProps) {
   return (
     <section className="mt-10 w-full lg:mt-20">
-      <Products products={DATA.splice(0, 4)} title="Similar Products" showViewAll={false}/>
+      <Products products={ products.splice(0, 4) } title="Similar Products" showViewAll={ false } />
     </section>
   );
 }

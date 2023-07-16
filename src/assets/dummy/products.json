@@ -1,6 +1,6 @@
 [
   {
-    "id": "1",
+    "id": "001",
     "title": "Iron Gym T-Shirt",
     "type": "t-shirt",
     "sizes": [
@@ -26,7 +26,7 @@
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla euismod, nisl sed aliquam ultricies, nunc sapien ultricies nunc, quis ultricies nisl nunc sit amet nunc."
   },
   {
-    "id": "2",
+    "id": "002",
     "title": "Waterproof Shorts",
     "type": "shorts",
     "sizes": [
@@ -50,7 +50,7 @@
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla euismod, nisl sed aliquam ultricies, nunc sapien ultricies nunc, quis ultricies nisl nunc sit amet nunc."
   },
   {
-    "id": "3",
+    "id": "003",
     "title": "Black Socks",
     "type": "socks",
     "sizes": [
@@ -74,7 +74,7 @@
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla euismod, nisl sed aliquam ultricies, nunc sapien ultricies nunc, quis ultricies nisl nunc sit amet nunc."
   },
   {
-    "id": "4",
+    "id": "004",
     "title": "Iron Gym T-Shirt",
     "type": "t-shirt",
     "sizes": [
@@ -94,7 +94,7 @@
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla euismod, nisl sed aliquam ultricies, nunc sapien ultricies nunc, quis ultricies nisl nunc sit amet nunc."
   },
   {
-    "id": "5",
+    "id": "005",
     "title": "Waterproof Shorts",
     "type": "shorts",
     "sizes": [
@@ -114,7 +114,7 @@
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla euismod, nisl sed aliquam ultricies, nunc sapien ultricies nunc, quis ultricies nisl nunc sit amet nunc."
   },
   {
-    "id": "6",
+    "id": "006",
     "title": "Black Socks",
     "type": "socks",
     "sizes": [
@@ -142,7 +142,7 @@
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla euismod, nisl sed aliquam ultricies, nunc sapien ultricies nunc, quis ultricies nisl nunc sit amet nunc."
   },
   {
-    "id": "7",
+    "id": "007",
     "title": "Iron Gym T-Shirt",
     "type": "t-shirt",
     "sizes": [
@@ -164,7 +164,7 @@
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla euismod, nisl sed aliquam ultricies, nunc sapien ultricies nunc, quis ultricies nisl nunc sit amet nunc."
   },
   {
-    "id": "8",
+    "id": "008",
     "title": "Waterproof Shorts",
     "type": "shorts",
     "sizes": [
@@ -186,7 +186,7 @@
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla euismod, nisl sed aliquam ultricies, nunc sapien ultricies nunc, quis ultricies nisl nunc sit amet nunc."
   },
   {
-    "id": "9",
+    "id": "009",
     "title": "Black Socks",
     "type": "socks",
     "sizes": [
@@ -214,7 +214,7 @@
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla euismod, nisl sed aliquam ultricies, nunc sapien ultricies nunc, quis ultricies nisl nunc sit amet nunc."
   },
   {
-    "id": "10",
+    "id": "010",
     "title": "Iron Gym T-Shirt",
     "type": "t-shirt",
     "sizes": [
@@ -236,7 +236,7 @@
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla euismod, nisl sed aliquam ultricies, nunc sapien ultricies nunc, quis ultricies nisl nunc sit amet nunc."
   },
   {
-    "id": "11",
+    "id": "011",
     "title": "Waterproof Shorts",
     "type": "shorts",
     "sizes": [
@@ -264,7 +264,7 @@
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla euismod, nisl sed aliquam ultricies, nunc sapien ultricies nunc, quis ultricies nisl nunc sit amet nunc."
   },
   {
-    "id": "12",
+    "id": "012",
     "title": "Black Socks",
     "type": "socks",
     "sizes": [
