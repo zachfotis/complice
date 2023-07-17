@@ -6,28 +6,46 @@ import { useEffect, useState } from 'react';
 import { HiMagnifyingGlass, HiOutlineHeart, HiOutlineShoppingBag, HiOutlineUser, HiSquares2X2 } from 'react-icons/hi2';
 import Menu from './Menu';
 import SearchBar from '@/components/layout/SearchBar';
+import { OrderProductType } from '../../../typings';
 
 function Navbar() {
-  const [ isMenuOpen, setIsMenuOpen ] = useState(false);
-  const [ isMobile, setIsMobile ] = useState(false);
-  const [ isSearchBarOpen, setIsSearchBarOpen ] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+  const [isSearchBarOpen, setIsSearchBarOpen] = useState(false);
+  const [cartProducts, setCartProducts] = useState<OrderProductType[]>([]);
 
-  // Check if mobile on mount and on resize
+  // Check if mobile on mount and on resize + check if cartProductsLocalStorage has changed
   useEffect(() => {
+    // Check if cartProductsLocalStorage has changed
+    const interval = setInterval(() => {
+      const cartProductsLocalStorage = window.localStorage.getItem('cartProducts');
+
+      if (cartProductsLocalStorage) {
+        const parsedCartProductsLocalStorage = JSON.parse(cartProductsLocalStorage);
+        setCartProducts(parsedCartProductsLocalStorage);
+      }
+    }, 1000);
+
     if (window.innerWidth < 768) {
       setIsMobile(true);
     }
-    // Add listener on resize
-    window.addEventListener('resize', () => {
+
+    const resizeListener = () => {
       if (window.innerWidth <= 768) {
         setIsMobile(true);
       } else {
         setIsMobile(false);
       }
-    });
+    };
+
+    // Add listener on resize
+    window.addEventListener('resize', resizeListener);
+
     // Remove listener on unmount
-    return () => window.removeEventListener('resize', () => {
-    });
+    return () => {
+      window.removeEventListener('resize', resizeListener);
+      clearInterval(interval);
+    };
   }, []);
 
   // Check if isMenuOpen on mount and on resize
@@ -82,8 +100,14 @@ function Navbar() {
           <HiMagnifyingGlass className="cursor-pointer text-2xl" onClick={ () => setIsSearchBarOpen(!isSearchBarOpen) } />
           <HiOutlineUser className="text-2xl" />
           <HiOutlineHeart className="text-2xl" />
-          <Link href="/cart">
+          <Link href="/cart" className="relative">
             <HiOutlineShoppingBag className="text-2xl" />
+            { cartProducts && cartProducts.length > 0 && (
+              <p className="absolute -bottom-1 -right-1 w-4 h-4 bg-primary text-whiteGrey text-xs
+                font-custom rounded-full flex justify-center items-center">
+                { cartProducts.reduce((accumulator, currentValue) => accumulator + currentValue.quantity, 0) }
+              </p>
+            ) }
           </Link>
         </div>
       </section>
