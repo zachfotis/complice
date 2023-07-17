@@ -4,14 +4,13 @@ import { useEffect, useState } from 'react';
 import { OrderProductType, ProductType } from '../../../typings';
 import useLocalStorage from '@/hooks/useLocalStorage';
 import { toast } from 'react-toastify';
-import { useRouter } from 'next/navigation';
 
 interface DetailsProps {
   product: ProductType;
+  setIsModalOpen: (isModalOpen: boolean) => void;
 }
 
-function Details({ product }: DetailsProps) {
-  const router = useRouter();
+function Details({ product, setIsModalOpen }: DetailsProps) {
   const [selectedSize, setSelectedSize] = useState(product.sizes.find((size) => product.quantity[size as keyof typeof product.quantity] > 0) || '');
   const [quantity, setQuantity] = useState(1);
   const [cartProducts, setCartProducts] = useLocalStorage<OrderProductType[]>('cartProducts', []);
@@ -53,7 +52,7 @@ function Details({ product }: DetailsProps) {
       ];
       setCartProducts(newCartProducts);
     }
-    router.push('/cart');
+    setIsModalOpen(true);
     toast.success('Product added to cart');
   }
 

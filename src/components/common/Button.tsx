@@ -1,9 +1,12 @@
+'use client';
+
 interface ButtonProps {
   text: string;
   variant?: 'lg-light' | 'lg-black' | 'sm-light' | 'sm-black' | 'xs-outline' | 'md-outline' | 'md-bottom-line';
+  onClick?: () => void;
 }
 
-function Button({text, variant = 'sm-light'}: ButtonProps) {
+function Button({ text, variant = 'sm-light', onClick = () => { } }: ButtonProps) {
   const getVariant = () => {
     switch (variant) {
       case 'lg-light':
@@ -25,7 +28,7 @@ function Button({text, variant = 'sm-light'}: ButtonProps) {
     }
   };
 
-  return <button className={getVariant()}>{text}</button>;
+  return <button className={ getVariant() } onClick={ onClick }>{ text }</button>;
 }
 
 export default Button;
