@@ -39,13 +39,11 @@ function EnlargeImageModal({ imageURL, setIsModalOpen }: EnlargeImageModalProps)
       <div className="relative bg-white rounded-md p-5 w-fit max-w-[90%] md:max-w-[80%] lg:max-w-[70%] h-fit flex flex-col justify-start items-start gap-3">
         { !isLoaded && (
           <div
-            className="w-[calc(100vw*0.9)] md:w-[calc(100vw*0.7)] h-[calc(100vh*0.4)] md:h-[calc(100vh*0.6)] bg-white rounded-sm absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex items-center justify-center">
-            <div className="">
-              <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-primary" />
-            </div>
+            className="w-[90vw] md:w-[40vw] h-[30vh] md:h-[40vh] bg-white rounded-sm absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex items-center justify-center">
+            <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-primary" />
           </div>
         ) }
-        <Image src={ imageURL } alt="Product image" width={ 1920 } height={ 1280 } className="w-full h-full max-h-[calc(100vh*0.7)] object-contain rounded-sm"
+        <Image src={ imageURL } alt="Product image" width={ 1920 } height={ 1280 } className="w-full h-full max-h-[70vh] object-contain rounded-sm"
                onLoadingComplete={ () => {setIsLoaded(true);} }
         />
         { isLoaded && (
