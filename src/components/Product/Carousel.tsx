@@ -1,15 +1,18 @@
 'use client';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
+import EnlargeImageModal from '@/components/Product/EnlargeImageModal';
 
 interface CarouselProps {
   thumb: string;
   images: string[];
 }
 
-function Carousel({thumb, images}: CarouselProps) {
+function Carousel({ thumb, images }: CarouselProps) {
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [showingImage, setShowingImage] = useState(0);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [clickedImageURL, setClickedImageURL] = useState('');
 
   const checkWidth = () => {
     const carousel = document.querySelector('#carousel');
@@ -48,12 +51,40 @@ function Carousel({thumb, images}: CarouselProps) {
     };
   }, []);
 
+  useEffect(() => {
+    if (clickedImageURL) {
+      setIsModalOpen(true);
+    }
+  }, [clickedImageURL]);
+
+  useEffect(() => {
+    if (isModalOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      setClickedImageURL('');
+      document.body.style.overflow = 'auto';
+    }
+
+    return () => {
+      document.body.style.overflow = 'auto';
+    };
+  }, [isModalOpen]);
+  
+  const handleImageClick = (event: any) => {
+    const url = event.target.src.split('?url=')[1];
+    // URL decode
+    const decodedURL = decodeURIComponent(url);
+    setClickedImageURL(decodedURL);
+  };
+
   return (
     <div id="carousel" className="relative flex-auto flex w-full flex-col items-center justify-start gap-2">
       { !isCollapsed && (
         <div className="w-full h-[300px] md:h-[400px]">
           <Image src={ thumb } alt="Product" width={ 1680 } height={ 800 }
-                 className="h-full w-full object-cover object-center" />
+                 className="h-full w-full object-cover object-center cursor-pointer"
+                 onClick={ handleImageClick }
+          />
         </div>
       ) }
       <div
@@ -61,7 +92,8 @@ function Carousel({thumb, images}: CarouselProps) {
         className={ `w-full ${ isCollapsed ? 'h-full flex flex-row justify-start items-center overflow-x-scroll snap-x snap-mandatory' : 'grid grid-cols-4 gap-2' }` }
       >
         { isCollapsed && <Image id="carousel__img_0" src={ thumb } alt="Product" width={ 1680 } height={ 800 }
-                                className="h-[300px] md:h-[400px] w-full min-w-full snap-center object-cover object-center" /> }
+                                className="h-[300px] md:h-[400px] w-full min-w-full snap-center object-cover object-center cursor-pointer"
+                                onClick={ handleImageClick } /> }
         { images.map((image, index) => (
           <Image
             id={ `carousel__img_${ index + 1 }` }
@@ -70,7 +102,8 @@ function Carousel({thumb, images}: CarouselProps) {
             alt="Product"
             width={ 1680 }
             height={ 800 }
-            className={ `${ isCollapsed ? 'w-full min-w-full h-[300px] md:h-[400px]' : 'h-full max-h-[150px]' } snap-center object-cover object-center` }
+            className={ `${ isCollapsed ? 'w-full min-w-full h-[300px] md:h-[400px]' : 'h-full max-h-[150px]' } snap-center object-cover object-center cursor-pointer` }
+            onClick={ handleImageClick }
           />
         )) }
         {/* Bullets*/ }
@@ -83,6 +116,7 @@ function Carousel({thumb, images}: CarouselProps) {
           </div>
         ) }
       </div>
+      { isModalOpen && <EnlargeImageModal imageURL={ clickedImageURL } setIsModalOpen={ setIsModalOpen } /> }
     </div>
   );
 }
