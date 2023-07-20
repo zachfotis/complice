@@ -20,14 +20,14 @@ function Page() {
     {
       title: 'Timeless Appeal',
       image: 'https://images.unsplash.com/photo-1542850771-8b2356af08af?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2374&q=80',
-      description: 'In a world of fast fashion and fleeting trends, we stand proud as guardians of elegance that withstands the test of time. Our collection is more than just an assemblage of clothes; it is a celebration of art, craftsmanship, and the beauty of individuality. Each garment carries within it a story of passion, creativity, and dedication, making it an heirloom of style that transcends generations. When you slip into our elegant clothes, you are not merely wearing a fashion statement; you are donning a piece of history—a symbol of enduring allure that captures the essence of who you are. Be it a graceful gown for an enchanting evening, a power ensemble that commands the boardroom, or a casual-chic outfit for a day of leisure, our collection caters to every facet of your life. Embrace the allure of timeless fashion, and let our elegant clothes become an extension of your own story. Elevate your style and bask in the confidence that comes with wearing fashion crafted to perfection. Step into the world of sophistication and grace at COMPLICE - where elegance finds a home.'
+      description: 'In a world of fast fashion and fleeting trends, we stand proud as guardians of elegance that withstands the test of time. Our collection is more than just an assemblage of clothes; it is a celebration of art, craftsmanship, and the beauty of individuality. Each garment carries within it a story of passion, creativity, and dedication, making it an heirloom of style that transcends generations. When you slip into our elegant clothes, you are not merely wearing a fashion statement; you are donning a piece of history—a symbol of enduring allure that captures the essence of who you are. Be it a graceful gown for an enchanting evening, a power ensemble that commands the boardroom, or a casual-chic outfit for a day of leisure, our collection caters to every facet of your life. Embrace the allure of timeless fashion, and let our elegant clothes become an extension of your own story.'
     }
   ];
 
   return (
     <PageTemplate>
       <PageBody>
-        <div className="flex flex-col justify-start items-center gap-5 md:gap-3 mt-5 md:mt-10">
+        <div className="flex flex-col justify-start items-center gap-5 md:gap-3 mt-5 md:mt-10 max-w-[1000px]">
           <div className="flex flex-col md:flex-row justify-center items-center gap-2 md:gap-5">
             <h1 className="font-custom text-h1">The</h1>
             <Image src={ LOGO } alt={ 'logo' } width={ 300 } height={ 300 } className="w-[200px]" />
@@ -41,7 +41,7 @@ function Page() {
             showcase
             your unique style.</p>
         </div>
-        <div className="w-full flex flex-col justify-center items-center gap-20 md:mt-10">
+        <div className="w-full flex flex-col justify-center items-center gap-20 md:mt-10 max-w-[1400px]">
           { theBrand.map((member, index) => (
             <div key={ index }
                  className={ `w-full flex justify-start items-stretch bg-white gap-3 md:gap-10 ${ index % 2 === 0 ? 'md:flex-row flex-col' : 'md:flex-row-reverse flex-col' }` }>
