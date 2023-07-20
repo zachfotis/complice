@@ -29,12 +29,13 @@ function Page() {
   return (
     <PageTemplate>
       <PageBody>
-        <h1 className="text-h1 font-custom mt-10">About Our Team</h1>
-        <div className="w-full flex flex-col justify-center items-center gap-20 mt-10">
+        <h1 className="text-h1 font-custom mt-5 md:mt-10">About Our Team</h1>
+        <div className="w-full flex flex-col justify-center items-center gap-20 md:mt-10">
           { teamMembers.map((member, index) => (
-            <div key={ index } className={ `w-full max-w-[1000px] flex justify-start items-stretch bg-white gap-10 ${ index % 2 === 0 ? 'flex-row' : 'flex-row-reverse' }` }>
-              <Image src={ member.image } alt={ member.name } width={ 500 } height={ 500 } className="w-[350px] object-cover" />
-              <div className="flex flex-col justify-start items-start gap-2">
+            <div key={ index }
+                 className={ `w-full max-w-[1000px] flex justify-start items-stretch bg-white gap-3 md:gap-10 ${ index % 2 === 0 ? 'md:flex-row flex-col' : 'md:flex-row-reverse flex-col' }` }>
+              <Image src={ member.image } alt={ member.name } width={ 500 } height={ 500 } className="w-[350px] h-[250px] md:h-auto object-cover" />
+              <div className="flex flex-col justify-start items-start gap-1 md:gap-2">
                 <h2 className="text-h3 font-custom">{ member.name }</h2>
                 <p className="text-h4">{ member.role }</p>
                 <p className="text-base mt-3 text-justify">{ member.shortBio }</p>
