@@ -76,13 +76,13 @@ function Navbar() {
     } else {
       document.body.style.overflow = 'auto';
     }
-  }, [ isMenuOpen ]);
+  }, [isMenuOpen]);
 
   return (
     <nav className="sticky top-0 left-0 z-50 w-full bg-white shadow-md">
       <section className="relative mx-auto flex w-full items-center justify-between p-5 max-w-[1680px]">
         {/* Small Menu */ }
-        <h1 className="hidden text-h3 font-custom md:block">About Us</h1>
+        <Link href="/about" className="hidden text-h3 font-custom md:block">About Us</Link>
         {/* Logo */ }
         <div className="flex w-full items-center justify-start gap-3 md:w-fit">
           <HiSquares2X2
