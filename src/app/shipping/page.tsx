@@ -17,7 +17,8 @@ function Page() {
             </div>
           )) }
           <div className="w-full flex justify-center items-center">
-            <h3 className="mt-20 mb-10 text-lg font-medium w-full max-w-[1000px] text-center">If you have any questions or concerns about our shipping policy, please don't hesitate
+            <h3 className="mt-20 mb-10 text-lg font-medium w-full max-w-[1000px] text-center">If you have any questions or concerns about our shipping policy, please do not
+              hesitate
               to
               contact our
               customer service.
