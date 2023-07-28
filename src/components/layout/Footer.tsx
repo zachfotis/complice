@@ -7,7 +7,7 @@ function Footer() {
     <footer className="w-full bg-primary text-whiteGrey">
       <div className="mx-auto flex w-full flex-col items-center justify-start max-w-[1680px]">
         <div className="flex w-full flex-1 flex-wrap items-stretch justify-evenly gap-10 py-5">
-          {/* Newsletter */}
+          {/* Newsletter */ }
           <div className="flex flex-col flex-wrap items-start justify-start gap-5 p-5">
             <h1 className="text-h4 font-custom">NEWSLETTER</h1>
             <p className="text-sm text-accent">Sign up to be the first to know about drops, special offers and
@@ -22,7 +22,7 @@ function Footer() {
             </div>
           </div>
 
-          {/* Information */}
+          {/* Information */ }
           <div className="flex flex-1 flex-col flex-wrap items-start justify-start gap-5 p-5">
             <h1 className="text-h4 font-custom">INFORMATION</h1>
             <ul className="flex flex-col items-start justify-start gap-5">
@@ -35,24 +35,28 @@ function Footer() {
               <li className="text-base text-accent">Terms & Conditions</li>
             </ul>
           </div>
-          {/* Complice */}
+          {/* Complice */ }
           <div className="flex flex-1 flex-col flex-wrap items-start justify-start gap-5 p-5">
             <h1 className="text-h4 font-custom">COMPLICE TEAM</h1>
             <ul className="flex flex-col items-start justify-start gap-5">
               <li className="text-base text-accent">About Us</li>
               <li className="text-base text-accent">Contact Us</li>
-              <li className="text-base text-accent">Privacy Policy</li>
+              <li className="text-base text-accent">
+                <Link href={ '/privacy' }>
+                  Privacy Policy
+                </Link>
+              </li>
             </ul>
           </div>
-          {/* Social */}
+          {/* Social */ }
           <div className="flex flex-1 flex-col flex-wrap items-start justify-start gap-5 p-5">
             <h1 className="text-h4 font-custom">SOCIAL MEDIA</h1>
-            <SocialMedia color="text-white" gap="gap-5"/>
+            <SocialMedia color="text-white" gap="gap-5" />
           </div>
         </div>
-        {/*  All rights reserved*/}
+        {/*  All rights reserved*/ }
         <div className="flex w-full flex-wrap items-center justify-center gap-10 border-t py-5 border-secondary">
-          <p className="text-sm text-whiteGrey">© {new Date().getFullYear()} COMPLICE. All rights reserved</p>
+          <p className="text-sm text-whiteGrey">© { new Date().getFullYear() } COMPLICE. All rights reserved</p>
         </div>
       </div>
     </footer>
