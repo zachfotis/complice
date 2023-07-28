@@ -26,26 +26,33 @@ function Footer() {
           <div className="flex flex-1 flex-col flex-wrap items-start justify-start gap-5 p-5">
             <h1 className="text-h4 font-custom">INFORMATION</h1>
             <ul className="flex flex-col items-start justify-start gap-5">
-              <li className="text-base text-accent">FAQ</li>
               <li className="text-base text-accent">
-                <Link href={ '/shipping' }>
-                  Shipping
+                <Link href={ '/faq' }>
+                  FAQ
                 </Link>
               </li>
-              <li className="text-base text-accent">Terms & Conditions</li>
+              <li className="text-base text-accent">
+                <Link href={ '/shipping' }>
+                  Shipping Policy
+                </Link>
+              </li>
+              <li className="text-base text-accent">
+                <Link href={ '/privacy' }>
+                  Privacy Policy
+                </Link>
+              </li>
             </ul>
           </div>
           {/* Complice */ }
           <div className="flex flex-1 flex-col flex-wrap items-start justify-start gap-5 p-5">
             <h1 className="text-h4 font-custom">COMPLICE TEAM</h1>
             <ul className="flex flex-col items-start justify-start gap-5">
-              <li className="text-base text-accent">About Us</li>
-              <li className="text-base text-accent">Contact Us</li>
               <li className="text-base text-accent">
-                <Link href={ '/privacy' }>
-                  Privacy Policy
+                <Link href={ '/about' }>
+                  About Us
                 </Link>
               </li>
+              <li className="text-base text-accent">Contact Us</li>
             </ul>
           </div>
           {/* Social */ }
