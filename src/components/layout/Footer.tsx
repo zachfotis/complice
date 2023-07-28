@@ -1,5 +1,6 @@
 import Button from '../common/Button';
 import SocialMedia from '../common/SocialMedia';
+import Link from 'next/link';
 
 function Footer() {
   return (
@@ -26,7 +27,11 @@ function Footer() {
             <h1 className="text-h4 font-custom">INFORMATION</h1>
             <ul className="flex flex-col items-start justify-start gap-5">
               <li className="text-base text-accent">FAQ</li>
-              <li className="text-base text-accent">Shipping</li>
+              <li className="text-base text-accent">
+                <Link href={ '/shipping' }>
+                  Shipping
+                </Link>
+              </li>
               <li className="text-base text-accent">Terms & Conditions</li>
             </ul>
           </div>
