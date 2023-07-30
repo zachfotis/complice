@@ -52,7 +52,7 @@ function Menu({setIsMenuOpen}: Props) {
           </Link>
         </div>
       </div>
-      <div className="mt-auto flex w-full items-center justify-center gap-3 text-base font-custom">
+      <div className="mt-2 flex w-full items-center justify-center gap-3 text-base font-custom">
         <Link href="/about">
           <p>About</p>
         </Link>
