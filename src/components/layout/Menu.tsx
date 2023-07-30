@@ -14,7 +14,7 @@ function Menu({setIsMenuOpen}: Props) {
 
   return (
     <nav
-      className="absolute top-0 left-0 flex h-screen w-full flex-col items-center justify-start gap-10 overflow-y-auto overscroll-auto bg-white p-5 bg-opacity"
+      className="absolute top-0 left-0 flex h-screen w-full flex-col items-center justify-start gap-5 overflow-y-auto bg-white p-5 bg-opacity"
       onClick={() => setIsMenuOpen(false)}
     >
       {/* Close button */}
@@ -24,7 +24,7 @@ function Menu({setIsMenuOpen}: Props) {
       <Link href="/">
         <Image alt="logo" src={Logo} width={170} height={50} className="w-[150px]"/>
       </Link>
-      <div className="flex w-full flex-col items-center justify-start gap-7 px-5">
+      <div className="flex w-full flex-col items-center justify-start gap-5 px-5 mt-3">
         <Link href="/" className={normalClasses}>
           <h3>Home</h3>
         </Link>
@@ -40,7 +40,7 @@ function Menu({setIsMenuOpen}: Props) {
         <Link href="/accessories" className={normalClasses}>
           <h3>Accessories</h3>
         </Link>
-        <div className="my-5">
+        <div className="my-3">
           <SocialMedia color="text-black" size="text-3xl" gap="gap-10"/>
         </div>
         <div className="flex w-full items-center justify-center gap-3">
