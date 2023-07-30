@@ -52,7 +52,11 @@ function Footer() {
                   About Us
                 </Link>
               </li>
-              <li className="text-base text-accent">Contact Us</li>
+              <li className="text-base text-accent">
+                <Link href={ '/contact' }>
+                  Contact Us
+                </Link>
+              </li>
             </ul>
           </div>
           {/* Social */ }

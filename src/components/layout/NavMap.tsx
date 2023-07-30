@@ -1,7 +1,7 @@
 'use client';
 
 import { usePathname } from 'next/navigation';
-import Link from "next/link";
+import Link from 'next/link';
 
 function NavMap() {
   const pathname = usePathname()
@@ -36,7 +36,7 @@ function NavMap() {
   capitalizedSegments.shift()
 
   return (
-    <div className="flex w-full items-center justify-start whitespace-nowrap text-base md:-my-5">
+    <div className="flex w-full items-center justify-start whitespace-nowrap text-base -mb-5 md:-my-5">
       <Link href="/">Home</Link>
       { capitalizedSegments.map((segment, index) => (
         <div key={ index } className="flex">
