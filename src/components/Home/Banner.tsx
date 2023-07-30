@@ -2,7 +2,7 @@ import Button from '../common/Button';
 
 function Banner() {
   return (
-    <section className="my-5 md:my-10 flex w-full flex-col items-center justify-start gap-5 text-white mx-auto md:px-5 md:max-w-[1680px]">
+    <section className="my-0 md:my-10 flex w-full flex-col items-center justify-start gap-5 text-white mx-auto md:px-5 md:max-w-[1680px]">
       {/* Banner to get 10% with registration */ }
       <div className="flex w-full flex-col items-center justify-start gap-5 bg-primary px-10 py-20 ">
         <h1 className="text-center text-h2 font-custom"> New Here? </h1>
