@@ -37,6 +37,7 @@ function Page() {
       <PageBody>
         <Categories />
         <PageTitle title="Contact Us" />
+        <p className="text-center text-lg font-medium">We would love to hear from you!</p>
         <ThemeProvider theme={ customTheme }>
           <form className="w-full max-w-[1000px] flex flex-col justify-start items-center gap-10" onSubmit={ handleSubmit }>
             <div className="w-full flex flex-col md:flex-row justify-start itmes-center gap-10 md:gap-5">

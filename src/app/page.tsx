@@ -17,9 +17,13 @@ export default async function Home() {
     <PageTemplate>
       <PageBody>
         <Categories />
-        <Hero />
+      </PageBody>
+      <Hero />
+      <PageBody>
         <CategoriesThumb categories={ categories } />
-        <Banner />
+      </PageBody>
+      <Banner />
+      <PageBody>
         <Products products={ products.slice(0, 3) } title="Best Sellers" isInitialScreen={ true } />
         <StayTuned />
       </PageBody>
