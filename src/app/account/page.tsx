@@ -12,6 +12,7 @@ function Page() {
     lastName: 'Doe',
     email: 'john@gmail.com',
     birthDate: '1987-06-06',
+    discount: 0.1,
     address: {
       firstName: 'John',
       lastName: 'Doe',

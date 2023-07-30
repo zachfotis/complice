@@ -1,6 +1,7 @@
 import BannerImage from '@/assets/dummy/main-banner.jpg';
 import Image from 'next/image';
 import Button from '../common/Button';
+import Link from 'next/link';
 
 function Hero() {
   return (
@@ -15,7 +16,9 @@ function Hero() {
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 transform text-center">
         <h1 className="mb-4 drop-shadow-lg text-h1 text-primary font-custom">Refined Elegance</h1>
         <p className="mb-8 drop-shadow-lg text-h5 text-primary">Discover Timeless Fashion</p>
-        <Button text="Shop Now" variant="sm-light" />
+        <Link href="/clothing">
+          <Button text="Shop Now" variant="sm-light" />
+        </Link>
       </div>
     </article>
   );

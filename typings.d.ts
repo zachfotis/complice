@@ -87,5 +87,6 @@ export type UserType = {
   lastName: string;
   email: string;
   birthDate: string;
+  discount: number;
   address: ShippingAddressType;
 }
