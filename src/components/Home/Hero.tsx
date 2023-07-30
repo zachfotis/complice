@@ -10,7 +10,7 @@ function Hero() {
         alt="Banner"
         width={ 1680 }
         height={ 1000 }
-        className="w-full object-cover object-center h-[800px] md:h-[600px]"
+        className="w-full object-cover object-center h-[70vh] min-h-[400px] md:h-[600px]"
       />
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 transform text-center">
         <h1 className="mb-4 drop-shadow-lg text-h1 text-primary font-custom">Refined Elegance</h1>
