@@ -98,7 +98,9 @@ function Navbar() {
         {/* Menu */ }
         <div className="flex items-center justify-start gap-4 md:gap-5">
           <HiMagnifyingGlass className="cursor-pointer text-2xl" onClick={ () => setIsSearchBarOpen(!isSearchBarOpen) } />
-          <HiOutlineUser className="text-2xl" />
+          <Link href="/account">
+            <HiOutlineUser className="text-2xl" />
+          </Link>
           <HiOutlineHeart className="text-2xl" />
           <Link href="/cart" className="relative">
             <HiOutlineShoppingBag className="text-2xl" />

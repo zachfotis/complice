@@ -80,3 +80,12 @@ type OrderType = {
   products: OrderProductType[];
   shippingAddress: ShippingAddressType;
 };
+
+export type UserType = {
+  id: string;
+  firstName: string;
+  lastName: string;
+  email: string;
+  birthDate: string;
+  address: ShippingAddressType;
+}
