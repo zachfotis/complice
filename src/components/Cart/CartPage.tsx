@@ -89,12 +89,11 @@ function CartPage() {
 
 export default CartPage;
 
-// TODO: Get shipping countries from API
+//TODO: Get shipping countries from API
 const shippingCountries: ShippingCountryType[] = [
   {
     id: '1',
     name: 'Greece',
-    code: 'GR',
     cost: 3.5
   }
 ]

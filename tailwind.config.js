@@ -14,6 +14,10 @@ module.exports = {
         accent: 'rgba(199, 195, 186, 1)',
         whiteGrey: 'rgba(240, 238, 239, 1)',
         lightGrey: '#F8F8F8',
+        bronze: '#CD7F32',
+        silver: '#C0C0C0',
+        gold: '#FFD700',
+        platinum: '#ADD8E6',
       },
       fontSize: {
         h1: '2.5rem',

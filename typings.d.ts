@@ -15,7 +15,7 @@ enum Sizes {
   L = 'L',
   XL = 'XL',
   XXL = 'XXL',
-}
+};
 
 type ProductType = {
   id: string;
@@ -56,9 +56,8 @@ type ShippingAddressType = {
 type ShippingCountryType = {
   id: string;
   name: string;
-  code: string;
   cost: number;
-}
+};
 
 type OrderProductType = {
   id: string;
@@ -77,11 +76,14 @@ type OrderProductType = {
 type OrderType = {
   id?: string;
   userId?: string;
+  date: Date;
+  total: number;
+  status: string;
   products: OrderProductType[];
   shippingAddress: ShippingAddressType;
 };
 
-export type UserType = {
+type UserType = {
   id: string;
   firstName: string;
   lastName: string;
@@ -89,4 +91,24 @@ export type UserType = {
   birthDate: string;
   discount: number;
   address: ShippingAddressType;
+  ranking: {
+    current: RankingNamesEnum | null;
+    next: RankingNamesEnum | null;
+    progress: number;
+    moneyToNextRanking: number;
+  }
+};
+
+enum RankingNamesEnum {
+  BRONZE = 'Bronze',
+  SILVER = 'Silver',
+  GOLD = 'Gold',
+  PLATINUM = 'Platinum',
 }
+
+type RankingType = {
+  name: RankingNamesEnum;
+  min: number;
+  max: number;
+  discount: number;
+};
