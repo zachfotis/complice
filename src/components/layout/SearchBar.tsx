@@ -1,4 +1,4 @@
-import { AiOutlineCloseSquare } from "react-icons/ai";
+import { AiOutlineCloseSquare } from 'react-icons/ai';
 import { SearchResultRow } from '@/components/layout/SearchResultRow';
 import { useEffect, useRef, useState } from 'react';
 import { ProductType } from '../../../typings';
