@@ -5,7 +5,7 @@ import Tabs from '@/components/Account/Tabs';
 import Ranking from '@/components/Account/Ranking';
 import { OrderType, ShippingCountryType, UserType } from '../../../typings';
 
-export enum RankingNamesEnum {
+enum RankingNamesEnum {
   BRONZE = 'Bronze',
   SILVER = 'Silver',
   GOLD = 'Gold',

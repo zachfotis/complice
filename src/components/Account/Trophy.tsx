@@ -1,8 +1,14 @@
 import { GiDiamondTrophy } from 'react-icons/gi';
-import { RankingNamesEnum } from '@/app/account/page';
 
 interface Props {
   ranking: RankingNamesEnum;
+}
+
+enum RankingNamesEnum {
+  BRONZE = 'Bronze',
+  SILVER = 'Silver',
+  GOLD = 'Gold',
+  PLATINUM = 'Platinum',
 }
 
 export function Trophy({ ranking }: Props) {

@@ -1,6 +1,6 @@
 import { OrderProductType } from '../../../typings';
 import Image from 'next/image';
-import { MdDelete } from "react-icons/md";
+import { MdDelete } from 'react-icons/md';
 import Link from 'next/link';
 
 interface ProductProps {
