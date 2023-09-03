@@ -9,13 +9,13 @@ interface IMyProfileProps {
 }
 
 export function MyProfile({ currentUser, shippingCountries }: IMyProfileProps) {
-  const [firstName, setFirstName] = useState(currentUser.address.firstName);
-  const [lastName, setLastName] = useState(currentUser.address.lastName);
-  const [address, setAddress] = useState(currentUser.address.address);
-  const [city, setCity] = useState(currentUser.address.city);
-  const [postalCode, setPostalCode] = useState(currentUser.address.postalCode);
-  const [country, setCountry] = useState(currentUser.address.country);
-  const [phoneNumber, setPhoneNumber] = useState(currentUser.address.phoneNumber);
+  const [firstName, setFirstName] = useState(currentUser?.firstName || '');
+  const [lastName, setLastName] = useState(currentUser?.lastName || '');
+  const [address, setAddress] = useState(currentUser?.address?.address || '');
+  const [city, setCity] = useState(currentUser?.address?.city || '');
+  const [postalCode, setPostalCode] = useState(currentUser?.address?.postalCode || '');
+  const [country, setCountry] = useState(currentUser?.address?.country || '');
+  const [phoneNumber, setPhoneNumber] = useState(currentUser?.address?.phoneNumber || '');
 
   return (
     <form className="w-full">
@@ -50,7 +50,7 @@ export function MyProfile({ currentUser, shippingCountries }: IMyProfileProps) {
       </div>
       { /*  Address */ }
       <div className="w-full flex flex-col justify-start items-start gap-2 mt-5">
-        <label htmlFor="address" className="text-base">Address *</label>
+        <label htmlFor="address" className="text-base">Address</label>
         <input
           type="text"
           name="address"
@@ -65,7 +65,7 @@ export function MyProfile({ currentUser, shippingCountries }: IMyProfileProps) {
       { /*  City - Postal Code */ }
       <div className="w-full flex flex-col md:flex-row justify-between items-center gap-5 mt-5">
         <div className="w-full md:flex-[3] flex flex-col justify-start items-start gap-2">
-          <label htmlFor="city" className="text-base">City *</label>
+          <label htmlFor="city" className="text-base">City</label>
           <input
             type="text"
             name="city"
@@ -78,7 +78,7 @@ export function MyProfile({ currentUser, shippingCountries }: IMyProfileProps) {
           />
         </div>
         <div className="w-full md:flex-[1] flex flex-col justify-start items-start gap-2">
-          <label htmlFor="postalCode" className="text-base">Postal Code </label>
+          <label htmlFor="postalCode" className="text-base">Postal Code</label>
           <input
             type="text"
             name="postalCode"
@@ -93,7 +93,7 @@ export function MyProfile({ currentUser, shippingCountries }: IMyProfileProps) {
       </div>
       { /*  Country Selector*/ }
       <div className="w-full flex flex-col justify-start items-start gap-2 mt-5">
-        <label htmlFor="country" className="text-base">Country *</label>
+        <label htmlFor="country" className="text-base">Country</label>
         <select
           name="country"
           id="country"
@@ -111,7 +111,7 @@ export function MyProfile({ currentUser, shippingCountries }: IMyProfileProps) {
       </div>
       {/*  Phone */ }
       <div className="w-full flex flex-col justify-start items-start gap-2 mt-5">
-        <label htmlFor="phone" className="text-base">Phone *</label>
+        <label htmlFor="phone" className="text-base">Phone</label>
         <input
           type="text"
           name="phone"

@@ -88,9 +88,9 @@ type UserType = {
   firstName: string;
   lastName: string;
   email: string;
-  birthDate: string;
-  discount: number;
-  address: ShippingAddressType;
+  birthDate?: string;
+  discount?: number;
+  address?: ShippingAddressType;
   ranking: {
     current: RankingNamesEnum | null;
     next: RankingNamesEnum | null;

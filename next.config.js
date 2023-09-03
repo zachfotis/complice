@@ -14,7 +14,7 @@ const nextConfig = {
     ],
   },
   env: {
-    host: 'http://localhost:3000'
+    host: 'http://localhost:3000',
   }
 };
 

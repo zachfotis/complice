@@ -41,8 +41,7 @@ function Tabs({ currentUser, shippingCountries, orders }: ITab) {
         { tabs[activeTab].content }
       </div>
     </div>
-  )
-    ;
+  );
 }
 
 export default Tabs;
