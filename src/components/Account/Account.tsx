@@ -13,22 +13,33 @@ import Loader from '@/components/common/Loader';
 function Account() {
   const [isLoading, setIsLoading] = useState(true);
   const [currentUser, setCurrentUser] = useState<UserType | null>(null);
+  const shouldRedirect = !currentUser && !isLoading;
+
+  if (shouldRedirect) {
+    redirect('/auth/login');
+  }
 
   useEffect(() => {
     const fetchUser = async () => {
-      const baseUrl = process.env.NEXT_PUBLIC_API_URL;
-      const response = await fetch(`${ baseUrl }/auth/currentuser`, {
-        method: 'GET',
-        credentials: 'include',
-        cache: 'no-store',
-      });
-      const user = await response.json();
-      setIsLoading(false);
-      
-      if (user.currentUser) {
-        setCurrentUser(user.currentUser);
-      } else {
+      let success = false;
+      try {
+        const baseUrl = process.env.NEXT_PUBLIC_API_URL;
+        const response = await fetch(`${ baseUrl }/auth/currentuser`, {
+          method: 'GET',
+          credentials: 'include',
+          cache: 'no-store',
+        });
+        const user = await response.json();
+
+        if (user.currentUser) {
+          success = true;
+          setCurrentUser(user.currentUser);
+          return;
+        }
+      } catch (error) {
         redirect('/auth/login');
+      } finally {
+        setIsLoading(false);
       }
     };
 
