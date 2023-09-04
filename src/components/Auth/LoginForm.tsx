@@ -30,7 +30,13 @@ function LoginForm() {
 
   useEffect(() => {
     if (currentUser) {
-      redirect('/');
+      toast.success('Logged in successfully!');
+
+      if (window.document.referrer.endsWith('/auth/login')) {
+        redirect('/');
+      } else {
+        redirect(window.document.referrer);
+      }
     }
   }, [currentUser]);
 
@@ -56,7 +62,6 @@ function LoginForm() {
       toast.error(data.errors.map((err: { message: string; }) => err.message).join('. '));
     } else if (data.email) {
       setCurrentUser(data);
-      toast.success('Logged in successfully!');
     }
   };
 

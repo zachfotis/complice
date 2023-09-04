@@ -21,7 +21,6 @@ function Account() {
 
   useEffect(() => {
     const fetchUser = async () => {
-      let success = false;
       try {
         const baseUrl = process.env.NEXT_PUBLIC_API_URL;
         const response = await fetch(`${ baseUrl }/auth/currentuser`, {
@@ -32,9 +31,8 @@ function Account() {
         const user = await response.json();
 
         if (user.currentUser) {
-          success = true;
+          setIsLoading(false);
           setCurrentUser(user.currentUser);
-          return;
         }
       } catch (error) {
         redirect('/auth/login');
@@ -90,17 +88,21 @@ function Account() {
   return (
     <PageTemplate>
       <PageBody>
-        { currentUser && !isLoading ? (
-            <>
-              <Cover currentUser={ currentUser } />
-              <Ranking ranking={ currentUser.ranking } />
-              <Tabs currentUser={ currentUser } shippingCountries={ shippingCountries } orders={ orders } />
-            </>
-          ) :
+        { isLoading ? (
           <div className="flex-1 w-full flex justify-center items-center">
             <Loader />
           </div>
-        }
+        ) : currentUser ? (
+          <>
+            <Cover currentUser={ currentUser } />
+            <Ranking ranking={ currentUser.ranking } />
+            <Tabs currentUser={ currentUser } shippingCountries={ shippingCountries } orders={ orders } />
+          </>
+        ) : (
+          <div className="flex-1 w-full flex justify-center items-center">
+            <p>You are not logged in.</p>
+          </div>
+        ) }
       </PageBody>
     </PageTemplate>
   );
