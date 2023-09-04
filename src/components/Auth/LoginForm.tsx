@@ -31,12 +31,7 @@ function LoginForm() {
   useEffect(() => {
     if (currentUser) {
       toast.success('Logged in successfully!');
-
-      if (window.document.referrer.endsWith('/auth/login')) {
-        redirect('/');
-      } else {
-        redirect(window.document.referrer);
-      }
+      redirect('/account');
     }
   }, [currentUser]);
 
