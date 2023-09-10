@@ -1,18 +1,17 @@
-import { CategoryType } from '../../../typings';
-import CategoryThumb from './CategoryThumb';
+import CategoryHomeThumb from './CategoryHomeThumb';
 
 interface CategoriesThumbProps {
   categories: CategoryType[];
 }
 
-function CategoriesThumb({categories}: CategoriesThumbProps) {
+function CategoriesHomeThumb({ categories }: CategoriesThumbProps) {
   return (
     <section className="flex w-full snap-x items-stretch justify-between gap-5 overflow-y-auto pb-5 md:gap-10">
       {categories.map((category, index) => (
-        <CategoryThumb key={index} category={category}/>
+        <CategoryHomeThumb key={ index } category={ category } />
       ))}
     </section>
   );
 }
 
-export default CategoriesThumb;
+export default CategoriesHomeThumb;

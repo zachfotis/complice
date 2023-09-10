@@ -37,7 +37,7 @@ function Tabs({ currentUser, shippingCountries, orders }: ITab) {
           </button>
         )) }
       </div>
-      <div className="w-full flex-1 border-b border-l border-r border-primary p-2 md:p-7">
+      <div className="w-full flex-1 shadow-md p-2 md:p-7">
         { tabs[activeTab].content }
       </div>
     </div>

@@ -1,5 +1,5 @@
 import Similar from '@/components/Product/Similar';
-import Categories from '@/components/layout/Categories';
+import CategoriesMenu from '@/components/layout/CategoriesMenu';
 import PageBody from '@/components/layout/PageBody';
 import PageTemplate from '@/components/layout/PageTemplate';
 import { fetchProduct, fetchProducts } from '@/utils/api';
@@ -29,7 +29,7 @@ async function page({ params }: PageProps) {
   return (
     <PageTemplate>
       <PageBody>
-        <Categories />
+        <CategoriesMenu />
         { product ? (
           <>
             <ProductPage product={ product } />

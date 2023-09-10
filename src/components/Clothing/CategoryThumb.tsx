@@ -1,20 +1,19 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { ClothingCategoryType } from '../../../typings';
 
 interface ClothingThumbProps {
   index: number;
-  category: ClothingCategoryType;
+  category: CategoryType;
 }
 
-function ClothingThumb({index, category}: ClothingThumbProps) {
+function CategoryThumb({ index, category }: ClothingThumbProps) {
   const isFullWidth = index % 3 === 0 || index === 0;
 
   return (
-    <Link href={`/clothing/${category.title}`} className={`relative ${isFullWidth ? 'flex-auto w-full' : 'flex-auto'} shadow-md group`}>
+    <Link href={ `/${ category.categoryType }/${ category.title }` } className={ `relative ${ isFullWidth ? 'flex-auto w-full' : 'flex-auto' } shadow-md group` }>
       <div className="w-full overflow-hidden h-[400px]">
         <Image
-          src={category.image}
+          src={ category.imageURL }
           width={1680}
           height={300}
           alt={category.title}
@@ -28,4 +27,4 @@ function ClothingThumb({index, category}: ClothingThumbProps) {
   );
 }
 
-export default ClothingThumb;
+export default CategoryThumb;

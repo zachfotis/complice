@@ -1,7 +1,7 @@
 'use client';
 import PageTemplate from '@/components/layout/PageTemplate';
 import PageBody from '@/components/layout/PageBody';
-import Categories from '@/components/layout/Categories';
+import CategoriesMenu from '@/components/layout/CategoriesMenu';
 import PageTitle from '@/components/layout/PageTitle';
 import { BsBox, BsBoxArrowLeft, BsChevronDown, BsCreditCard2Back, BsGear, BsTruck } from 'react-icons/bs';
 import { useState } from 'react';
@@ -18,7 +18,7 @@ function Page() {
   return (
     <PageTemplate>
       <PageBody>
-        <Categories />
+        <CategoriesMenu />
         <PageTitle title="FAQ Topics" />
         {/*  Make an accordion for each category */ }
         <div className="w-full max-w-[1000px] flex flex-col items-start justify-start gap-10">

@@ -1,19 +1,17 @@
 import Image from 'next/image';
-import { CategoryType } from '../../../typings';
 import Link from 'next/link';
 
 interface CategoryThumbProps {
   category: CategoryType;
 }
 
-function CategoryThumb({category}: CategoryThumbProps) {
-  const categoryURL = category.categoryType !== 'accessories' ? `/${ category.categoryType }/${ category.title }` : `/${ category.categoryType }`;
+function CategoryHomeThumb({ category }: CategoryThumbProps) {
   return (
-    <Link href={ categoryURL }
-          className="flex flex-1 snap-center flex-col items-center justify-start gap-2 min-w-[250px]">
+    <Link href={ `/${ category.categoryType }/${ category.title }` }
+      className="flex flex-1 snap-center flex-col items-center justify-start gap-2 min-w-[250px]">
       <div className="w-full overflow-hidden h-[400px]">
         <Image
-          src={ category.image }
+          src={ category.imageURL }
           alt="Category"
           width={ 300 }
           height={ 300 }
@@ -28,4 +26,4 @@ function CategoryThumb({category}: CategoryThumbProps) {
   );
 }
 
-export default CategoryThumb;
+export default CategoryHomeThumb;

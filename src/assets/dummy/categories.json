@@ -4,27 +4,27 @@
     "title": "t-shirt",
     "categoryType": "clothing",
     "description": "Lorem ipsum dolor sit amet.",
-    "image": "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=3000&q=80"
+    "imageURL": "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=3000&q=80"
   },
   {
     "id": "2",
     "title": "shorts",
     "categoryType": "clothing",
     "description": "Lorem ipsum dolor sit amet.",
-    "image": "https://images.unsplash.com/photo-1617953644310-e690da9be982?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1760&q=80"
+    "imageURL": "https://images.unsplash.com/photo-1617953644310-e690da9be982?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1760&q=80"
   },
   {
     "id": "3",
     "title": "socks",
     "categoryType": "clothing",
     "description": "Lorem ipsum dolor sit amet.",
-    "image": "https://plus.unsplash.com/premium_photo-1674672914927-3491e441762c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1335&q=80"
+    "imageURL": "https://plus.unsplash.com/premium_photo-1674672914927-3491e441762c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1335&q=80"
   },
   {
     "id": "4",
     "title": "caps",
     "categoryType": "accessories",
     "description": "Lorem ipsum dolor sit amet.",
-    "image": "https://images.unsplash.com/photo-1525740615880-50bb88fe0b1f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80"
+    "imageURL": "https://images.unsplash.com/photo-1525740615880-50bb88fe0b1f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80"
   }
 ]

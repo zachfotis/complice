@@ -1,9 +1,9 @@
-import Categories from '@/components/layout/Categories';
+import CategoriesMenu from '@/components/layout/CategoriesMenu';
 import PageBody from '@/components/layout/PageBody';
 import PageTemplate from '@/components/layout/PageTemplate';
 import PageTitle from '@/components/layout/PageTitle';
 import Paginator from '@/components/layout/Paginator';
-import NavMap from "@/components/layout/NavMap";
+import NavMap from '@/components/layout/NavMap';
 import NewArrivals from '@/components/NewArrivals/NewArrivals';
 import { fetchProducts } from '@/utils/api';
 
@@ -13,7 +13,7 @@ async function Page() {
   return (
     <PageTemplate>
       <PageBody>
-        <Categories />
+        <CategoriesMenu />
         <NavMap />
         <PageTitle title="New Arrivals" />
         <NewArrivals products={ products } />

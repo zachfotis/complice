@@ -10,6 +10,10 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'plus.unsplash.com'
       },
+      {
+        protocol: 'https',
+        hostname: 'complice.fra1.cdn.digitaloceanspaces.com',
+      },
       { protocol: 'http', hostname: 'localhost' }
     ],
   },

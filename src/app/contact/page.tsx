@@ -1,7 +1,7 @@
 'use client';
 
 import PageBody from '@/components/layout/PageBody';
-import Categories from '@/components/layout/Categories';
+import CategoriesMenu from '@/components/layout/CategoriesMenu';
 import PageTemplate from '@/components/layout/PageTemplate';
 import { createTheme, TextField, ThemeProvider } from '@mui/material';
 import PageTitle from '@/components/layout/PageTitle';
@@ -35,7 +35,7 @@ function Page() {
   return (
     <PageTemplate>
       <PageBody>
-        <Categories />
+        <CategoriesMenu />
         <PageTitle title="Contact Us" />
         <p className="text-center text-lg font-medium">We would love to hear from you!</p>
         <ThemeProvider theme={ customTheme }>

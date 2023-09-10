@@ -1,8 +1,8 @@
-'use client'
+'use client';
 import Link from 'next/link';
-import { usePathname } from "next/navigation";
+import { usePathname } from 'next/navigation';
 
-function Categories() {
+function CategoriesMenu() {
   const pathname = usePathname()
   const segments = pathname.split('/')
 
@@ -42,4 +42,4 @@ function Categories() {
   );
 }
 
-export default Categories;
+export default CategoriesMenu;

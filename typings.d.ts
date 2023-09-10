@@ -1,11 +1,9 @@
-import { StaticImageData } from 'next/image';
-
 type CategoryType = {
   id: string;
   title: string;
   categoryType: string;
   description: string;
-  image: string;
+  imageURL: string;
 };
 
 enum Sizes {
@@ -34,12 +32,6 @@ type ProductType = {
     isOnSale: boolean;
     discount: number;
   }
-};
-
-type ClothingCategoryType = {
-  id: string;
-  title: string;
-  image: string | StaticImageData;
 };
 
 type ShippingAddressType = {

@@ -1,14 +1,13 @@
 'use client';
 import Sorter from '@/components/Clothing/Sorter';
 import Products from '@/components/Products/Products';
-import { ProductType } from '../../../typings';
 import { useState } from 'react';
 
 interface ClothingProps {
   products: ProductType[];
 }
 
-function Clothing({ products }: ClothingProps) {
+function CategoryProducts({ products }: ClothingProps) {
   const [sortedProducts, setSortedProducts] = useState<ProductType[]>([]);
 
   return (
@@ -19,4 +18,4 @@ function Clothing({ products }: ClothingProps) {
   );
 }
 
-export default Clothing;
+export default CategoryProducts;

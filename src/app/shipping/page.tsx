@@ -1,13 +1,13 @@
 import PageTemplate from '@/components/layout/PageTemplate';
 import PageBody from '@/components/layout/PageBody';
 import PageTitle from '@/components/layout/PageTitle';
-import Categories from '@/components/layout/Categories';
+import CategoriesMenu from '@/components/layout/CategoriesMenu';
 
 function Page() {
   return (
     <PageTemplate>
       <PageBody>
-        <Categories />
+        <CategoriesMenu />
         <PageTitle title="Shipping Policy" />
         <div className="w-full max-w-[1000px] flex flex-col items-start justify-start gap-5">
           { shippingData.map((item, index) => (
