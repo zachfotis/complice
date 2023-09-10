@@ -2,7 +2,6 @@
 
 import UserLogo from '@/assets/user.png';
 import Image from 'next/image';
-import { UserType } from '../../../typings';
 
 interface Props {
   currentUser: UserType;

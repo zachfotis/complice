@@ -1,4 +1,3 @@
-import { OrderProductType } from '../../../typings';
 import Product from '@/components/Cart/Product';
 
 interface YourCartProps {

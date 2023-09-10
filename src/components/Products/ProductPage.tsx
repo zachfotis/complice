@@ -2,7 +2,6 @@
 
 import Carousel from '@/components/Product/Carousel';
 import Details from '@/components/Product/Details';
-import { ProductType } from '../../../typings';
 import { useState } from 'react';
 import AddToCartModal from '@/components/Product/AddToCartModal';
 

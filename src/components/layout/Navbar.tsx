@@ -6,7 +6,6 @@ import { useEffect, useState } from 'react';
 import { HiMagnifyingGlass, HiOutlineHeart, HiOutlineShoppingBag, HiOutlineUser, HiSquares2X2 } from 'react-icons/hi2';
 import Menu from './Menu';
 import SearchBar from '@/components/layout/SearchBar';
-import { OrderProductType } from '../../../typings';
 
 function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);

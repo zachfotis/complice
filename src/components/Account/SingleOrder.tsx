@@ -1,4 +1,3 @@
-import { OrderType } from '../../../typings';
 import { BsChevronDoubleRight } from 'react-icons/bs';
 import { MdPendingActions } from 'react-icons/md';
 import { GrCompliance } from 'react-icons/gr';

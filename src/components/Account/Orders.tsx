@@ -1,4 +1,3 @@
-import { OrderType } from '../../../typings';
 import { BsCartX } from 'react-icons/bs';
 import { SingleOrder } from '@/components/Account/SingleOrder';
 

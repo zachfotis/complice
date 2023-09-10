@@ -4,7 +4,6 @@ import { FormEvent, useEffect, useState } from 'react';
 import Link from 'next/link';
 import { toast } from 'react-toastify';
 import { redirect } from 'next/navigation';
-import { UserType } from '../../../typings';
 
 function LoginForm() {
   const [email, setEmail] = useState('');

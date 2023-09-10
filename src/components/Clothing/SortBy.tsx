@@ -1,6 +1,5 @@
 import { FaSortAmountDownAlt, FaSortAmountUp } from 'react-icons/fa';
 import { IoIosArrowDown } from 'react-icons/io';
-import { ProductType } from '../../../typings';
 
 interface SortByProps {
   products: ProductType[];

@@ -1,4 +1,3 @@
-import { ProductType } from '../../../typings';
 import Button from '../common/Button';
 import ProductThumb from './ProductThumb';
 import Link from 'next/link';

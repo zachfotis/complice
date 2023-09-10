@@ -1,4 +1,3 @@
-import { OrderProductType, ShippingAddressType } from '../../../typings';
 import ProductMini from '@/components/Cart/ProductMini';
 
 interface PlaceOrderProps {

@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { OrderProductType, ShippingAddressType } from '../../../typings';
 import { toast } from 'react-toastify';
 
 interface ProceedStepProps {

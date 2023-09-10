@@ -1,4 +1,3 @@
-import { UserType } from '../../../typings';
 import { Trophy } from '@/components/Account/Trophy';
 
 interface Props {

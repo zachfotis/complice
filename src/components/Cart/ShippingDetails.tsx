@@ -1,4 +1,3 @@
-import { ShippingAddressType, ShippingCountryType } from '../../../typings';
 
 interface ShippingDetailsProps {
   shippingAddress: ShippingAddressType;

@@ -1,4 +1,3 @@
-import { ProductType } from '../../../typings';
 import Link from 'next/link';
 
 interface Props {

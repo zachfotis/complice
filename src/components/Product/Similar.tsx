@@ -1,5 +1,4 @@
 import Products from '../Products/Products';
-import { ProductType } from '../../../typings';
 
 interface SimilarProps {
   products: ProductType[]

@@ -1,7 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { HiOutlineHeart } from 'react-icons/hi2';
-import { ProductType } from '../../../typings';
 
 interface ProductThumbProps {
   product: ProductType;

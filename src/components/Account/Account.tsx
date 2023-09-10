@@ -5,7 +5,6 @@ import PageBody from '@/components/layout/PageBody';
 import Cover from '@/components/Account/Cover';
 import Tabs from '@/components/Account/Tabs';
 import Ranking from '@/components/Account/Ranking';
-import { OrderType, ShippingCountryType, UserType } from '../../../typings';
 import { redirect } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import Loader from '@/components/common/Loader';

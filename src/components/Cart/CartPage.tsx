@@ -2,7 +2,6 @@
 import CheckoutBar from '@/components/Cart/CheckoutBar';
 import { useEffect, useState } from 'react';
 import YourCart from '@/components/Cart/YourCart';
-import { OrderProductType, ShippingAddressType, ShippingCountryType } from '../../../typings';
 import Totals from '@/components/Cart/Totals';
 import ProceedStep from '@/components/Cart/ProceedStep';
 import ShippingDetails from '@/components/Cart/ShippingDetails';

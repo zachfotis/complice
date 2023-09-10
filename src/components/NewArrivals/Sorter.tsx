@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { ProductType } from '../../../typings';
 
 interface SorterProps {
   products: ProductType[];

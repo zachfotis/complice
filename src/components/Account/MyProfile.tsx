@@ -1,6 +1,5 @@
 'use client';
 
-import { ShippingCountryType, UserType } from '../../../typings';
 import { useState } from 'react';
 
 interface IMyProfileProps {

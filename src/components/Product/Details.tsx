@@ -1,7 +1,6 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { OrderProductType, ProductType } from '../../../typings';
 import useLocalStorage from '@/hooks/useLocalStorage';
 import { toast } from 'react-toastify';
 

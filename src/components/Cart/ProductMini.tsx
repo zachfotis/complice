@@ -1,4 +1,3 @@
-import { OrderProductType } from '../../../typings';
 import Image from 'next/image';
 
 interface ProductMiniProps {

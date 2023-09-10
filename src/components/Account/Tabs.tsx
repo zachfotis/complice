@@ -1,7 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-import { OrderType, ShippingCountryType, UserType } from '../../../typings';
 import { MyProfile } from '@/components/Account/MyProfile';
 import { Orders } from '@/components/Account/Orders';
 
