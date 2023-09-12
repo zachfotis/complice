@@ -1,3 +1,4 @@
+// ======== CATEGORIES ========
 type CategoryType = {
   id: string;
   title: string;
@@ -6,14 +7,7 @@ type CategoryType = {
   imageURL: string;
 };
 
-enum Sizes {
-  XS = 'XS',
-  S = 'S',
-  M = 'M',
-  L = 'L',
-  XL = 'XL',
-  XXL = 'XXL',
-};
+// ======== PRODUCTS ========
 
 type ProductType = {
   id: string;
@@ -34,22 +28,16 @@ type ProductType = {
   }
 };
 
-type ShippingAddressType = {
-  firstName: string;
-  lastName: string;
-  address: string;
-  city: string;
-  postalCode: string;
-  country: string;
-  phoneNumber: string;
-  email: string;
+enum Sizes {
+  XS = 'XS',
+  S = 'S',
+  M = 'M',
+  L = 'L',
+  XL = 'XL',
+  XXL = 'XXL',
 };
 
-type ShippingCountryType = {
-  id: string;
-  name: string;
-  cost: number;
-};
+// ======== ORDERS ========
 
 type OrderProductType = {
   id: string;
@@ -74,6 +62,25 @@ type OrderType = {
   products: OrderProductType[];
   shippingAddress: ShippingAddressType;
 };
+
+type ShippingAddressType = {
+  firstName: string;
+  lastName: string;
+  address: string;
+  city: string;
+  postalCode: string;
+  country: string;
+  phoneNumber: string;
+  email: string;
+};
+
+type ShippingCountryType = {
+  id: string;
+  name: string;
+  cost: number;
+};
+
+// ======== USER ========
 
 type UserType = {
   id: string;
