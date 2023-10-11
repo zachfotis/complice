@@ -19,7 +19,7 @@ function Product({ cartProduct, cartProducts, setCartProducts }: ProductProps) {
       cartProductsCopy[index].quantity--;
       setCartProducts(cartProductsCopy);
     }
-  }
+  };
 
   // Increase quantity up to maxQuantity
   const increaseQuantity = () => {
@@ -30,13 +30,13 @@ function Product({ cartProduct, cartProducts, setCartProducts }: ProductProps) {
       cartProductsCopy[index].quantity++;
       setCartProducts(cartProductsCopy);
     }
-  }
+  };
 
   return (
     <div className="w-full flex flex-col md:flex-row justify-start items-stretch gap-5 md:gap-10">
       {/* Image */ }
       <Link href={ `/products/${ cartProduct.id }` } className="w-full md:w-auto">
-        <Image src={ cartProduct.thumb } alt={ cartProduct.title } width={ 700 } height={ 500 } className="w-full md:w-[350px] h-[200px] object-cover" />
+        <Image src={ cartProduct.imagesURL.image1 || '' } alt={ cartProduct.title } width={ 700 } height={ 500 } className="w-full md:w-[350px] h-[200px] object-cover" />
       </Link>
       <div className="relative flex w-full flex-col items-start justify-start gap-5 bg-white">
         {/* Title */ }
@@ -77,7 +77,9 @@ function Product({ cartProduct, cartProducts, setCartProducts }: ProductProps) {
         <div className="relative flex w-full items-start justify-between">
           <p className="text-base">Price</p>
           <div className="flex items-center justify-center gap-2">
-            <p className="text-center text-base text-secondary opacity-70 line-through">{ cartProduct.price } &euro;</p>
+            { cartProduct.onSale.isOnSale && (
+              <p className="text-center text-base text-secondary opacity-70 line-through">{ cartProduct.price } &euro;</p>
+            ) }
             <p className="text-center text-base text-primary">{ (cartProduct.price - cartProduct.onSale.discount * cartProduct.price).toFixed(2) } &euro;</p>
           </div>
         </div>

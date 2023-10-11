@@ -2,7 +2,6 @@ import Similar from '@/components/Product/Similar';
 import CategoriesMenu from '@/components/layout/CategoriesMenu';
 import PageBody from '@/components/layout/PageBody';
 import PageTemplate from '@/components/layout/PageTemplate';
-import { fetchProduct, fetchProducts } from '@/utils/api';
 import ProductPage from '@/components/Products/ProductPage';
 import NotFound from '@/components/Product/NotFound';
 
@@ -14,17 +13,52 @@ interface PageProps {
 
 export const fetchCache = 'force-no-store'
 
-export async function generateStaticParams() {
-  const products = await fetchProducts()
+const fetchProducts = async () => {
+  try {
+    const BASE_URL = process.env.API_URL;
+    const res = await fetch(`${ BASE_URL }/products/get-products`);
+    const data = await res.json();
+    return data;
+  } catch (err) {
+    console.log(err);
+    return [];
+  }
+};
 
+const fetchSimilarProducts = async (category: string) => {
+  try {
+    const BASE_URL = process.env.API_URL;
+    const res = await fetch(`${ BASE_URL }/products/get-similar-products/${ category }`);
+    const data = await res.json();
+    return data;
+  } catch (err) {
+    console.log(err);
+    return [];
+  }
+};
+
+const fetchProduct = async (productId: string) => {
+  try {
+    const BASE_URL = process.env.API_URL;
+    const res = await fetch(`${ BASE_URL }/products/get-product/${ productId }`);
+    const data = await res.json();
+    return data;
+  } catch (err) {
+    console.log(err);
+    return null;
+  }
+};
+
+export async function generateStaticParams() {
+  const products: ProductType[] = await fetchProducts();
   return products.map((productId) => ({
     productId: productId.id
   }))
 }
 
 async function page({ params }: PageProps) {
-  const product = await fetchProduct(params.productId)
-  const products = await fetchProducts(product ? product.category : '')
+  const product: ProductType = await fetchProduct(params.productId);
+  const similarProducts = await fetchSimilarProducts(product.category);
 
   return (
     <PageTemplate>
@@ -33,7 +67,7 @@ async function page({ params }: PageProps) {
         { product ? (
           <>
             <ProductPage product={ product } />
-            <Similar products={ products } />
+            <Similar products={ similarProducts } />
           </>
         ) : (<NotFound />) }
       </PageBody>

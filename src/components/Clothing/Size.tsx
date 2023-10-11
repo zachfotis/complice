@@ -11,30 +11,21 @@ interface SizeProps {
 function Size({products, setSortedProducts, isSizeExpanded, setIsSizeExpanded}: SizeProps) {
   const [selectedSizes, setSelectedSizes] = useState<string[]>([]);
 
-  const sizes = products.map((product) => product.sizes.map((size) => size)).flat();
-  const uniqueSizes = [...new Set(sizes)];
-  uniqueSizes.sort((a, b) => {
-    if (a === 'XS') return -1;
-    if (b === 'XS') return 1;
-    if (a === 'S') return -1;
-    if (b === 'S') return 1;
-    if (a === 'M') return -1;
-    if (b === 'M') return 1;
-    if (a === 'L') return -1;
-    if (b === 'L') return 1;
-    if (a === 'XL') return -1;
-    if (b === 'XL') return 1;
-    if (a === 'XXL') return -1;
-    if (b === 'XXL') return 1;
-    return 0;
-  });
+  const uniqueSizes = products.reduce((acc: string[], product) => {
+    const { quantity }: { quantity: { [key: string]: number; } } = product;
+    const sizes = Object.keys(quantity).filter(size => quantity[size] > 0);
+    return [...acc, ...sizes];
+  }, []);
+
 
   useEffect(() => {
     if (selectedSizes.length === 0) {
       setSortedProducts(products);
     } else {
       const filteredProducts = products.filter((product) => {
-        return product.sizes.some((size) => selectedSizes.includes(size));
+        const { quantity } = product;
+        const sizes = Object.keys(quantity);
+        return sizes.some((size) => selectedSizes.includes(size));
       });
       setSortedProducts(filteredProducts);
     }
@@ -46,7 +37,7 @@ function Size({products, setSortedProducts, isSizeExpanded, setIsSizeExpanded}: 
         <p className="text-base text-secondary">Filter Size</p>
         <IoIosArrowDown className="cursor-pointer text-lg text-secondary"/>
       </button>
-      <div className="absolute top-11 left-0 z-10 w-full bg-white px-5 py-3 shadow-sm"
+      <div className="absolute top-11 left-0 z-10 w-fit bg-white px-5 py-3 shadow-lg"
            style={{display: isSizeExpanded ? 'block' : 'none'}}>
         {uniqueSizes.map((size) => (
           <div

@@ -1,6 +1,5 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { HiOutlineHeart } from 'react-icons/hi2';
 
 interface ProductThumbProps {
   product: ProductType;
@@ -13,7 +12,7 @@ function ProductThumb({ product, isShort = false }: ProductThumbProps) {
     <div className="relative flex w-full snap-center flex-col items-center justify-start gap-2 overflow-hidden">
       <Link href={ `/products/${ product.id }` } className={ `w-full overflow-hidden ${ heightClass }` }>
         <Image
-          src={ product.thumb }
+          src={ product.imagesURL?.image1 || '' }
           alt="Category"
           width={ 400 }
           height={ 400 }
@@ -32,8 +31,6 @@ function ProductThumb({ product, isShort = false }: ProductThumbProps) {
           <p className="text-center text-base text-secondary">{ product.price } €</p>
         ) }
       </Link>
-      <HiOutlineHeart
-        className="absolute top-2 right-2 z-10 cursor-pointer rounded-full p-1 text-3xl transition-all duration-300 ease-in-out text-primary bg-whiteGrey hover:text-primary hover:scale-110" />
       {/*  Discount Ribbon at left top corner */ }
       { product.onSale.isOnSale && (
         <div

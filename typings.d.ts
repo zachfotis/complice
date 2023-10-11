@@ -14,13 +14,17 @@ type ProductType = {
   title: string;
   category: string;
   description: string;
-  sizes: string[];
   quantity: {
     [key: Sizes]: number;
   };
   price: number;
-  thumb: string;
-  images: string[];
+  imagesURL: {
+    image1?: string;
+    image2?: string;
+    image3?: string;
+    image4?: string;
+    image5?: string;
+  }
   isNew: boolean;
   onSale: {
     isOnSale: boolean;
@@ -49,8 +53,14 @@ type OrderProductType = {
   onSale: {
     isOnSale: boolean;
     discount: number;
+  };
+  imagesURL: {
+    image1?: string;
+    image2?: string;
+    image3?: string;
+    image4?: string;
+    image5?: string;
   }
-  thumb: string;
 };
 
 type OrderType = {

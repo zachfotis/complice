@@ -1,7 +1,6 @@
 import { AiOutlineCloseSquare } from 'react-icons/ai';
 import { SearchResultRow } from '@/components/layout/SearchResultRow';
 import { useEffect, useRef, useState } from 'react';
-import DATA from '@/assets/dummy/products.json';
 
 interface Props {
   setIsSearchBarOpen: (value: boolean) => void;
@@ -13,16 +12,24 @@ function SearchBar({ setIsSearchBarOpen }: Props) {
   const searchBarRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
-    if (searchValue.trim().length >= 3) {
-      const results = DATA.filter((product) => {
-        return product.title.toLowerCase().includes(searchValue.toLowerCase());
-      });
+    const fetchData = async () => {
+      const BASE_URL = process.env.NEXT_PUBLIC_API_URL;
+      const res = await fetch(`${ BASE_URL }/products/search-products/${ searchValue }`);
+      const data = await res.json();
+      return data;
+    };
+
+    const getResults = async () => {
+      const results = await fetchData();
       if (results.length > 0) {
         setSearchResults(results);
       } else {
         setSearchResults([]);
       }
+    };
 
+    if (searchValue.trim().length >= 3) {
+      getResults();
     } else {
       setSearchResults([]);
     }
@@ -48,7 +55,7 @@ function SearchBar({ setIsSearchBarOpen }: Props) {
       </div>
       { searchResults.length > 0 && searchValue !== '' && (
         <div className="flex w-full flex-col items-start justify-start gap-2 rounded-b-md bg-white pt-0 shadow-lg outline outline-1 outline-gray-300 overflow-hidden"
-             onClick={ () => setIsSearchBarOpen(false) }
+          onClick={ () => setIsSearchBarOpen(false) }
         >
           { searchResults.map((product) => (
             <SearchResultRow key={ product.id } product={ product } />

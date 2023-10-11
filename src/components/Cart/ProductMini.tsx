@@ -9,7 +9,7 @@ function ProductMini({ cartProduct }: ProductMiniProps) {
     <div className="w-full flex flex-col md:flex-row justify-start items-stretch gap-10">
       {/* Image */ }
       <div className="w-full md:w-auto">
-        <Image src={ cartProduct.thumb } alt={ cartProduct.title } width={ 700 } height={ 500 } className="w-full md:w-[350px] h-[200px] object-cover" />
+        <Image src={ cartProduct.imagesURL.image1 || '' } alt={ cartProduct.title } width={ 700 } height={ 500 } className="w-full md:w-[350px] h-[200px] object-cover" />
       </div>
       <div className="flex w-full flex-col items-start justify-start gap-5 bg-white">
         {/* Title */ }

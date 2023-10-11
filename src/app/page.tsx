@@ -6,7 +6,18 @@ import StayTuned from '@/components/common/StayTuned';
 import CategoriesMenu from '@/components/layout/CategoriesMenu';
 import PageBody from '@/components/layout/PageBody';
 import PageTemplate from '@/components/layout/PageTemplate';
-import { fetchProducts } from '@/utils/api';
+
+const fetchProducts = async () => {
+  try {
+    const BASE_URL = process.env.API_URL;
+    const res = await fetch(`${ BASE_URL }/products/new-arrivals`);
+    const data = await res.json();
+    return data;
+  } catch (err) {
+    console.log(err);
+    return [];
+  }
+};
 
 const fetchCategories = async () => {
   const BASE_URL = process.env.API_URL;

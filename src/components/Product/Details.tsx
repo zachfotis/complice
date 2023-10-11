@@ -10,7 +10,7 @@ interface DetailsProps {
 }
 
 function Details({ product, setIsModalOpen }: DetailsProps) {
-  const [selectedSize, setSelectedSize] = useState(product.sizes.find((size) => product.quantity[size as keyof typeof product.quantity] > 0) || '');
+  const [selectedSize, setSelectedSize] = useState(Object.keys(product.quantity).find((size) => product.quantity[size as keyof typeof product.quantity] > 0) || '');
   const [quantity, setQuantity] = useState(1);
   const [cartProducts, setCartProducts] = useLocalStorage<OrderProductType[]>('cartProducts', []);
 
@@ -32,8 +32,8 @@ function Details({ product, setIsModalOpen }: DetailsProps) {
           maxQuantity: product.quantity[selectedSize as keyof typeof product.quantity],
           price: product.price,
           onSale: product.onSale,
-          thumb: product.thumb
-        }
+          imagesURL: product.imagesURL,
+        },
       ];
       setCartProducts(newCartProducts);
     } else {
@@ -45,15 +45,15 @@ function Details({ product, setIsModalOpen }: DetailsProps) {
         ...cartProducts.slice(0, productIndex),
         {
           ...cartProducts[productIndex],
-          quantity: cartProducts[productIndex].quantity + quantity
+          quantity: cartProducts[productIndex].quantity + quantity,
         },
-        ...cartProducts.slice(productIndex + 1)
+        ...cartProducts.slice(productIndex + 1),
       ];
       setCartProducts(newCartProducts);
     }
     setIsModalOpen(true);
     toast.success('Product added to cart');
-  }
+  };
 
   return (
     <div className="flex w-full flex-col items-start justify-start gap-5 md:gap-8 bg-white lg:max-w-[600px]">
@@ -68,7 +68,7 @@ function Details({ product, setIsModalOpen }: DetailsProps) {
       <div className="relative flex w-full items-start justify-between">
         <p className="font-custom text-h4">Size</p>
         <div className="flex flex-row flex-wrap items-center justify-end gap-1 max-w-[80%]">
-          { product.sizes.map(
+          { Object.keys(product.quantity).map(
             (size, index) =>
               product.quantity[size as keyof typeof product.quantity] > 0 && (
                 <button
@@ -77,38 +77,40 @@ function Details({ product, setIsModalOpen }: DetailsProps) {
                   onClick={ () => setSelectedSize(size) }>
                   <p className="text-sm">{ size }</p>
                 </button>
-              )
+              ),
           ) }
         </div>
       </div>
-      {/* Quantity */}
+      {/* Quantity */ }
       <div className="relative flex w-full items-start justify-between">
         <p className="font-custom text-h4">Quantity</p>
         <div className="flex flex-row items-center justify-start">
           <button
             className="flex h-8 w-8 items-center justify-center border border-black hover:bg-black hover:text-white"
-            onClick={() => setQuantity((prev) => (prev > 1 ? prev - 1 : prev))}
+            onClick={ () => setQuantity((prev) => (prev > 1 ? prev - 1 : prev)) }
           >
             <p className="text-base font-[500]">-</p>
           </button>
-          <p className="flex h-8 w-28 items-center justify-center border-y text-center text-sm border-primary">{quantity}</p>
+          <p className="flex h-8 w-28 items-center justify-center border-y text-center text-sm border-primary">{ quantity }</p>
           <button
             className="flex h-8 w-8 items-center justify-center border border-black hover:bg-black hover:text-white"
-            onClick={() => setQuantity((prev) => (prev < product.quantity[selectedSize as keyof typeof product.quantity] ? prev + 1 : prev))}
+            onClick={ () => setQuantity((prev) => (prev < product.quantity[selectedSize as keyof typeof product.quantity] ? prev + 1 : prev)) }
           >
             <p className="text-base font-[500]">+</p>
           </button>
         </div>
       </div>
-      {/* Price */}
+      {/* Price */ }
       <div className="relative flex w-full items-start justify-between">
         <p className="font-custom text-h4">Price</p>
         <div className="flex items-center justify-center gap-2">
-          <p className="text-center text-base text-secondary opacity-70 line-through">{ product.price } &euro;</p>
+          { product.onSale.discount > 0 && (
+            <p className="text-center text-base text-secondary opacity-70 line-through">{ product.price } &euro;</p>
+          ) }
           <p className="text-center text-base text-primary">{ (product.price - product.onSale.discount * product.price).toFixed(2) } &euro;</p>
         </div>
       </div>
-      {/* Add to cart */}
+      {/* Add to cart */ }
       <button
         className="flex h-12 w-full items-center justify-center border border-black bg-black text-white hover:bg-white hover:text-black"
         onClick={ handleAddToCart }

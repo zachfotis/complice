@@ -3,7 +3,7 @@ import Logo from '@/assets/logo.png';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
-import { HiMagnifyingGlass, HiOutlineHeart, HiOutlineShoppingBag, HiOutlineUser, HiSquares2X2 } from 'react-icons/hi2';
+import { HiMagnifyingGlass, HiOutlineShoppingBag, HiOutlineUser, HiSquares2X2 } from 'react-icons/hi2';
 import Menu from './Menu';
 import SearchBar from '@/components/layout/SearchBar';
 
@@ -100,7 +100,6 @@ function Navbar() {
           <Link href="/account">
             <HiOutlineUser className="text-2xl" />
           </Link>
-          <HiOutlineHeart className="text-2xl" />
           <Link href="/cart" className="relative">
             <HiOutlineShoppingBag className="text-2xl" />
             { cartProducts && cartProducts.length > 0 && (

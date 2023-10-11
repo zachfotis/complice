@@ -14,7 +14,7 @@ function ProductPage({ product }: ProductPageProps) {
 
   return (
     <div className="flex flex-col items-stretch justify-between gap-5 md:gap-10 lg:flex-row">
-      <Carousel thumb={ product.thumb } images={ product.images } />
+      <Carousel images={ product.imagesURL } />
       <Details product={ product } setIsModalOpen={ setIsModalOpen } />
       <AddToCartModal isModalOpen={ isModalOpen } setIsModalOpen={ setIsModalOpen } />
     </div>
