@@ -50,7 +50,7 @@ function Product({ cartProduct, cartProducts, setCartProducts }: ProductProps) {
           <div className="flex flex-row flex-wrap items-center justify-start gap-1 max-w-[80%]">
             <div
               className="py-1 w-20 flex justify-center items-center border border-black bg-white text-primary">
-              <p className="text-sm">{ cartProduct.size }</p>
+              <p className="text-sm">{ cartProduct.size.replace(/_/g, ' ') }</p>
             </div>
           </div>
         </div>

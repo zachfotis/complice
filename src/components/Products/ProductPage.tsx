@@ -13,7 +13,7 @@ function ProductPage({ product }: ProductPageProps) {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
-    <div className="flex flex-col items-stretch justify-between gap-5 md:gap-10 lg:flex-row">
+    <div className="w-full flex flex-col items-stretch justify-between gap-10 md:gap-20 lg:flex-row">
       <Carousel images={ product.imagesURL } />
       <Details product={ product } setIsModalOpen={ setIsModalOpen } />
       <AddToCartModal isModalOpen={ isModalOpen } setIsModalOpen={ setIsModalOpen } />

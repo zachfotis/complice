@@ -95,6 +95,7 @@ function Account() {
           </div>
         ) : currentUser ? (
           <>
+            <h2 className="text-h3 font-medium uppercase mt-5 md:mt-10">My Account</h2>
             <Cover currentUser={ currentUser } />
             <Ranking ranking={ currentUser.ranking } />
             <Tabs currentUser={ currentUser } shippingCountries={ shippingCountries } orders={ orders } />

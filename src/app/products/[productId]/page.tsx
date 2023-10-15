@@ -25,10 +25,10 @@ const fetchProducts = async () => {
   }
 };
 
-const fetchSimilarProducts = async (category: string) => {
+const fetchSimilarProducts = async (category: string, productId: string) => {
   try {
     const BASE_URL = process.env.API_URL;
-    const res = await fetch(`${ BASE_URL }/products/get-similar-products/${ category }`);
+    const res = await fetch(`${ BASE_URL }/products/get-similar-products/${ category }/${ productId }`);
     const data = await res.json();
     return data;
   } catch (err) {
@@ -58,7 +58,7 @@ export async function generateStaticParams() {
 
 async function page({ params }: PageProps) {
   const product: ProductType = await fetchProduct(params.productId);
-  const similarProducts = await fetchSimilarProducts(product.category);
+  const similarProducts = await fetchSimilarProducts(product.category, params.productId);
 
   return (
     <PageTemplate>

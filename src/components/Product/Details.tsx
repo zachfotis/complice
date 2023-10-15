@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import useLocalStorage from '@/hooks/useLocalStorage';
 import { toast } from 'react-toastify';
+import { AiOutlineWarning } from 'react-icons/ai';
 
 interface DetailsProps {
   product: ProductType;
@@ -68,22 +69,25 @@ function Details({ product, setIsModalOpen }: DetailsProps) {
       <div className="relative flex w-full items-start justify-between">
         <p className="font-custom text-h4">Size</p>
         <div className="flex flex-row flex-wrap items-center justify-end gap-1 max-w-[80%]">
-          { Object.keys(product.quantity).map(
+          { Object.values(product.quantity).some((quantity: any) => quantity > 0) ? Object.keys(product.quantity).map(
             (size, index) =>
               product.quantity[size as keyof typeof product.quantity] > 0 && (
                 <button
                   key={ index }
                   className={ `py-1 w-20 flex justify-center items-center border border-black cursor-pointer hover:bg-black hover:text-white ${ size === selectedSize ? 'bg-black text-white' : 'bg-white text-black' }` }
                   onClick={ () => setSelectedSize(size) }>
-                  <p className="text-sm">{ size }</p>
+                  <p className="text-sm">{ size.replace(/_/g, ' ') }</p>
                 </button>
               ),
+          ) : (
+            <p className="text-sm">No sizes available</p>
           ) }
         </div>
       </div>
       {/* Quantity */ }
       <div className="relative flex w-full items-start justify-between">
         <p className="font-custom text-h4">Quantity</p>
+        { Object.values(product.quantity).some((quantity: any) => quantity > 0) ? (
         <div className="flex flex-row items-center justify-start">
           <button
             className="flex h-8 w-8 items-center justify-center border border-black hover:bg-black hover:text-white"
@@ -99,6 +103,12 @@ function Details({ product, setIsModalOpen }: DetailsProps) {
             <p className="text-base font-[500]">+</p>
           </button>
         </div>
+        ) : (
+          <div className="flex flex-row items-center justify-start gap-2">
+            <AiOutlineWarning className="text-orange-500 text-xl" />
+            <p className="text-sm text-orange-500">out of stock</p>
+          </div>
+        ) }
       </div>
       {/* Price */ }
       <div className="relative flex w-full items-start justify-between">
@@ -111,12 +121,14 @@ function Details({ product, setIsModalOpen }: DetailsProps) {
         </div>
       </div>
       {/* Add to cart */ }
+      { Object.values(product.quantity).some((quantity: any) => quantity > 0) && (
       <button
         className="flex h-12 w-full items-center justify-center border border-black bg-black text-white hover:bg-white hover:text-black"
         onClick={ handleAddToCart }
       >
         <p className="text-base font-[500]">Add to cart</p>
       </button>
+      ) }
     </div>
   );
 }

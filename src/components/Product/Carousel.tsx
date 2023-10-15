@@ -22,9 +22,8 @@ function Carousel({ images }: CarouselProps) {
   const imagesArray = Object.values(images).filter(Boolean);
 
   const checkWidth = () => {
-    const carousel = document.querySelector('#carousel');
-    const carouselWidth = carousel?.clientWidth;
-    if (carouselWidth && carouselWidth < 600) {
+    const screenWidth = window.innerWidth;
+    if (screenWidth && screenWidth < 600) {
       setIsCollapsed(true);
     } else {
       setIsCollapsed(false);
@@ -78,9 +77,9 @@ function Carousel({ images }: CarouselProps) {
   }, [isModalOpen]);
 
   return (
-    <div id="carousel" className="relative flex-auto flex w-full flex-col items-center justify-start gap-2">
+    <div id="carousel" className="relative flex-auto flex w-full flex-col items-start justify-stretch gap-2 lg:flex-row lg:h-[500px]">
       { !isCollapsed && imagesArray[0] && (
-        <div className="w-full h-[300px] md:h-[400px]">
+        <div className="relative w-full h-[300px] md:h-[500px]">
           <Image src={ imagesArray[0] } alt="Product" width={ 1680 } height={ 800 }
             className="h-full w-full object-cover object-center cursor-pointer"
             onClick={ () => setClickedImageURL(imagesArray[0]) }
@@ -89,10 +88,10 @@ function Carousel({ images }: CarouselProps) {
       ) }
       <div
         id="carousel__images"
-        className={ `w-full ${ isCollapsed ? 'h-full flex flex-row justify-start items-center overflow-x-scroll snap-x snap-mandatory' : 'grid grid-cols-4 gap-2' }` }
+        className={ `${ isCollapsed ? 'h-full flex flex-row justify-start items-center overflow-x-scroll snap-x snap-mandatory' : 'relative flex flex-row justify-start items-center gap-2 w-full lg:flex-col lg:w-fit lg:h-full' }` }
       >
         { isCollapsed && imagesArray[0] && <Image id="carousel__img_0" src={ imagesArray[0] } alt="Product" width={ 1680 } height={ 800 }
-          className="h-[300px] md:h-[400px] w-full min-w-full snap-center object-cover object-center cursor-pointer"
+          className="h-[300px] md:h-[500px] w-full min-w-full snap-center object-cover object-center cursor-pointer"
           onClick={ () => setClickedImageURL(imagesArray[0]) }
         /> }
         { imagesArray.map((image, index) => (
@@ -104,7 +103,7 @@ function Carousel({ images }: CarouselProps) {
               alt="Product"
               width={ 1680 }
               height={ 800 }
-              className={ `${ isCollapsed ? 'w-full min-w-full h-[300px] md:h-[400px]' : 'h-full max-h-[150px]' } snap-center object-cover object-center cursor-pointer` }
+              className={ `${ isCollapsed ? 'w-full min-w-full h-[300px] md:h-[500px]' : 'w-[250px] h-full max-h-[150px] lg:w-[100px]' } snap-center object-cover object-center cursor-pointer` }
               onClick={ () => setClickedImageURL(image) }
             />
           )
@@ -112,7 +111,7 @@ function Carousel({ images }: CarouselProps) {
         {/* Bullets*/ }
         { isCollapsed && (
           <div className="absolute bottom-6 left-0 flex w-full items-center justify-center gap-3">
-            { Array.from({ length: imagesArray.length + 1 }).map((_, index) => (
+            { Array.from({ length: imagesArray.length }).map((_, index) => (
               <div key={ index }
                 className={ `w-4 h-4 rounded-full ${ showingImage === index ? 'bg-black border-2 border-white' : 'bg-white border border-black' }` } />
             )) }

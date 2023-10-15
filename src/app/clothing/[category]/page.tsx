@@ -5,6 +5,8 @@ import Paginator from '@/components/layout/Paginator';
 import NavMap from '@/components/layout/NavMap';
 import PageTitle from '@/components/layout/PageTitle';
 import CategoryProducts from '@/components/Clothing/CategoryProducts';
+import Button from '@/components/common/Button';
+import Link from 'next/link';
 
 interface PageProps {
   params: {
@@ -35,7 +37,7 @@ export async function generateStaticParams() {
   const categories: CategoryType[] = await fetchCategories();
   return categories.map((category) => ({
     category: category.title,
-  }))
+  }));
 }
 
 async function Page({ params }: PageProps) {
@@ -47,8 +49,19 @@ async function Page({ params }: PageProps) {
         <CategoriesMenu />
         <NavMap />
         <PageTitle title={ params.category } />
-        <CategoryProducts products={ products } />
-        <Paginator productsShown={ products.length } totalProducts={ products.length } />
+        { products.length === 0 ?
+          <div className="flex flex-col justify-center items-center gap-5">
+            <p className="text-center">No products found</p>
+            <Link href="/clothing" className="flex justify-center">
+              <Button text="Go back" />
+            </Link>
+          </div>
+          : (
+            <>
+              <CategoryProducts products={ products } />
+              <Paginator productsShown={ products.length } totalProducts={ products.length } />
+            </>
+          ) }
       </PageBody>
     </PageTemplate>
   );
