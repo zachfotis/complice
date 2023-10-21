@@ -97,7 +97,7 @@ type UserType = {
   firstName: string;
   lastName: string;
   email: string;
-  birthDate?: string;
+  birthDate?: Date;
   discount?: number;
   address?: ShippingAddressType;
   ranking: {
@@ -107,6 +107,18 @@ type UserType = {
     moneyToNextRanking: number;
   }
 };
+
+type UpdateUserType = {
+  firstName: string;
+  lastName: string;
+  address: string;
+  city: string;
+  postalCode: string;
+  country: string;
+  phoneNumber: string;
+  email: string;
+  birthDate?: Date;
+}
 
 enum RankingNamesEnum {
   BRONZE = 'Bronze',

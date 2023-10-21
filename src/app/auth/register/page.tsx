@@ -1,5 +1,7 @@
+import RegisterForm from '@/components/Auth/RegisteForm';
+
 export default function Page() {
   return (
-    <h1>Register</h1>
+    <RegisterForm />
   );
 }
