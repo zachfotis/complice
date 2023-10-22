@@ -12,11 +12,12 @@ import Loader from '@/components/common/Loader';
 function Account() {
   const [isLoading, setIsLoading] = useState(true);
   const [currentUser, setCurrentUser] = useState<UserType | null>(null);
-  const shouldRedirect = !currentUser && !isLoading;
 
-  if (shouldRedirect) {
-    redirect('/auth/login');
-  }
+  useEffect(() => {
+    if (!currentUser && !isLoading) {
+      redirect('/auth/login');
+    }
+  }, [currentUser, isLoading]);
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -30,7 +31,6 @@ function Account() {
         const user = await response.json();
 
         if (user.currentUser) {
-          setIsLoading(false);
           setCurrentUser(user.currentUser);
         }
       } catch (error) {
@@ -89,21 +89,18 @@ function Account() {
   return (
     <PageTemplate>
       <PageBody>
-        { isLoading ? (
+        { isLoading && !currentUser && (
           <div className="flex-1 w-full flex justify-center items-center">
             <Loader />
           </div>
-        ) : currentUser ? (
+        ) }
+        { !isLoading && currentUser && (
           <>
             <h2 className="text-h3 font-medium uppercase mt-5 md:mt-10">My Account</h2>
             <Cover currentUser={ currentUser } />
             <Ranking ranking={ currentUser.ranking } />
             <Tabs currentUser={ currentUser } shippingCountries={ shippingCountries } orders={ orders } />
           </>
-        ) : (
-          <div className="flex-1 w-full flex justify-center items-center">
-            <p>You are not logged in.</p>
-          </div>
         ) }
       </PageBody>
     </PageTemplate>

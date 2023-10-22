@@ -62,7 +62,29 @@ function CartPage() {
         return cartProduct;
       }
     );
+
+    const fetchCurrentUser = async () => {
+      const baseUrl = process.env.NEXT_PUBLIC_API_URL;
+      const response = await fetch(`${ baseUrl }/auth/currentuser`, {
+        method: 'GET',
+        credentials: 'include',
+        cache: 'no-cache',
+      });
+      const data = await response.json();
+      if (data.currentUser) {
+        if (data.currentUser.address) {
+          setShippingAddress(data.currentUser.address);
+          if (data.currentUser.address.country) {
+
+            setShippingCost(shippingCountries.find((country) => country.name === data.currentUser.address.country)?.cost || 0);
+          }
+        }
+        if (data.currentUser.discount) setDiscount(data.currentUser.discount);
+      }
+    };
+
     setCartProducts(newCartProducts);
+    fetchCurrentUser();
   }, [])
 
   return (

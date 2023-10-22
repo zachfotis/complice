@@ -15,7 +15,6 @@ function ProductMini({ cartProduct }: ProductMiniProps) {
         {/* Title */ }
         <div>
           <h1 className="font-custom text-h3">{ cartProduct.title }</h1>
-          <p className="text-sm">{ cartProduct.id }</p>
         </div>
         {/* Size */ }
         <div className="relative flex w-full items-start justify-between gap-10">

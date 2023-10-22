@@ -21,14 +21,6 @@ function Page() {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
 
-    console.log({
-      firstName: data.get('firstName'),
-      lastName: data.get('lastName'),
-      email: data.get('email'),
-      phone: data.get('phone'),
-      message: data.get('message')
-    });
-
     toast.success('Message sent!');
   };
 

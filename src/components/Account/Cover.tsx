@@ -25,7 +25,7 @@ function Cover({ currentUser }: Props) {
   };
 
   return (
-    <div className="w-full max-w-[1000px] flex flex-col justify-stretch items-center gap-5 shadow-sm p-5">
+    <div className="w-full max-w-[1000px] flex flex-col justify-stretch items-center gap-5 shadow-sm px-5 pb-5">
       <div className="flex flex-col justify-between items-center gap-7 md:flex-row">
         <Image src={ UserLogo } width={ 300 } height={ 300 } alt="Avatar" className="w-[130px] h-[130px] object-cover object-center" />
         <div className="flex flex-col justify-start items-center gap-2 md:items-start">

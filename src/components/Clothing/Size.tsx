@@ -30,7 +30,6 @@ function Size({ products, setSortedProducts, isSizeExpanded, setIsSizeExpanded }
           selectedSizes.includes(size) && product.quantity[size as unknown as keyof typeof product.quantity] > 0,
         );
       });
-      console.log(filteredProducts);
       setSortedProducts(filteredProducts);
     }
   }, [selectedSizes]);

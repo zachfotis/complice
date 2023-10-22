@@ -9,14 +9,14 @@ interface ProductThumbProps {
 function ProductThumb({ product, isShort = false }: ProductThumbProps) {
   const heightClass = isShort ? 'h-[250px] md:h-[250px]' : 'h-[250px] md:h-[375px]';
   return (
-    <div className="relative flex w-full snap-center flex-col items-center justify-start gap-2 overflow-hidden">
+    <div className="relative flex w-full snap-center flex-col items-center justify-start gap-2 shadow-sm overflow-hidden">
       <Link href={ `/products/${ product.id }` } className={ `w-full overflow-hidden ${ heightClass }` }>
         <Image
           src={ product.imagesURL?.image1 || '' }
           alt="Category"
           width={ 400 }
           height={ 400 }
-          className="h-full w-full cursor-pointer object-cover object-center transition-all duration-300 ease-in-out hover:scale-110"
+          className="h-full w-full cursor-pointer object-contain object-center transition-all duration-300 ease-in-out hover:scale-110"
         />
       </Link>
       <Link href={ `/products/${ product.id }` }

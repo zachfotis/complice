@@ -61,7 +61,6 @@ function Details({ product, setIsModalOpen }: DetailsProps) {
       {/* Title and ID */ }
       <div>
         <h1 className="font-custom text-h3">{ product.title }</h1>
-        <p className="text-sm">{ product.id }</p>
       </div>
       {/* Description */ }
       <p className="text-justify text-base">{ product.description }</p>

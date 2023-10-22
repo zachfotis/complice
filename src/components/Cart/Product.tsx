@@ -42,7 +42,6 @@ function Product({ cartProduct, cartProducts, setCartProducts }: ProductProps) {
         {/* Title */ }
         <div>
           <Link href={ `/products/${ cartProduct.id }` } className="font-custom text-h3">{ cartProduct.title }</Link>
-          <p className="text-sm">{ cartProduct.id }</p>
         </div>
         {/* Size */ }
         <div className="relative flex w-full items-start justify-between gap-10">

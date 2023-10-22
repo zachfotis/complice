@@ -79,9 +79,9 @@ function Carousel({ images }: CarouselProps) {
   return (
     <div id="carousel" className="relative flex-auto flex w-full flex-col items-start justify-stretch gap-2 lg:flex-row lg:h-[500px]">
       { !isCollapsed && imagesArray[0] && (
-        <div className="relative w-full h-[300px] md:h-[500px]">
+        <div className="shadow-sm relative w-full h-[300px] md:h-[500px]">
           <Image src={ imagesArray[0] } alt="Product" width={ 1680 } height={ 800 }
-            className="h-full w-full object-cover object-center cursor-pointer"
+            className="h-full w-full object-contain object-center cursor-pointer"
             onClick={ () => setClickedImageURL(imagesArray[0]) }
           />
         </div>
@@ -91,7 +91,7 @@ function Carousel({ images }: CarouselProps) {
         className={ `${ isCollapsed ? 'h-full flex flex-row justify-start items-center overflow-x-scroll snap-x snap-mandatory' : 'relative flex flex-row justify-start items-center gap-2 w-full lg:flex-col lg:w-fit lg:h-full' }` }
       >
         { isCollapsed && imagesArray[0] && <Image id="carousel__img_0" src={ imagesArray[0] } alt="Product" width={ 1680 } height={ 800 }
-          className="h-[300px] md:h-[500px] w-full min-w-full snap-center object-cover object-center cursor-pointer"
+          className="h-[300px] md:h-[500px] w-full min-w-full snap-center object-contain object-center cursor-pointer"
           onClick={ () => setClickedImageURL(imagesArray[0]) }
         /> }
         { imagesArray.map((image, index) => (
@@ -103,7 +103,7 @@ function Carousel({ images }: CarouselProps) {
               alt="Product"
               width={ 1680 }
               height={ 800 }
-              className={ `${ isCollapsed ? 'w-full min-w-full h-[300px] md:h-[500px]' : 'w-[250px] h-full max-h-[150px] lg:w-[100px]' } snap-center object-cover object-center cursor-pointer` }
+              className={ `shadow-sm ${ isCollapsed ? 'w-full min-w-full h-[300px] md:h-[500px]' : 'w-[250px] h-full max-h-[150px] lg:w-[100px]' } snap-center object-cover object-center cursor-pointer` }
               onClick={ () => setClickedImageURL(image) }
             />
           )
