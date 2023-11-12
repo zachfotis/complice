@@ -9,6 +9,7 @@ import PlaceOrder from '@/components/Cart/PlaceOrder';
 import useLocalStorage from '@/hooks/useLocalStorage';
 import { toast } from 'react-toastify';
 import { BsCartX } from 'react-icons/bs';
+import Loader from '@/components/common/Loader';
 
 const initialShippingAddress: ShippingAddressType = {
   firstName: '',
@@ -22,6 +23,7 @@ const initialShippingAddress: ShippingAddressType = {
 };
 
 function CartPage() {
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const [currentStep, setCurrentStep] = useState(1);
   const [cartProducts, setCartProducts] = useLocalStorage<OrderProductType[]>('cartProducts', []);
   const [shippingCost, setShippingCost] = useState<number>(0);
@@ -39,14 +41,14 @@ function CartPage() {
       let productTotal = 0;
       let productDiscount = 0;
       let userDiscount = 0;
-      
+
       if (cartProduct.onSale.isOnSale) {
         productTotal = Number((cartProduct.price).toFixed(2)) * cartProduct.quantity;
         productDiscount = Number((cartProduct.price * cartProduct.onSale.discount).toFixed(2)) * cartProduct.quantity;
       } else {
         productTotal = Number((cartProduct.price).toFixed(2)) * cartProduct.quantity;
       }
-      userDiscount = Number((((cartProduct.price  * cartProduct.quantity) - productDiscount) * userCurrentDiscount).toFixed(2)) ;
+      userDiscount = Number((((cartProduct.price * cartProduct.quantity) - productDiscount) * userCurrentDiscount).toFixed(2));
 
       total += productTotal;
       discount += productDiscount + userDiscount;
@@ -74,22 +76,26 @@ function CartPage() {
     );
 
     const fetchCurrentUser = async () => {
-      const baseUrl = process.env.NEXT_PUBLIC_API_URL;
-      const response = await fetch(`${ baseUrl }/auth/currentuser`, {
-        method: 'GET',
-        credentials: 'include',
-        cache: 'no-cache',
-      });
-      const data = await response.json();
-      if (data.currentUser) {
-        if (data.currentUser.address) {
-          setShippingAddress(data.currentUser.address);
-          if (data.currentUser.address.country) {
+      try {
+        const baseUrl = process.env.NEXT_PUBLIC_API_URL;
+        const response = await fetch(`${ baseUrl }/auth/currentuser`, {
+          method: 'GET',
+          credentials: 'include',
+          cache: 'no-cache',
+        });
+        const data = await response.json();
+        if (data.currentUser) {
+          if (data.currentUser.address) {
+            setShippingAddress(data.currentUser.address);
+            if (data.currentUser.address.country) {
 
-            setShippingCost(shippingCountries.find((country) => country.name === data.currentUser.address.country)?.cost || 0);
+              setShippingCost(shippingCountries.find((country) => country.name === data.currentUser.address.country)?.cost || 0);
+            }
           }
+          if (data.currentUser.discount) setUserCurrentDiscount(data.currentUser.discount);
         }
-        if (data.currentUser.discount) setUserCurrentDiscount(data.currentUser.discount);
+      } catch (e: any) {
+        toast.error(e?.message || 'Something went wrong');
       }
     };
 
@@ -112,7 +118,13 @@ function CartPage() {
             setShippingCost={ setShippingCost } />) }
         { currentStep === 3 && (<PlaceOrder cartProducts={ cartProducts } shippingAddress={ shippingAddress } />) }
         <Totals totalDiscount={ totalDiscount } userDiscount={ userCurrentDiscount } shippingCost={ shippingCost } total={ total } grandTotal={ grandTotal } />
-        <ProceedStep currentStep={ currentStep } setCurrentStep={ setCurrentStep } cartProducts={ cartProducts } shippingAddress={ shippingAddress } />
+        <ProceedStep currentStep={ currentStep } setCurrentStep={ setCurrentStep } cartProducts={ cartProducts } shippingAddress={ shippingAddress }
+          isLoading={isLoading} setIsLoading={ setIsLoading } />
+        { isLoading && (
+          <div className="absolute top-0 left-0 w-full h-full bg-white bg-opacity-50 z-50 flex justify-center items-center">
+            <Loader />
+          </div>
+        ) }
       </>
     )
   );
