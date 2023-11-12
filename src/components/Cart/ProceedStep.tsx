@@ -33,6 +33,7 @@ function ProceedStep({ currentStep, setCurrentStep, cartProducts, shippingAddres
   const handleCheckout = async () => {
     const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/checkout/create-checkout-session`, {
       method: 'POST',
+      credentials: 'include',
       headers: {
         'Content-Type': 'application/json',
         'Access-Control-Allow-Origin': '*',

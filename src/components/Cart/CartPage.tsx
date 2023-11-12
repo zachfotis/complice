@@ -18,8 +18,8 @@ const initialShippingAddress: ShippingAddressType = {
   postalCode: '',
   country: '',
   phoneNumber: '',
-  email: ''
-}
+  email: '',
+};
 
 function CartPage() {
   const [currentStep, setCurrentStep] = useState(1);
@@ -27,26 +27,36 @@ function CartPage() {
   const [shippingCost, setShippingCost] = useState<number>(0);
   const [total, setTotal] = useState<number>(0);
   const [grandTotal, setGrandTotal] = useState<number>(0);
-
-  // TODO: If user in localStorage, get discount from API
-  const [discount, setDiscount] = useState<number>(0);
-  //TODO: initialShippingAddress or get from localStorage
-  const [shippingAddress, setShippingAddress] = useState<ShippingAddressType>(initialShippingAddress)
+  const [totalDiscount, setTotalDiscount] = useState<number>(0);
+  const [userCurrentDiscount, setUserCurrentDiscount] = useState<number>(0);
+  const [shippingAddress, setShippingAddress] = useState<ShippingAddressType>(initialShippingAddress);
 
   useEffect(() => {
     let total = 0;
-    cartProducts.forEach((cartProduct) => {
-      if (cartProduct.onSale.isOnSale) {
-        total += Number((cartProduct.price - cartProduct.onSale.discount * cartProduct.price).toFixed(2)) * cartProduct.quantity;
-      } else {
-        total += cartProduct.price * cartProduct.quantity;
-      }
-    });
-    setTotal(total);
+    let discount = 0;
 
-    let grandTotal = total + shippingCost - discount;
+    cartProducts.forEach((cartProduct) => {
+      let productTotal = 0;
+      let productDiscount = 0;
+      let userDiscount = 0;
+      
+      if (cartProduct.onSale.isOnSale) {
+        productTotal = Number((cartProduct.price).toFixed(2)) * cartProduct.quantity;
+        productDiscount = Number((cartProduct.price * cartProduct.onSale.discount).toFixed(2)) * cartProduct.quantity;
+      } else {
+        productTotal = Number((cartProduct.price).toFixed(2)) * cartProduct.quantity;
+      }
+      userDiscount = Number((((cartProduct.price  * cartProduct.quantity) - productDiscount) * userCurrentDiscount).toFixed(2)) ;
+
+      total += productTotal;
+      discount += productDiscount + userDiscount;
+    });
+
+    let grandTotal = total - discount + shippingCost;
+    setTotal(total);
+    setTotalDiscount(discount);
     setGrandTotal(grandTotal);
-  }, [cartProducts, shippingCost, discount]);
+  }, [cartProducts, shippingCost, userCurrentDiscount]);
 
   useEffect(() => {
     //   Check if the product quantity does not exceed the max quantity
@@ -56,11 +66,11 @@ function CartPage() {
           toast.error('Product quantity exceeds the stock quantity');
           return {
             ...cartProduct,
-            quantity: maxQuantity
+            quantity: maxQuantity,
           };
         }
         return cartProduct;
-      }
+      },
     );
 
     const fetchCurrentUser = async () => {
@@ -79,13 +89,13 @@ function CartPage() {
             setShippingCost(shippingCountries.find((country) => country.name === data.currentUser.address.country)?.cost || 0);
           }
         }
-        if (data.currentUser.discount) setDiscount(data.currentUser.discount);
+        if (data.currentUser.discount) setUserCurrentDiscount(data.currentUser.discount);
       }
     };
 
     setCartProducts(newCartProducts);
     fetchCurrentUser();
-  }, [])
+  }, []);
 
   return (
     cartProducts.length === 0 ? (
@@ -99,9 +109,9 @@ function CartPage() {
         { currentStep === 1 && (<YourCart cartProducts={ cartProducts } setCartProducts={ setCartProducts } />) }
         { currentStep === 2 && (
           <ShippingDetails shippingAddress={ shippingAddress } setShippingAddress={ setShippingAddress } shippingCountries={ shippingCountries }
-                           setShippingCost={ setShippingCost } />) }
+            setShippingCost={ setShippingCost } />) }
         { currentStep === 3 && (<PlaceOrder cartProducts={ cartProducts } shippingAddress={ shippingAddress } />) }
-        <Totals discount={ discount } shippingCost={ shippingCost } total={ total } grandTotal={ grandTotal } />
+        <Totals totalDiscount={ totalDiscount } userDiscount={ userCurrentDiscount } shippingCost={ shippingCost } total={ total } grandTotal={ grandTotal } />
         <ProceedStep currentStep={ currentStep } setCurrentStep={ setCurrentStep } cartProducts={ cartProducts } shippingAddress={ shippingAddress } />
       </>
     )
@@ -115,6 +125,6 @@ const shippingCountries: ShippingCountryType[] = [
   {
     id: '1',
     name: 'Greece',
-    cost: 3.5
-  }
-]
+    cost: 3.5,
+  },
+];
