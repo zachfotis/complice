@@ -1,12 +1,52 @@
+import { useEffect, useState } from 'react';
+import { OrderProductType, ShippingCountryType } from '../../../typings';
+
 interface TotalsProps {
-  totalDiscount: number;
-  userDiscount: number;
+  cartProducts: OrderProductType[];
   shippingCost: number;
-  total: number;
-  grandTotal: number;
 }
 
-function Totals({ totalDiscount, userDiscount, shippingCost, total, grandTotal }: TotalsProps) {
+const shippingCountries: ShippingCountryType[] = [
+  {
+    id: '1',
+    name: 'Greece',
+    cost: 3.5,
+  },
+];
+
+function Totals({ cartProducts, shippingCost }: TotalsProps) {
+  const [total, setTotal] = useState<number>(0);
+  const [grandTotal, setGrandTotal] = useState<number>(0);
+  const [totalDiscount, setTotalDiscount] = useState<number>(0);
+  const [userDiscount, setUserDiscount] = useState<number>(0);
+
+  useEffect(() => {
+    let total = 0;
+    let discount = 0;
+
+    cartProducts.forEach((cartProduct) => {
+      let productTotal = 0;
+      let productDiscount = 0;
+      let userDiscount = 0;
+
+      if (cartProduct.onSale.isOnSale) {
+        productTotal = Number((cartProduct.price).toFixed(2)) * cartProduct.quantity;
+        productDiscount = Number((cartProduct.price * cartProduct.onSale.discount).toFixed(2)) * cartProduct.quantity;
+      } else {
+        productTotal = Number((cartProduct.price).toFixed(2)) * cartProduct.quantity;
+      }
+      userDiscount = Number((((cartProduct.price * cartProduct.quantity) - productDiscount) * userDiscount).toFixed(2));
+
+      total += productTotal;
+      discount += productDiscount + userDiscount;
+    });
+
+    let grandTotal = total - discount + shippingCost;
+    setTotal(total);
+    setTotalDiscount(discount);
+    setGrandTotal(grandTotal);
+  }, [cartProducts]);
+
   return (
     <div className="w-full max-w-[1000px] flex flex-col justify-start items-start gap-5 mt-2 md:mt-5">
       {/*  Cart Total*/ }

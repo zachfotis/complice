@@ -18,6 +18,7 @@ module.exports = {
         silver: '#C0C0C0',
         gold: '#FFD700',
         platinum: '#ADD8E6',
+        vip: '#B19CD9',
       },
       fontSize: {
         h1: '2.5rem',

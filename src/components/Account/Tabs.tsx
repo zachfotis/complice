@@ -3,31 +3,45 @@
 import { useState } from 'react';
 import { MyProfile } from '@/components/Account/MyProfile';
 import { Orders } from '@/components/Account/Orders';
+import { OrderType, ShippingCountryType, UserType } from '../../../typings';
+import Ranking from '@/components/Account/Ranking';
+import CouponStore from '@/components/Account/CouponStore';
 
 interface ITab {
   currentUser: UserType;
   shippingCountries: ShippingCountryType[];
   orders: OrderType[];
+  setCurrentUser: (value: UserType) => void;
 }
 
-function Tabs({ currentUser, shippingCountries, orders }: ITab) {
+function Tabs({ currentUser, shippingCountries, orders, setCurrentUser }: ITab) {
   const [activeTab, setActiveTab] = useState(0);
 
   const tabs = [
     {
       id: 0,
-      name: 'My Profile',
-      content: <MyProfile currentUser={ currentUser } shippingCountries={ shippingCountries } />,
+      name: 'My Discounts',
+      content: <Ranking ranking={ currentUser.ranking } birthday={ currentUser.birthDate } />,
     },
     {
       id: 1,
+      name: 'Coupon Store',
+      content: <CouponStore ranking={ currentUser.ranking } />,
+    },
+    {
+      id: 2,
+      name: 'My Profile',
+      content: <MyProfile currentUser={ currentUser } shippingCountries={ shippingCountries } setCurrentUser={ setCurrentUser } />,
+    },
+    {
+      id: 3,
       name: 'My Orders',
       content: <Orders orders={ orders } />,
     },
   ];
 
   return (
-    <div className="w-full max-w-[1000px] flex flex-col justify-start items-center">
+    <div className="w-full max-w-[1000px] flex flex-col justify-start items-center mt-5">
       <div className="w-full flex justify-start items-center border border-primary">
         { tabs.map((tab) => (
           <button key={ tab.id } className={ `flex-1 text-center p-2 cursor-pointer ${ activeTab === tab.id ? 'bg-primary text-white' : '' }` }

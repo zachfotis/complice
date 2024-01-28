@@ -4,10 +4,10 @@ import PageTemplate from '@/components/layout/PageTemplate';
 import PageBody from '@/components/layout/PageBody';
 import Cover from '@/components/Account/Cover';
 import Tabs from '@/components/Account/Tabs';
-import Ranking from '@/components/Account/Ranking';
 import { redirect } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import Loader from '@/components/common/Loader';
+import { OrderType, ShippingCountryType, UserType } from '../../../typings';
 
 function Account() {
   const [isLoading, setIsLoading] = useState(true);
@@ -40,7 +40,9 @@ function Account() {
       }
     };
 
-    fetchUser();
+    if (!currentUser) {
+      fetchUser();
+    }
   }, []);
 
   const shippingCountries: ShippingCountryType[] = [
@@ -94,12 +96,11 @@ function Account() {
             <Loader />
           </div>
         ) }
-        { !isLoading && currentUser && (
+        { currentUser && (
           <>
             <h2 className="text-h3 font-medium uppercase mt-5 md:mt-10">My Account</h2>
             <Cover currentUser={ currentUser } />
-            <Ranking ranking={ currentUser.ranking } />
-            <Tabs currentUser={ currentUser } shippingCountries={ shippingCountries } orders={ orders } />
+            <Tabs currentUser={ currentUser } shippingCountries={ shippingCountries } orders={ orders } setCurrentUser={ setCurrentUser } />
           </>
         ) }
       </PageBody>

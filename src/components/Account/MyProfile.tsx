@@ -3,13 +3,15 @@
 import { useState } from 'react';
 import { redirect } from 'next/navigation';
 import { toast } from 'react-toastify';
+import { ShippingCountryType, UpdateUserType, UserType } from '../../../typings';
 
 interface IMyProfileProps {
   currentUser: UserType;
   shippingCountries: ShippingCountryType[];
+  setCurrentUser: (value: UserType) => void;
 }
 
-export function MyProfile({ currentUser, shippingCountries }: IMyProfileProps) {
+export function MyProfile({ currentUser, shippingCountries, setCurrentUser }: IMyProfileProps) {
   const [firstName, setFirstName] = useState(currentUser?.firstName || '');
   const [lastName, setLastName] = useState(currentUser?.lastName || '');
   const [address, setAddress] = useState(currentUser?.address?.address || '');
@@ -51,6 +53,7 @@ export function MyProfile({ currentUser, shippingCountries }: IMyProfileProps) {
         if (updatedUser.errors) {
           toast.error(updatedUser.errors.map((error: { message: string }) => error.message).join('\n'));
         } else {
+          setCurrentUser(updatedUser.currentUser);
           toast.success('Your profile has been updated successfully!');
         }
       } catch (error: any) {

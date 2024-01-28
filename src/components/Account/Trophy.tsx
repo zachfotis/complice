@@ -1,19 +1,19 @@
 import { GiDiamondTrophy } from 'react-icons/gi';
+import { RankingNamesEnum } from '@/constants';
 
 interface Props {
-  ranking: RankingNamesEnum;
+  rankingName: RankingNamesEnum;
 }
 
-enum RankingNamesEnum {
-  BRONZE = 'Bronze',
-  SILVER = 'Silver',
-  GOLD = 'Gold',
-  PLATINUM = 'Platinum',
-}
-
-export function Trophy({ ranking }: Props) {
-  const color = ranking === RankingNamesEnum.BRONZE ? 'text-bronze' : ranking === RankingNamesEnum.SILVER ? 'text-silver' : ranking === RankingNamesEnum.GOLD ? 'text-gold' : 'text-platinum';
+export function Trophy({ rankingName }: Props) {
+  const color =
+    rankingName === RankingNamesEnum.BRONZE ? 'text-bronze' :
+      rankingName === RankingNamesEnum.SILVER ? 'text-silver' :
+        rankingName === RankingNamesEnum.GOLD ? 'text-gold' :
+          rankingName === RankingNamesEnum.PLATINUM ? 'text-platinum' :
+            rankingName === RankingNamesEnum.VIP ? 'text-vip' :
+              'text-primary';
   return (
-    <GiDiamondTrophy className={ `text-5xl ${ color }` } title={ ranking } />
+    <GiDiamondTrophy className={ `text-7xl ${ color }` } title={ rankingName } />
   );
 }

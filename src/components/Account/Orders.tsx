@@ -1,5 +1,6 @@
 import { BsCartX } from 'react-icons/bs';
 import { SingleOrder } from '@/components/Account/SingleOrder';
+import { OrderType } from '../../../typings';
 
 interface Props {
   orders: OrderType[];

@@ -1,4 +1,6 @@
 // ======== CATEGORIES ========
+import { RankingNamesEnum } from '@/constants';
+
 type CategoryType = {
   id: string;
   title: string;
@@ -97,16 +99,31 @@ type UserType = {
   firstName: string;
   lastName: string;
   email: string;
+  ranking: UserRankingType;
+  createdAt: Date;
   birthDate?: Date;
-  discount?: number;
   address?: ShippingAddressType;
-  ranking: {
-    current: RankingNamesEnum | null;
-    next: RankingNamesEnum | null;
-    progress: number;
-    moneyToNextRanking: number;
-  }
+  isAdmin?: boolean;
 };
+
+type UserRankingType = {
+  value: number;
+  name: RankingNamesEnum;
+  pointsRange: {
+    min: number;
+    max: number;
+  };
+  pointsAvailable: number;
+  pointsTotal: number;
+  coupons: {
+    permanent: CouponType[];
+    ranked: CouponType[];
+    optional: CouponType[];
+  };
+  nextRanking: {
+    name: RankingNamesEnum;
+  };
+}
 
 type UpdateUserType = {
   firstName: string;
@@ -120,16 +137,25 @@ type UpdateUserType = {
   birthDate?: Date;
 }
 
-enum RankingNamesEnum {
-  BRONZE = 'Bronze',
-  SILVER = 'Silver',
-  GOLD = 'Gold',
-  PLATINUM = 'Platinum',
+type CouponType = {
+  id: string;
+  userId: string;
+  orderId?: string;
+  discount: {
+    fixed: number;
+    percentage: number;
+  },
+  couponType: {
+    isFreeShipping: boolean;
+    isHolidays: boolean;
+    isBirthday: boolean;
+    isRanked: boolean;
+    isOptional: boolean;
+  }
+  isActive: boolean;
+  dateActivated: Date;
+  dateUsed?: Date;
+  minimumRankingValue: number;
+  minimumOrder: number;
+  cost: number;
 }
-
-type RankingType = {
-  name: RankingNamesEnum;
-  min: number;
-  max: number;
-  discount: number;
-};

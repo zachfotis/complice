@@ -10,6 +10,7 @@ import useLocalStorage from '@/hooks/useLocalStorage';
 import { toast } from 'react-toastify';
 import { BsCartX } from 'react-icons/bs';
 import Loader from '@/components/common/Loader';
+import { OrderProductType, ShippingAddressType, ShippingCountryType, UserType } from '../../../typings';
 
 const initialShippingAddress: ShippingAddressType = {
   firstName: '',
@@ -22,46 +23,50 @@ const initialShippingAddress: ShippingAddressType = {
   email: '',
 };
 
+//TODO: Get shipping countries from API
+const shippingCountries: ShippingCountryType[] = [
+  {
+    id: '1',
+    name: 'Greece',
+    cost: 3.5,
+  },
+];
+
 function CartPage() {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [currentStep, setCurrentStep] = useState(1);
+
   const [cartProducts, setCartProducts] = useLocalStorage<OrderProductType[]>('cartProducts', []);
-  const [shippingCost, setShippingCost] = useState<number>(0);
-  const [total, setTotal] = useState<number>(0);
-  const [grandTotal, setGrandTotal] = useState<number>(0);
-  const [totalDiscount, setTotalDiscount] = useState<number>(0);
-  const [userCurrentDiscount, setUserCurrentDiscount] = useState<number>(0);
   const [shippingAddress, setShippingAddress] = useState<ShippingAddressType>(initialShippingAddress);
+  const [shippingCost, setShippingCost] = useState<number>(0);
+  const [user, setUser] = useState<UserType | null>(null);
 
+  //   Fetch current user
   useEffect(() => {
-    let total = 0;
-    let discount = 0;
-
-    cartProducts.forEach((cartProduct) => {
-      let productTotal = 0;
-      let productDiscount = 0;
-      let userDiscount = 0;
-
-      if (cartProduct.onSale.isOnSale) {
-        productTotal = Number((cartProduct.price).toFixed(2)) * cartProduct.quantity;
-        productDiscount = Number((cartProduct.price * cartProduct.onSale.discount).toFixed(2)) * cartProduct.quantity;
-      } else {
-        productTotal = Number((cartProduct.price).toFixed(2)) * cartProduct.quantity;
+    const fetchCurrentUser = async () => {
+      try {
+        const baseUrl = process.env.NEXT_PUBLIC_API_URL;
+        const response = await fetch(`${ baseUrl }/auth/currentuser`, {
+          method: 'GET',
+          credentials: 'include',
+          cache: 'no-cache',
+        });
+        const data = await response.json();
+        if (data.currentUser) {
+          setUser(data.currentUser);
+          setShippingAddress(data.currentUser.address || initialShippingAddress);
+          setShippingCost(shippingCountries.find((country) => country.name === user?.address?.country)?.cost || 0);
+        }
+      } catch (e: any) {
+        toast.error(e?.message || 'Something went wrong');
       }
-      userDiscount = Number((((cartProduct.price * cartProduct.quantity) - productDiscount) * userCurrentDiscount).toFixed(2));
+    };
 
-      total += productTotal;
-      discount += productDiscount + userDiscount;
-    });
+    fetchCurrentUser();
+  }, []);
 
-    let grandTotal = total - discount + shippingCost;
-    setTotal(total);
-    setTotalDiscount(discount);
-    setGrandTotal(grandTotal);
-  }, [cartProducts, shippingCost, userCurrentDiscount]);
-
+  //   Check if the product quantity does not exceed the max quantity
   useEffect(() => {
-    //   Check if the product quantity does not exceed the max quantity
     const newCartProducts = cartProducts.map((cartProduct) => {
         const maxQuantity = cartProduct.maxQuantity;
         if (cartProduct.quantity > maxQuantity) {
@@ -75,32 +80,7 @@ function CartPage() {
       },
     );
 
-    const fetchCurrentUser = async () => {
-      try {
-        const baseUrl = process.env.NEXT_PUBLIC_API_URL;
-        const response = await fetch(`${ baseUrl }/auth/currentuser`, {
-          method: 'GET',
-          credentials: 'include',
-          cache: 'no-cache',
-        });
-        const data = await response.json();
-        if (data.currentUser) {
-          if (data.currentUser.address) {
-            setShippingAddress(data.currentUser.address);
-            if (data.currentUser.address.country) {
-
-              setShippingCost(shippingCountries.find((country) => country.name === data.currentUser.address.country)?.cost || 0);
-            }
-          }
-          if (data.currentUser.discount) setUserCurrentDiscount(data.currentUser.discount);
-        }
-      } catch (e: any) {
-        toast.error(e?.message || 'Something went wrong');
-      }
-    };
-
     setCartProducts(newCartProducts);
-    fetchCurrentUser();
   }, []);
 
   return (
@@ -112,14 +92,18 @@ function CartPage() {
     ) : (
       <>
         <CheckoutBar currentStep={ currentStep } setCurrentStep={ setCurrentStep } />
-        { currentStep === 1 && (<YourCart cartProducts={ cartProducts } setCartProducts={ setCartProducts } />) }
-        { currentStep === 2 && (
-          <ShippingDetails shippingAddress={ shippingAddress } setShippingAddress={ setShippingAddress } shippingCountries={ shippingCountries }
-            setShippingCost={ setShippingCost } />) }
-        { currentStep === 3 && (<PlaceOrder cartProducts={ cartProducts } shippingAddress={ shippingAddress } />) }
-        <Totals totalDiscount={ totalDiscount } userDiscount={ userCurrentDiscount } shippingCost={ shippingCost } total={ total } grandTotal={ grandTotal } />
+
+        { currentStep === 1 && <YourCart cartProducts={ cartProducts } setCartProducts={ setCartProducts } /> }
+        { currentStep === 2 && <ShippingDetails shippingAddress={ shippingAddress } setShippingAddress={ setShippingAddress } shippingCountries={ shippingCountries }
+          setShippingCost={ setShippingCost } />
+        }
+        { currentStep === 3 && <PlaceOrder cartProducts={ cartProducts } shippingAddress={ shippingAddress } /> }
+
+        <Totals cartProducts={ cartProducts } shippingCost={ shippingCost } />
+
         <ProceedStep currentStep={ currentStep } setCurrentStep={ setCurrentStep } cartProducts={ cartProducts } shippingAddress={ shippingAddress }
           isLoading={ isLoading } setIsLoading={ setIsLoading } />
+
         { isLoading && (
           <div className="fixed top-0 left-0 w-screen h-screen bg-white bg-opacity-50 z-50 flex justify-center items-center">
             <Loader />
@@ -132,11 +116,3 @@ function CartPage() {
 
 export default CartPage;
 
-//TODO: Get shipping countries from API
-const shippingCountries: ShippingCountryType[] = [
-  {
-    id: '1',
-    name: 'Greece',
-    cost: 3.5,
-  },
-];
