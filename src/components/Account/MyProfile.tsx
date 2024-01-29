@@ -53,7 +53,7 @@ export function MyProfile({ currentUser, shippingCountries, setCurrentUser }: IM
         if (updatedUser.errors) {
           toast.error(updatedUser.errors.map((error: { message: string }) => error.message).join('\n'));
         } else {
-          setCurrentUser(updatedUser.currentUser);
+          setCurrentUser(updatedUser);
           toast.success('Your profile has been updated successfully!');
         }
       } catch (error: any) {

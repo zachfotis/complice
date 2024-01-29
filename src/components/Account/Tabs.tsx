@@ -26,7 +26,7 @@ function Tabs({ currentUser, shippingCountries, orders, setCurrentUser }: ITab) 
     {
       id: 1,
       name: 'Coupon Store',
-      content: <CouponStore ranking={ currentUser.ranking } />,
+      content: <CouponStore ranking={ currentUser.ranking } setCurrentUser={ setCurrentUser } />,
     },
     {
       id: 2,

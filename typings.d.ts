@@ -159,3 +159,17 @@ type CouponType = {
   minimumOrder: number;
   cost: number;
 }
+
+type StoreCouponType = {
+  discount: {
+    fixed: number;
+    percentage: number;
+  },
+  couponType: {
+    isOptional: boolean;
+  }
+  minimumRankingValue: number;
+  minimumOrder: number;
+  cost: number;
+}
+

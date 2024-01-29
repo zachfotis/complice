@@ -1,14 +1,78 @@
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import CoinsImage from '@/assets/coins.png';
-import Coupon from '@/components/Account/Coupon';
-import { UserType } from '../../../typings';
+import { StoreCouponType, UserType } from '../../../typings';
+import CouponForStore from '@/components/Account/CouponForStore';
 
 interface Props {
   ranking: UserType['ranking'];
+  setCurrentUser: (value: UserType) => void;
 }
 
-export default function CouponStore({ ranking }: Props) {
+const storeCoupons: StoreCouponType[] = [
+  {
+    discount: {
+      fixed: 10,
+      percentage: 0,
+    },
+    couponType: {
+      isOptional: true,
+    },
+    minimumRankingValue: 1,
+    minimumOrder: 65,
+    cost: 200,
+  },
+  {
+    discount: {
+      fixed: 15,
+      percentage: 0,
+    },
+    couponType: {
+      isOptional: true,
+    },
+    minimumRankingValue: 1,
+    minimumOrder: 80,
+    cost: 300,
+  },
+  {
+    discount: {
+      fixed: 20,
+      percentage: 0,
+    },
+    couponType: {
+      isOptional: true,
+    },
+    minimumRankingValue: 2,
+    minimumOrder: 150,
+    cost: 500,
+  },
+  {
+    discount: {
+      fixed: 50,
+      percentage: 0,
+    },
+    couponType: {
+      isOptional: true,
+    },
+    minimumRankingValue: 3,
+    minimumOrder: 250,
+    cost: 800,
+  },
+  {
+    discount: {
+      fixed: 70,
+      percentage: 0,
+    },
+    couponType: {
+      isOptional: true,
+    },
+    minimumRankingValue: 4,
+    minimumOrder: 350,
+    cost: 1000,
+  },
+];
+
+export default function CouponStore({ ranking, setCurrentUser }: Props) {
   return (
     <motion.div
       className="w-full max-w-[1000px] grid grid-cols-[auto_1fr] gap-10 bg-white"
@@ -25,8 +89,7 @@ export default function CouponStore({ ranking }: Props) {
         <Image src={ CoinsImage } alt="Coins" width={ 25 } height={ 25 } />
       </div>
       <div className="col-span-2 flex justify-start items-start flex-wrap gap-5">
-        { ranking.coupons.ranked.map((coupon) => <Coupon coupon={ coupon } key={ coupon.id } />) }
-        { ranking.coupons.optional.map((coupon) => <Coupon coupon={ coupon } key={ coupon.id } />) }
+        { storeCoupons.map((coupon) => <CouponForStore coupon={ coupon } userRankValue={ ranking.value } setCurrentUser={ setCurrentUser } key={ coupon.cost } />) }
       </div>
     </motion.div>
   );
