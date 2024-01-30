@@ -27,8 +27,8 @@ export default function Coupon({ coupon, quantity = 0 }: Props) {
       {/* Cost */ }
       { coupon.cost > 0 && (
         <div className="absolute bottom-1 right-1 bg-white flex justify-center items-center gap-1">
-          <Image src={ CoinsImage } alt="Coins" width={ 15 } height={ 15 } />
           <p className="text-xs font-medium">{ coupon.cost }</p>
+          <Image src={ CoinsImage } alt="Coins" width={ 15 } height={ 15 } />
         </div>
       ) }
 
