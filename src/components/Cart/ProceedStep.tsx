@@ -5,13 +5,24 @@ import { OrderProductType, ShippingAddressType } from '../../../typings';
 interface ProceedStepProps {
   currentStep: number;
   setCurrentStep: React.Dispatch<React.SetStateAction<number>>;
-  cartProducts: OrderProductType[];
-  shippingAddress: ShippingAddressType;
   isLoading: boolean;
   setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
+  cartProducts: OrderProductType[];
+  shippingAddress: ShippingAddressType;
+  rankedCouponSelected: string;
+  optionalCouponSelected: string;
 }
 
-function ProceedStep({ currentStep, setCurrentStep, cartProducts, shippingAddress, isLoading, setIsLoading }: ProceedStepProps) {
+function ProceedStep({
+  currentStep,
+  setCurrentStep,
+  isLoading,
+  setIsLoading,
+  cartProducts,
+  shippingAddress,
+  rankedCouponSelected,
+  optionalCouponSelected,
+}: ProceedStepProps) {
   const [buttonText, setButtonText] = useState<string>('');
 
   // Scroll to top when currentStep changes
@@ -36,7 +47,7 @@ function ProceedStep({ currentStep, setCurrentStep, cartProducts, shippingAddres
   const handleCheckout = async () => {
     try {
       setIsLoading(true);
-      const response = await fetch(`${ process.env.NEXT_PUBLIC_API_URL }/checkout/create-checkout-session`, {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/checkout/create-checkout-session`, {
         method: 'POST',
         credentials: 'include',
         headers: {
@@ -46,12 +57,16 @@ function ProceedStep({ currentStep, setCurrentStep, cartProducts, shippingAddres
         body: JSON.stringify({
           orderProducts: cartProducts,
           shippingAddress,
+          rankedCouponSelected,
+          optionalCouponSelected,
         }),
       });
       const data = await response.json();
 
       if (data.url) {
-        window.open(data.url, '_self');
+        window.location.href = data.url;
+      } else {
+        toast.error(data.message);
       }
     } catch (error: any) {
       toast(error?.message);
@@ -77,7 +92,7 @@ function ProceedStep({ currentStep, setCurrentStep, cartProducts, shippingAddres
     <button
       className="w-full h-12 max-w-[1000px] flex items-center justify-center border border-black bg-black text-white mt-3"
       disabled={isLoading}
-      onClick={ (e: React.MouseEvent<HTMLButtonElement>) => {
+      onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
         if (currentStep === 1) {
           if (cartProducts.length > 0) {
             setCurrentStep(currentStep + 1);
@@ -93,9 +108,9 @@ function ProceedStep({ currentStep, setCurrentStep, cartProducts, shippingAddres
         } else if (currentStep === 3) {
           handleCheckout();
         }
-      } }
+      }}
     >
-      <p className="text-base font-[500]">{ buttonText }</p>
+      <p className="text-base font-[500]">{buttonText}</p>
     </button>
   );
 }

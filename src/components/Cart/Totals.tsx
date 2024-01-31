@@ -7,9 +7,21 @@ interface TotalsProps {
   cartProducts: OrderProductType[];
   shippingCost: number;
   currentUser: UserType | null;
+  rankedCouponSelected: string;
+  setRankedCouponSelected: (value: string) => void;
+  optionalCouponSelected: string;
+  setOptionalCouponSelected: (value: string) => void;
 }
 
-function Totals({ cartProducts, shippingCost, currentUser }: TotalsProps) {
+function Totals({
+  cartProducts,
+  shippingCost,
+  currentUser,
+  rankedCouponSelected,
+  optionalCouponSelected,
+  setRankedCouponSelected,
+  setOptionalCouponSelected,
+}: TotalsProps) {
   const [cartTotal, setCartTotal] = useState<number>(0);
   const [productDiscount, setProductDiscount] = useState<number>(0);
   const [rankDiscount, setRankDiscount] = useState<number>(0);
@@ -17,8 +29,11 @@ function Totals({ cartProducts, shippingCost, currentUser }: TotalsProps) {
   const [freeShippingDiscount, setFreeShippingDiscount] = useState<number>(0);
   const [orderTotal, setOrderTotal] = useState<number>(0);
 
-  const [rankedCouponSelected, setRankedCouponSelected] = useState<string>('');
-  const [optionalCouponSelected, setOptionalCouponSelected] = useState<string>('');
+  useEffect(() => {
+    if (optionalCouponSelected) {
+      setOptionalCouponSelected('');
+    }
+  }, [cartProducts]);
 
   useEffect(() => {
     let cartTotalTemp = 0;
@@ -64,12 +79,8 @@ function Totals({ cartProducts, shippingCost, currentUser }: TotalsProps) {
     const cheapestRankedCoupon = currentUser?.ranking.coupons.ranked.sort(
       (a, b) => a.discount.percentage - b.discount.percentage
     )[0];
-    const cheapestOptionalCoupon = currentUser?.ranking.coupons.optional.sort(
-      (a, b) => a.discount.fixed - b.discount.fixed
-    )[0];
 
     setRankedCouponSelected(cheapestRankedCoupon?.id || '');
-    setOptionalCouponSelected(cheapestOptionalCoupon?.id || '');
   }, [currentUser]);
 
   useEffect(() => {
@@ -86,7 +97,7 @@ function Totals({ cartProducts, shippingCost, currentUser }: TotalsProps) {
 
   useEffect(() => {
     setOrderTotal(cartTotal - productDiscount - rankDiscount - couponDiscount + shippingCost - freeShippingDiscount);
-  }, [rankDiscount, couponDiscount, shippingCost, freeShippingDiscount]);
+  }, [currentUser, rankDiscount, couponDiscount, shippingCost, freeShippingDiscount, cartTotal, productDiscount]);
 
   return (
     <div className="w-full max-w-[1000px] flex flex-col justify-start items-start gap-5 mt-2 md:mt-5">
@@ -173,17 +184,24 @@ function Totals({ cartProducts, shippingCost, currentUser }: TotalsProps) {
               {currentUser?.ranking.coupons.optional
                 .sort((a, b) => a.discount.fixed - b.discount.fixed)
                 .map((coupon) => (
-                  <option key={coupon.id} value={coupon.id}>
+                  <option
+                    key={coupon.id}
+                    value={coupon.id}
+                    disabled={coupon.minimumOrder > cartTotal - productDiscount - rankDiscount}
+                    className="disabled:bg-red-100"
+                  >
                     {coupon.discount.fixed ? `${coupon.discount.fixed} e` : `${coupon.discount.percentage} %`}
                   </option>
                 ))}
             </select>
           </div>
-          <p className="text-base font-medium">- {couponDiscount.toFixed(2)} &euro;</p>
+          <p className="text-base font-medium">
+            {optionalCouponSelected ? '-' : ''} {couponDiscount.toFixed(2)} &euro;
+          </p>
         </div>
       )}
       {/* Separator */}
-      <div className="w-full border-b border-gray-200" />
+      {currentUser && <div className="w-full border-b border-gray-200" />}
       {/*  Grand Total*/}
       <div className="w-full flex justify-between items-center gap-10">
         <p className="text-h3 font-custom">Order Total</p>

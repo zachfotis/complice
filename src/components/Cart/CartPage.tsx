@@ -40,6 +40,8 @@ function CartPage() {
   const [shippingAddress, setShippingAddress] = useState<ShippingAddressType>(initialShippingAddress);
   const [shippingCost, setShippingCost] = useState<number>(0);
   const [user, setUser] = useState<UserType | null>(null);
+  const [rankedCouponSelected, setRankedCouponSelected] = useState<string>('');
+  const [optionalCouponSelected, setOptionalCouponSelected] = useState<string>('');
 
   //   Fetch current user
   useEffect(() => {
@@ -65,8 +67,8 @@ function CartPage() {
   }, []);
 
   useEffect(() => {
-    setShippingCost(shippingCountries.find((country) => country.name === user?.address?.country)?.cost || 0);
-  }, [shippingAddress]);
+    setShippingCost(shippingCountries.find((country) => country.name === shippingAddress.country)?.cost || 0);
+  }, [shippingAddress, user]);
 
   //   Check if the product quantity does not exceed the max quantity
   useEffect(() => {
@@ -100,12 +102,19 @@ function CartPage() {
           shippingAddress={shippingAddress}
           setShippingAddress={setShippingAddress}
           shippingCountries={shippingCountries}
-          setShippingCost={setShippingCost}
         />
       )}
       {currentStep === 3 && <PlaceOrder cartProducts={cartProducts} shippingAddress={shippingAddress} />}
 
-      <Totals cartProducts={cartProducts} shippingCost={shippingCost} currentUser={user} />
+      <Totals
+        cartProducts={cartProducts}
+        shippingCost={shippingCost}
+        currentUser={user}
+        rankedCouponSelected={rankedCouponSelected}
+        setRankedCouponSelected={setRankedCouponSelected}
+        optionalCouponSelected={optionalCouponSelected}
+        setOptionalCouponSelected={setOptionalCouponSelected}
+      />
 
       <ProceedStep
         currentStep={currentStep}
@@ -114,6 +123,8 @@ function CartPage() {
         shippingAddress={shippingAddress}
         isLoading={isLoading}
         setIsLoading={setIsLoading}
+        rankedCouponSelected={rankedCouponSelected}
+        optionalCouponSelected={optionalCouponSelected}
       />
 
       {isLoading && (

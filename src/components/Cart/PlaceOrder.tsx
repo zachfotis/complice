@@ -1,4 +1,5 @@
 import ProductMini from '@/components/Cart/ProductMini';
+import { OrderProductType, ShippingAddressType } from '../../../typings';
 
 interface PlaceOrderProps {
   cartProducts: OrderProductType[];
