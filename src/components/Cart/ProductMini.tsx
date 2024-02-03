@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import { OrderProductType } from '../../../typings';
 
 interface ProductMiniProps {
   cartProduct: OrderProductType

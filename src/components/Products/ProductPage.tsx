@@ -1,9 +1,10 @@
 'use client';
 
+import AddToCartModal from '@/components/Product/AddToCartModal';
 import Carousel from '@/components/Product/Carousel';
 import Details from '@/components/Product/Details';
 import { useState } from 'react';
-import AddToCartModal from '@/components/Product/AddToCartModal';
+import { ProductType } from '../../../typings';
 
 interface ProductPageProps {
   product: ProductType;

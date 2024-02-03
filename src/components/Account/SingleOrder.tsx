@@ -1,6 +1,7 @@
 import { BsChevronDoubleRight } from 'react-icons/bs';
-import { MdPendingActions } from 'react-icons/md';
 import { GrCompliance } from 'react-icons/gr';
+import { MdPendingActions } from 'react-icons/md';
+import { OrderType } from '../../../typings';
 
 interface Props {
   order: OrderType;

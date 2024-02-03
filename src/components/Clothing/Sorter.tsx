@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { ProductType } from '../../../typings';
 import Size from './Size';
 import SortBy from './SortBy';
 

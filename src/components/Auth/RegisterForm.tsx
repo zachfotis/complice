@@ -1,9 +1,10 @@
 'use client';
 
-import { FormEvent, useEffect, useState } from 'react';
 import Link from 'next/link';
-import { toast } from 'react-toastify';
 import { redirect } from 'next/navigation';
+import { FormEvent, useEffect, useState } from 'react';
+import { toast } from 'react-toastify';
+import { UserType } from '../../../typings';
 
 function RegisterForm() {
   const [firstName, setFirstName] = useState('');

@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { ProductType } from '../../../typings';
 
 interface ProductThumbProps {
   product: ProductType;

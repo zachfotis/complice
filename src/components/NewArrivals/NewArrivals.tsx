@@ -3,6 +3,7 @@
 import Sorter from '@/components/NewArrivals/Sorter';
 import Products from '@/components/Products/Products';
 import { useState } from 'react';
+import { ProductType } from '../../../typings';
 
 interface NewArrivalsProps {
   products: ProductType[];

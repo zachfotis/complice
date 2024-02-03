@@ -1,11 +1,12 @@
 'use client';
 import Logo from '@/assets/logo.png';
+import SearchBar from '@/components/layout/SearchBar';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { HiMagnifyingGlass, HiOutlineShoppingBag, HiOutlineUser, HiSquares2X2 } from 'react-icons/hi2';
+import { OrderProductType } from '../../../typings';
 import Menu from './Menu';
-import SearchBar from '@/components/layout/SearchBar';
 
 function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);

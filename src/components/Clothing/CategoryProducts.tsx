@@ -2,6 +2,7 @@
 import Sorter from '@/components/Clothing/Sorter';
 import Products from '@/components/Products/Products';
 import { useState } from 'react';
+import { ProductType } from '../../../typings';
 
 interface ClothingProps {
   products: ProductType[];

@@ -1,9 +1,10 @@
+import NotFound from '@/components/Product/NotFound';
 import Similar from '@/components/Product/Similar';
+import ProductPage from '@/components/Products/ProductPage';
 import CategoriesMenu from '@/components/layout/CategoriesMenu';
 import PageBody from '@/components/layout/PageBody';
 import PageTemplate from '@/components/layout/PageTemplate';
-import ProductPage from '@/components/Products/ProductPage';
-import NotFound from '@/components/Product/NotFound';
+import { ProductType } from '../../../../typings';
 
 interface PageProps {
   params: {
@@ -11,12 +12,12 @@ interface PageProps {
   };
 }
 
-export const fetchCache = 'force-no-store'
+export const fetchCache = 'force-no-store';
 
 const fetchProducts = async () => {
   try {
     const BASE_URL = process.env.API_URL;
-    const res = await fetch(`${ BASE_URL }/products/get-products`);
+    const res = await fetch(`${BASE_URL}/products/get-products`);
     const data = await res.json();
     return data;
   } catch (err) {
@@ -28,7 +29,7 @@ const fetchProducts = async () => {
 const fetchSimilarProducts = async (category: string, productId: string) => {
   try {
     const BASE_URL = process.env.API_URL;
-    const res = await fetch(`${ BASE_URL }/products/get-similar-products/${ category }/${ productId }`);
+    const res = await fetch(`${BASE_URL}/products/get-similar-products/${category}/${productId}`);
     const data = await res.json();
     return data;
   } catch (err) {
@@ -40,7 +41,7 @@ const fetchSimilarProducts = async (category: string, productId: string) => {
 const fetchProduct = async (productId: string) => {
   try {
     const BASE_URL = process.env.API_URL;
-    const res = await fetch(`${ BASE_URL }/products/get-product/${ productId }`);
+    const res = await fetch(`${BASE_URL}/products/get-product/${productId}`);
     const data = await res.json();
     return data;
   } catch (err) {
@@ -52,8 +53,8 @@ const fetchProduct = async (productId: string) => {
 export async function generateStaticParams() {
   const products: ProductType[] = await fetchProducts();
   return products.map((productId) => ({
-    productId: productId.id
-  }))
+    productId: productId.id,
+  }));
 }
 
 async function page({ params }: PageProps) {
@@ -64,12 +65,14 @@ async function page({ params }: PageProps) {
     <PageTemplate>
       <PageBody>
         <CategoriesMenu />
-        { product ? (
+        {product ? (
           <>
-            <ProductPage product={ product } />
-            <Similar products={ similarProducts } />
+            <ProductPage product={product} />
+            <Similar products={similarProducts} />
           </>
-        ) : (<NotFound />) }
+        ) : (
+          <NotFound />
+        )}
       </PageBody>
     </PageTemplate>
   );

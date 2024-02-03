@@ -1,9 +1,10 @@
 'use client';
 
-import { useEffect, useState } from 'react';
 import useLocalStorage from '@/hooks/useLocalStorage';
-import { toast } from 'react-toastify';
+import { useEffect, useState } from 'react';
 import { AiOutlineWarning } from 'react-icons/ai';
+import { toast } from 'react-toastify';
+import { OrderProductType, ProductType } from '../../../typings';
 
 interface DetailsProps {
   product: ProductType;
