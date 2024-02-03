@@ -1,3 +1,5 @@
+'use client';
+import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 import { OrderProductType, ShippingAddressType } from '../../../typings';
@@ -24,6 +26,7 @@ function ProceedStep({
   optionalCouponSelected,
 }: ProceedStepProps) {
   const [buttonText, setButtonText] = useState<string>('');
+  const router = useRouter();
 
   // Scroll to top when currentStep changes
   const scrollToTop = () => {
@@ -32,6 +35,32 @@ function ProceedStep({
       behavior: 'smooth',
     });
   };
+
+  useEffect(() => {
+    const expireSession = async (orderId: string) => {
+      const baseUrl = process.env.NEXT_PUBLIC_API_URL;
+      const response = await fetch(`${baseUrl}/checkout/expire-session/${orderId}`, {
+        method: 'GET',
+        credentials: 'include',
+        cache: 'no-cache',
+        headers: {
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': '*',
+        },
+      });
+      await response.json();
+      router.push('/cart');
+    };
+
+    const queryString = window.location.search;
+    const params = new URLSearchParams(queryString);
+    const paramsObj = Object.fromEntries(params);
+    const orderId = paramsObj['orderId'];
+
+    if (orderId) {
+      expireSession(orderId);
+    }
+  }, []);
 
   useEffect(() => {
     if (currentStep === 1) {
@@ -64,14 +93,23 @@ function ProceedStep({
       const data = await response.json();
 
       if (data.url) {
-        window.location.href = data.url;
+        const orderId = data.orderId;
+        router.push(`/cart?orderId=${orderId}`);
+        setTimeout(() => {
+          router.push(data.url);
+          setIsLoading(false);
+        }, 1000);
       } else {
-        toast.error(data.message);
+        data.errors.forEach((error: any) => {
+          setIsLoading(false);
+          toast.error(error.message);
+        });
+        router.push('/');
       }
     } catch (error: any) {
-      toast(error?.message);
-    } finally {
       setIsLoading(false);
+      toast(error?.message);
+      router.push('/');
     }
   };
 

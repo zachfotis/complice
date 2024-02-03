@@ -201,7 +201,10 @@ function Totals({
         </div>
       )}
       {/* Separator */}
-      {currentUser && <div className="w-full border-b border-gray-200" />}
+      {currentUser &&
+        (currentUser.ranking.coupons.ranked.length > 0 || currentUser.ranking.coupons.ranked.length > 0) && (
+          <div className="w-full border-b border-gray-200" />
+        )}
       {/*  Grand Total*/}
       <div className="w-full flex justify-between items-center gap-10">
         <p className="text-h3 font-custom">Order Total</p>

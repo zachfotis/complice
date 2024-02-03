@@ -10,7 +10,7 @@ import useLocalStorage from '@/hooks/useLocalStorage';
 import { useEffect, useState } from 'react';
 import { BsCartX } from 'react-icons/bs';
 import { toast } from 'react-toastify';
-import { OrderProductType, ShippingAddressType, ShippingCountryType, UserType } from '../../../typings';
+import { OrderProductType, ProductType, ShippingAddressType, ShippingCountryType, UserType } from '../../../typings';
 
 const initialShippingAddress: ShippingAddressType = {
   firstName: '',
@@ -64,6 +64,67 @@ function CartPage() {
     };
 
     fetchCurrentUser();
+  }, []);
+
+  useEffect(() => {
+    const fetchProduct = async (productId: string): Promise<ProductType | null> => {
+      try {
+        const baseUrl = process.env.NEXT_PUBLIC_API_URL;
+        const response = await fetch(`${baseUrl}/products/get-product/${productId}`, {
+          method: 'GET',
+          credentials: 'include',
+          cache: 'no-cache',
+        });
+        const data = await response.json();
+        if (data) {
+          return data;
+        } else {
+          return null;
+        }
+      } catch (e: any) {
+        toast.error(e?.message || 'Something went wrong');
+        return null;
+      }
+    };
+
+    const queryString = window.location.search;
+    const params = new URLSearchParams(queryString);
+    const paramsObj = Object.fromEntries(params);
+    const orderId = paramsObj['orderId'];
+
+    if (!orderId) {
+      const updateCartProducts = async () => {
+        const updatedCartProductsPromises = cartProducts.map(async (cartProduct) => {
+          const product = await fetchProduct(cartProduct.id);
+          if (product) {
+            if (product.quantity[cartProduct.size as keyof ProductType['quantity']] < cartProduct.quantity) {
+              toast.warn(`The quantity of ${product.title} has been updated`);
+              if (product.quantity[cartProduct.size as keyof ProductType['quantity']] === 0) {
+                return null;
+              } else {
+                return {
+                  ...cartProduct,
+                  quantity: product.quantity[cartProduct.size as keyof ProductType['quantity']],
+                  maxQuantity: product.quantity[cartProduct.size as keyof ProductType['quantity']],
+                };
+              }
+            } else {
+              return cartProduct;
+            }
+          } else {
+            return null;
+          }
+        });
+        const updatedCartProducts = await Promise.all(updatedCartProductsPromises);
+        const filteredCartProducts = updatedCartProducts.filter(
+          (cartProduct) => cartProduct !== null
+        ) as OrderProductType[];
+
+        setCartProducts(filteredCartProducts);
+      };
+
+      updateCartProducts();
+    }
   }, []);
 
   useEffect(() => {
