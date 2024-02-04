@@ -57,22 +57,27 @@ type OrderProductType = {
     discount: number;
   };
   imagesURL: {
-    image1?: string;
-    image2?: string;
-    image3?: string;
-    image4?: string;
-    image5?: string;
-  }
+    image1: string;
+    image2: string;
+    image3: string;
+    image4: string;
+    image5: string;
+  };
 };
 
 type OrderType = {
-  id?: string;
-  userId?: string;
-  date: Date;
-  total: number;
-  status: string;
+  id: string;
+  userId: string;
   products: OrderProductType[];
+  coupons: string[];
   shippingAddress: ShippingAddressType;
+  totalCost: number;
+  deliveryStatus: 'pending' | 'shipped' | 'delivered';
+  trackingNumber: string;
+  paymentStatus: 'paid' | 'unpaid';
+  stripeSessionId: string;
+  stripePaymentIntentId: string;
+  createdAt: Date;
 };
 
 type ShippingAddressType = {

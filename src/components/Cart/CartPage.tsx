@@ -23,18 +23,10 @@ const initialShippingAddress: ShippingAddressType = {
   email: '',
 };
 
-//TODO: Get shipping countries from API
-const shippingCountries: ShippingCountryType[] = [
-  {
-    id: '1',
-    name: 'Greece',
-    cost: 3.5,
-  },
-];
-
 function CartPage() {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [currentStep, setCurrentStep] = useState(1);
+  const [shippingCountries, setShippingCountries] = useState<ShippingCountryType[]>([]);
 
   const [cartProducts, setCartProducts] = useLocalStorage<OrderProductType[]>('cartProducts', []);
   const [shippingAddress, setShippingAddress] = useState<ShippingAddressType>(initialShippingAddress);
@@ -63,10 +55,6 @@ function CartPage() {
       }
     };
 
-    fetchCurrentUser();
-  }, []);
-
-  useEffect(() => {
     const fetchProduct = async (productId: string): Promise<ProductType | null> => {
       try {
         const baseUrl = process.env.NEXT_PUBLIC_API_URL;
@@ -84,6 +72,24 @@ function CartPage() {
       } catch (e: any) {
         toast.error(e?.message || 'Something went wrong');
         return null;
+      }
+    };
+
+    const fetchShippingCountries = async () => {
+      try {
+        const baseUrl = process.env.NEXT_PUBLIC_API_URL;
+        const response = await fetch(`${baseUrl}/shipping/get-shipping-countries`, {
+          method: 'GET',
+          credentials: 'include',
+          cache: 'no-store',
+        });
+        const data = await response.json();
+
+        if (data) {
+          setShippingCountries(data);
+        }
+      } catch (error) {
+        console.error(error);
       }
     };
 
@@ -125,6 +131,9 @@ function CartPage() {
 
       updateCartProducts();
     }
+
+    fetchCurrentUser();
+    fetchShippingCountries();
   }, []);
 
   useEffect(() => {

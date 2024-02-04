@@ -1,7 +1,7 @@
-import PageTemplate from '@/components/layout/PageTemplate';
-import PageBody from '@/components/layout/PageBody';
 import Cover from '@/components/Auth/Cover';
 import Tabs from '@/components/Auth/Tabs';
+import PageBody from '@/components/layout/PageBody';
+import PageTemplate from '@/components/layout/PageTemplate';
 import { ReactNode } from 'react';
 
 export default function Page({ children }: { children: ReactNode }) {
@@ -10,7 +10,7 @@ export default function Page({ children }: { children: ReactNode }) {
       <PageBody>
         <Cover />
         <Tabs />
-        { children }
+        {children}
       </PageBody>
     </PageTemplate>
   );
