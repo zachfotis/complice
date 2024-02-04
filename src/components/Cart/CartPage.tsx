@@ -115,7 +115,10 @@ function CartPage() {
                 };
               }
             } else {
-              return cartProduct;
+              return {
+                ...cartProduct,
+                maxQuantity: product.quantity[cartProduct.size as keyof ProductType['quantity']],
+              };
             }
           } else {
             return null;

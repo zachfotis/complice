@@ -26,7 +26,7 @@ export function SingleOrder({ order }: Props) {
       statusIcon = null;
   }
   return (
-    <div className="w-full flex justify-between items-stretch gap-10 rounded-sm shadow-lg border border-primary p-5">
+    <div className="w-full flex justify-between items-stretch gap-10 rounded-sm shadow-md p-5">
       <div className="w-[300px] flex flex-col justify-center items-center">
         <Image
           src={order.products[0].imagesURL.image1}
@@ -75,7 +75,8 @@ export function SingleOrder({ order }: Props) {
           <strong>Total:</strong> {order.totalCost}€
         </p>
         <p className="text-base font-normal">
-          {order.products.length} {order.products.length > 1 ? 'items' : 'item'}
+          {order.products.reduce((acc, product) => acc + product.quantity, 0)} item
+          {order.products.reduce((acc, product) => acc + product.quantity, 0) > 1 && 's'}
         </p>
       </div>
     </div>

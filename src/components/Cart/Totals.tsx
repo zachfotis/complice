@@ -188,6 +188,7 @@ function Totals({
                     key={coupon.id}
                     value={coupon.id}
                     disabled={coupon.minimumOrder > cartTotal - productDiscount - rankDiscount}
+                    title={`Minimum order: ${coupon.minimumOrder}e`}
                     className="disabled:bg-red-100"
                   >
                     {coupon.discount.fixed ? `${coupon.discount.fixed} e` : `${coupon.discount.percentage} %`}

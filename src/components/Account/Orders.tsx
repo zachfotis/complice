@@ -17,7 +17,7 @@ export function Orders({ userId }: Props) {
       setIsLoading(true);
       try {
         const baseUrl = process.env.NEXT_PUBLIC_API_URL;
-        const response = await fetch(`${baseUrl}/orders/get-user-orders/${userId}`, {
+        const response = await fetch(`${baseUrl}/orders/get-user-orders`, {
           method: 'GET',
           credentials: 'include',
           cache: 'no-store',
