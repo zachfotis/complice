@@ -1,3 +1,5 @@
+export const revalidate = 60 * 60 * 12;
+
 import CategoryProducts from '@/components/Clothing/CategoryProducts';
 import Button from '@/components/common/Button';
 import CategoriesMenu from '@/components/layout/CategoriesMenu';
@@ -5,7 +7,6 @@ import NavMap from '@/components/layout/NavMap';
 import PageBody from '@/components/layout/PageBody';
 import PageTemplate from '@/components/layout/PageTemplate';
 import PageTitle from '@/components/layout/PageTitle';
-import Paginator from '@/components/layout/Paginator';
 import Link from 'next/link';
 import { CategoryType } from '../../../../typings';
 
@@ -58,10 +59,7 @@ async function Page({ params }: PageProps) {
             </Link>
           </div>
         ) : (
-          <>
-            <CategoryProducts products={products} />
-            <Paginator productsShown={products.length} totalProducts={products.length} />
-          </>
+          <CategoryProducts products={products} />
         )}
       </PageBody>
     </PageTemplate>

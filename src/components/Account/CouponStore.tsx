@@ -80,15 +80,15 @@ export default function CouponStore({ ranking, setCurrentUser }: Props) {
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
     >
-      <h1 className="text-xl font-bold">Available Points</h1>
+      <h1 className="text-base sm:text-xl font-bold">Available Points</h1>
       <div
         title="The available points can be used to purchase coupons. For each euro spent on products, you will receive 1 point"
         className="flex justify-start items-start gap-1"
       >
-        <h1 className="text-xl font-normal">{ranking.pointsAvailable}</h1>
+        <h1 className="text-base sm:text-xl font-normal">{ranking.pointsAvailable}</h1>
         <Image src={CoinsImage} alt="Coins" width={25} height={25} />
       </div>
-      <div className="col-span-2 flex justify-between items-start flex-wrap gap-5">
+      <div className="col-span-2 flex justify-start md:justify-between items-start flex-wrap gap-5">
         {storeCoupons.map((coupon) => (
           <CouponForStore
             coupon={coupon}

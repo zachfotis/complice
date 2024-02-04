@@ -1,3 +1,5 @@
+'use client';
+
 import { ShippingAddressType, ShippingCountryType } from '../../../typings';
 
 interface ShippingDetailsProps {

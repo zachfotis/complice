@@ -43,18 +43,18 @@ function Tabs({ currentUser, shippingCountries, setCurrentUser }: ITab) {
 
   return (
     <div className="w-full max-w-[1000px] flex flex-col justify-start items-center mt-5">
-      <div className="w-full flex justify-start items-center border border-primary">
+      <div className="w-full flex justify-start items-stretch border border-primary">
         {tabs.map((tab) => (
           <button
             key={tab.id}
             className={`flex-1 text-center p-2 cursor-pointer ${activeTab === tab.id ? 'bg-primary text-white' : ''}`}
             onClick={() => setActiveTab(tab.id)}
           >
-            <p className="text-base font-medium">{tab.name}</p>
+            <p className="text-sm sm:text-base font-medium">{tab.name}</p>
           </button>
         ))}
       </div>
-      <div className="w-full flex-1 shadow-md p-2 md:p-7">{tabs[activeTab].content}</div>
+      <div className="w-full flex-1 shadow-md p-4 sm:p-7">{tabs[activeTab].content}</div>
     </div>
   );
 }

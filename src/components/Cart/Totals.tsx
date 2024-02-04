@@ -1,9 +1,12 @@
+'use client';
+
 import { RankingNamesEnum } from '@/constants';
 import { useEffect, useState } from 'react';
 import { OrderProductType, UserType } from '../../../typings';
 import { Trophy } from '../Account/Trophy';
 
 interface TotalsProps {
+  currentStep: number;
   cartProducts: OrderProductType[];
   shippingCost: number;
   currentUser: UserType | null;
@@ -14,6 +17,7 @@ interface TotalsProps {
 }
 
 function Totals({
+  currentStep,
   cartProducts,
   shippingCost,
   currentUser,
@@ -103,17 +107,19 @@ function Totals({
     <div className="w-full max-w-[1000px] flex flex-col justify-start items-start gap-5 mt-2 md:mt-5">
       {/*  Cart Total*/}
       <div className="w-full flex justify-between items-center gap-10">
-        <p className="text-h4 font-custom">Cart Total</p>
-        <p className="text-base font-medium">{cartTotal.toFixed(2)} &euro;</p>
+        <p className="text-h4 sm:text-h3 font-custom">Cart Total</p>
+        <p className="text-base font-medium whitespace-nowrap">{cartTotal.toFixed(2)} &euro;</p>
       </div>
       {/*  Product Discount*/}
       <div className="w-full flex justify-between items-center gap-10">
-        <p className="text-h4 font-custom flex justify-start items-center flex-wrap gap-2">Product Discount</p>
-        <p className="text-base font-medium">-{productDiscount.toFixed(2)} &euro;</p>
+        <p className="text-h4 sm:text-h3 font-custom flex justify-start items-center flex-wrap gap-2">
+          Product Discount
+        </p>
+        <p className="text-base font-medium whitespace-nowrap"> -{productDiscount.toFixed(2)} &euro;</p>
       </div>
       {/*  Shipping Cost*/}
       <div className="w-full flex justify-between items-center gap-10">
-        <p className="text-h4 font-custom flex justify-start items-center flex-wrap gap-2">
+        <p className="text-h4 sm:text-h3 font-custom flex justify-start items-center flex-wrap gap-2">
           Shipping Cost
           {shippingCost === 0 && (
             <span className="text-sm font-normal text-gray-400">
@@ -130,24 +136,25 @@ function Totals({
       {currentUser && currentUser?.ranking.coupons.permanent.find((coupon) => coupon.couponType.isFreeShipping) && (
         <div className="w-full flex justify-between items-center gap-10">
           <div className="flex justify-start items-center gap-2">
-            <p className="text-h4 font-custom flex justify-start items-center flex-wrap gap-2">
-              Free Shipping Discount
+            <p className="text-h4 sm:text-h3 font-custom">
+              Free Shipping <span className="hidden sm:inline">Discount</span>
             </p>
             <Trophy rankingName={currentUser?.ranking.name as RankingNamesEnum} size="2xl" />
           </div>
-          <p className="text-base font-medium whitespace-nowrap">- {freeShippingDiscount.toFixed(2)} &euro;</p>
+          <p className="text-base font-medium whitespace-nowrap"> - {freeShippingDiscount.toFixed(2)} &euro;</p>
         </div>
       )}
       {/*  Rank Discount*/}
       {currentUser && currentUser?.ranking.coupons.ranked.length > 0 && (
         <div className="w-full flex justify-between items-center gap-10">
-          <div className="flex justify-start items-center gap-5">
+          <div className="flex flex-col justify-start items-start gap-x-5 gap-y-1 sm:flex-row sm:items-center">
             <div className="flex justify-start items-center gap-2">
-              <p className="text-h4 font-custom flex justify-start items-center flex-wrap gap-3">Rank Discount</p>
+              <p className="text-h4 sm:text-h3 font-custom">Rank Discount</p>
               <Trophy rankingName={currentUser?.ranking.name as RankingNamesEnum} size="2xl" />
             </div>
             <select
-              className="text-base font-medium"
+              className="text-base font-medium disabled:opacity-50"
+              disabled={currentStep !== 1}
               value={rankedCouponSelected}
               onChange={(e) => {
                 setRankedCouponSelected(e.target.value);
@@ -162,19 +169,20 @@ function Totals({
                 ))}
             </select>
           </div>
-          <p className="text-base font-medium">- {rankDiscount.toFixed(2)} &euro;</p>
+          <p className="text-base font-medium whitespace-nowrap"> - {rankDiscount.toFixed(2)} &euro;</p>
         </div>
       )}
       {/*  Coupon Discount*/}
       {currentUser && currentUser?.ranking.coupons.optional.length > 0 && (
         <div className="w-full flex justify-between items-center gap-10">
-          <div className="flex justify-start items-center gap-5">
+          <div className="flex flex-col justify-start items-start gap-x-5 gap-y-1 sm:flex-row sm:items-center">
             <div className="flex justify-start items-center gap-2">
-              <p className="text-h4 font-custom flex justify-start items-center flex-wrap gap-2">Coupon Discount</p>
+              <p className="text-h4 sm:text-h3 font-custom">Coupon Discount</p>
               <Trophy rankingName={currentUser?.ranking.name as RankingNamesEnum} size="2xl" />
             </div>
             <select
-              className="text-base font-medium"
+              className="text-base font-medium disabled:opacity-50"
+              disabled={currentStep !== 1}
               value={optionalCouponSelected}
               onChange={(e) => {
                 setOptionalCouponSelected(e.target.value);
@@ -189,14 +197,14 @@ function Totals({
                     value={coupon.id}
                     disabled={coupon.minimumOrder > cartTotal - productDiscount - rankDiscount}
                     title={`Minimum order: ${coupon.minimumOrder}e`}
-                    className="disabled:bg-red-100"
+                    className="disabled:opacity-50 disabled:cursor-not-allowed disabled:bg-gray-100"
                   >
                     {coupon.discount.fixed ? `${coupon.discount.fixed} e` : `${coupon.discount.percentage} %`}
                   </option>
                 ))}
             </select>
           </div>
-          <p className="text-base font-medium">
+          <p className="text-base font-medium whitespace-nowrap">
             {optionalCouponSelected ? '-' : ''} {couponDiscount.toFixed(2)} &euro;
           </p>
         </div>
@@ -209,7 +217,7 @@ function Totals({
       {/*  Grand Total*/}
       <div className="w-full flex justify-between items-center gap-10">
         <p className="text-h3 font-custom">Order Total</p>
-        <p className="text-lg font-medium">{orderTotal.toFixed(2)} &euro;</p>
+        <p className="text-lg font-medium whitespace-nowrap">{orderTotal.toFixed(2)} &euro;</p>
       </div>
     </div>
   );

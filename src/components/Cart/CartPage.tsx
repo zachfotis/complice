@@ -1,4 +1,5 @@
 'use client';
+
 import CheckoutBar from '@/components/Cart/CheckoutBar';
 import PlaceOrder from '@/components/Cart/PlaceOrder';
 import ProceedStep from '@/components/Cart/ProceedStep';
@@ -180,6 +181,7 @@ function CartPage() {
       {currentStep === 3 && <PlaceOrder cartProducts={cartProducts} shippingAddress={shippingAddress} />}
 
       <Totals
+        currentStep={currentStep}
         cartProducts={cartProducts}
         shippingCost={shippingCost}
         currentUser={user}

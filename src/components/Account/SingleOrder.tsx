@@ -26,8 +26,8 @@ export function SingleOrder({ order }: Props) {
       statusIcon = null;
   }
   return (
-    <div className="w-full flex justify-between items-stretch gap-10 rounded-sm shadow-md p-5">
-      <div className="w-[300px] flex flex-col justify-center items-center">
+    <div className="w-full flex flex-col sm:flex-row justify-between items-stretch gap-3 sm:gap-10 rounded-sm shadow-md p-5">
+      <div className="w-full sm:w-[300px] flex flex-col justify-center items-center">
         <Image
           src={order.products[0].imagesURL?.image1 || ''}
           alt={order.products[0].title}
@@ -35,7 +35,7 @@ export function SingleOrder({ order }: Props) {
           height={150}
           className="w-[150px] h-[150px] object-cover"
         />
-        <div className="w-full flex justify-center items-start gap-3">
+        <div className="w-full flex justify-center items-start gap-3 flex-wrap">
           {order.products.map(
             (product, index) =>
               index > 0 && (
@@ -45,14 +45,24 @@ export function SingleOrder({ order }: Props) {
                   alt={product.title}
                   width={80}
                   height={80}
-                  className="w-[80px] h-[80px] object-contain"
+                  className="flex-1 object-contain"
                 />
               )
           )}
         </div>
       </div>
       <div className="w-full flex flex-col justify-stretch items-start gap-3">
-        <div className="text-lg font-bold flex justify-center items-center gap-3">
+        <div
+          className={`text-base sm:text-lg font-bold flex justify-center items-center gap-3
+          ${
+            order.deliveryStatus === 'delivered'
+              ? 'text-green-600'
+              : order.deliveryStatus === 'shipped'
+              ? 'text-blue-400'
+              : 'text-yellow-600'
+          }
+        `}
+        >
           <p>{order.deliveryStatus.charAt(0).toUpperCase() + order.deliveryStatus.slice(1)}</p>
           {statusIcon}
         </div>
@@ -60,21 +70,21 @@ export function SingleOrder({ order }: Props) {
           <Link
             href={`https://www.taxydromiki.com/en/track/${order.trackingNumber}`}
             passHref
-            className="text-base font-normal"
+            className="text-sm sm:text-base font-normal"
           >
             <strong>Tracking Number:</strong> {order.trackingNumber}
           </Link>
         )}
-        <p className="text-base font-normal">
+        <p className="text-sm sm:text-base font-normal">
           <strong>Order:</strong> {order.id}
         </p>
-        <p className="text-base font-normal">
+        <p className="text-sm sm:text-base font-normal">
           <strong>Date:</strong> {format(new Date(order.createdAt), 'LLLL d, yyyy - HH:mm')}
         </p>
-        <p className="text-base font-normal">
+        <p className="text-sm sm:text-base font-normal">
           <strong>Total:</strong> {order.totalCost}€
         </p>
-        <p className="text-base font-normal">
+        <p className="text-sm sm:text-base font-normal">
           {order.products.reduce((acc, product) => acc + product.quantity, 0)} item
           {order.products.reduce((acc, product) => acc + product.quantity, 0) > 1 && 's'}
         </p>

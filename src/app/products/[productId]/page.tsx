@@ -12,8 +12,6 @@ interface PageProps {
   };
 }
 
-export const fetchCache = 'force-no-store';
-
 const fetchProducts = async () => {
   try {
     const BASE_URL = process.env.API_URL;
