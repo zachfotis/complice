@@ -29,7 +29,7 @@ export function SingleOrder({ order }: Props) {
     <div className="w-full flex justify-between items-stretch gap-10 rounded-sm shadow-md p-5">
       <div className="w-[300px] flex flex-col justify-center items-center">
         <Image
-          src={order.products[0].imagesURL.image1}
+          src={order.products[0].imagesURL?.image1 || ''}
           alt={order.products[0].title}
           width={150}
           height={150}
@@ -41,7 +41,7 @@ export function SingleOrder({ order }: Props) {
               index > 0 && (
                 <Image
                   key={product.id}
-                  src={product.imagesURL.image1}
+                  src={product.imagesURL?.image1 || ''}
                   alt={product.title}
                   width={80}
                   height={80}
