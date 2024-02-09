@@ -15,7 +15,7 @@ function Ranking({ ranking, birthday }: Props) {
   const nextRankText =
     ranking.pointsTotal > ranking.pointsRange.max || ranking.name === ranking.nextRanking.name
       ? 'Highest Rank'
-      : `${ranking.pointsTotal} / ${ranking.pointsRange.max} pts`;
+      : `${ ranking.pointsTotal } / ${ ranking.pointsRange.max } pts`;
   const groupedRankedCoupons: { [key: number]: CouponType & { quantity: number } } = {};
   const groupedOptionalCoupons: { [key: number]: CouponType & { quantity: number } } = {};
 
@@ -41,70 +41,70 @@ function Ranking({ ranking, birthday }: Props) {
   return (
     <motion.div
       className="w-full max-w-[1000px] grid grid-cols-[auto_1fr] items-center gap-x-5 sm:gap-x-10 gap-y-6 sm:gap-y-12 bg-white"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.5 }}
+      initial={ { opacity: 0 } }
+      animate={ { opacity: 1 } }
+      transition={ { duration: 0.5 } }
     >
       <h1 className="text-base sm:text-xl font-bold">Rank</h1>
       <h1 className="text-base sm:text-xl font-normal col-span-2 sm:col-span-1 -mt-4 sm:mt-0 ml-1 sm:ml-0">
-        {ranking.name}
+        { ranking.name }
       </h1>
       <h1 className="text-base sm:text-xl font-bold">Next Rank</h1>
       <div className="relative w-full col-span-2 sm:col-span-1 -mt-4 sm:mt-0 ml-1 sm:ml-0 bg-primary border-2 border-primary flex justify-start items-center gap-2">
-        <div className="h-full bg-lightGrey flex justify-center items-center" style={{ width: `${currentPercent}%` }}>
-          {currentPercent > 50 && <p className="text-primary text-sm font-medium">{nextRankText}</p>}
+        <div className="h-full bg-lightGrey flex justify-center items-center" style={ { width: `${ currentPercent }%` } }>
+          { currentPercent > 50 && <p className="text-primary text-sm font-medium">{ nextRankText }</p> }
         </div>
-        {currentPercent <= 50 && <p className="text-white text-sm font-medium">{nextRankText} </p>}
+        { currentPercent <= 50 && <p className="text-white text-sm font-medium">{ nextRankText } </p> }
       </div>
       <h1 className="text-base sm:text-xl font-bold">Available Points</h1>
       <div
         title="The available points can be used to purchase coupons. For each euro spent on products, you will receive 1 point"
         className="flex justify-start items-start gap-1 col-span-2 sm:col-span-1 -mt-4 sm:mt-0 ml-1"
       >
-        <h1 className="text-base sm:text-xl font-normal">{ranking.pointsAvailable}</h1>
-        <Image src={CoinsImage} alt="Coins" width={25} height={25} />
+        <h1 className="text-base sm:text-xl font-normal">{ ranking.pointsAvailable }</h1>
+        <Image src={ CoinsImage } alt="Coins" width={ 25 } height={ 25 } />
       </div>
       <div className="col-span-2 flex flex-col justify-start items-start gap-5">
         <h1 className="text-base sm:text-xl font-bold">Permanent Discounts</h1>
         <div className="w-full flex justify-start items-start gap-5 py-2 snap-x overflow-x-auto">
           <PermanentCoupon
             couponType="freeShipping"
-            coupon={ranking.coupons.permanent.find((coupon) => coupon.couponType.isFreeShipping) || null}
-            birthday={birthday}
+            coupon={ ranking.coupons.permanent.find((coupon) => coupon.couponType.isFreeShipping) || null }
+            birthday={ birthday }
           />
           <PermanentCoupon
             couponType="holidays"
-            coupon={ranking.coupons.permanent.find((coupon) => coupon.couponType.isHolidays) || null}
-            birthday={birthday}
+            coupon={ ranking.coupons.permanent.find((coupon) => coupon.couponType.isHolidays) || null }
+            birthday={ birthday }
           />
           <PermanentCoupon
             couponType="birthday"
-            coupon={ranking.coupons.permanent.find((coupon) => coupon.couponType.isBirthday) || null}
-            birthday={birthday}
+            coupon={ ranking.coupons.permanent.find((coupon) => coupon.couponType.isBirthday) || null }
+            birthday={ birthday }
           />
         </div>
       </div>
       <div className="col-span-2 flex flex-col justify-start items-start gap-5">
         <h1 className="text-base sm:text-xl font-bold">
           My Coupons
-          {rankedCouponsArray.length + optionalCouponsArray.length > 0 && (
-            <span> ({rankedCouponsArray.length + optionalCouponsArray.length})</span>
-          )}
+          { rankedCouponsArray.length + optionalCouponsArray.length > 0 && (
+            <span> ({ rankedCouponsArray.reduce((acc, coupon) => acc + coupon.quantity, 0) + optionalCouponsArray.reduce((acc, coupon) => acc + coupon.quantity, 0) })</span>
+          ) }
         </h1>
-        {rankedCouponsArray.length + optionalCouponsArray.length > 0 ? (
+        { rankedCouponsArray.length + optionalCouponsArray.length > 0 ? (
           <div className="w-full flex justify-start items-start flex-wrap gap-5">
-            {rankedCouponsArray.map((coupon) => (
-              <Coupon coupon={coupon} key={coupon.id} quantity={coupon.quantity} />
-            ))}
-            {optionalCouponsArray.map((coupon) => (
-              <Coupon coupon={coupon} key={coupon.id} quantity={coupon.quantity} />
-            ))}
+            { rankedCouponsArray.map((coupon) => (
+              <Coupon coupon={ coupon } key={ coupon.id } quantity={ coupon.quantity } />
+            )) }
+            { optionalCouponsArray.map((coupon) => (
+              <Coupon coupon={ coupon } key={ coupon.id } quantity={ coupon.quantity } />
+            )) }
           </div>
         ) : (
           <p className="text-base font-medium">
             You have no activated coupons. Go to the Coupon Store to purchase one!
           </p>
-        )}
+        ) }
       </div>
     </motion.div>
   );

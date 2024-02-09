@@ -19,24 +19,24 @@ function Tabs({ currentUser, shippingCountries, setCurrentUser }: ITab) {
   const tabs = [
     {
       id: 0,
-      name: 'My Discounts',
+      name: 'Discounts',
       content: <Ranking ranking={currentUser.ranking} birthday={currentUser.birthDate} />,
     },
     {
       id: 1,
-      name: 'Coupon Store',
+      name: 'Store',
       content: <CouponStore ranking={currentUser.ranking} setCurrentUser={setCurrentUser} />,
     },
     {
       id: 2,
-      name: 'My Profile',
+      name: 'Profile',
       content: (
         <MyProfile currentUser={currentUser} shippingCountries={shippingCountries} setCurrentUser={setCurrentUser} />
       ),
     },
     {
       id: 3,
-      name: 'My Orders',
+      name: 'Orders',
       content: <Orders userId={currentUser.id} />,
     },
   ];

@@ -17,11 +17,48 @@ function Page() {
       }
     }
   });
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
 
-    toast.success('Message sent!');
+    const form = event.currentTarget;
+    const formData = new FormData(form);
+
+    const firstName = formData.get('firstName') as string;
+    const lastName = formData.get('lastName') as string;
+    const email = formData.get('email') as string;
+    const phone = formData.get('phone') as string;
+    const message = formData.get('message') as string;
+
+    try {
+      const baseUrl = process.env.NEXT_PUBLIC_API_URL;
+      const response = await fetch(`${ baseUrl }/contact/new-message`, {
+        method: 'POST',
+        credentials: 'include',
+        cache: 'no-cache',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          firstName,
+          lastName,
+          email,
+          phone,
+          message,
+        }),
+      });
+
+      const data = await response.json();
+      if (data.message) {
+        toast.success(data.message);
+      } else {
+        toast.error(data.errors.map((err: any) => err.message).join(', '));
+      }
+    } catch (error: any) {
+      console.error(error);
+      toast.error(error?.message || 'An error occurred');
+    } finally {
+      form.reset();
+    }
   };
 
   return (
