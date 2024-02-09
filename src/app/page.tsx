@@ -8,10 +8,10 @@ import PageBody from '@/components/layout/PageBody';
 import PageTemplate from '@/components/layout/PageTemplate';
 import { CategoryType, ProductType } from '../../typings';
 
-const fetchProducts = async () => {
+const fetchBestSellers = async () => {
   try {
     const BASE_URL = process.env.API_URL;
-    const res = await fetch(`${BASE_URL}/products/new-arrivals`);
+    const res = await fetch(`${ BASE_URL }/products/best-sellers`);
     const data = await res.json();
     return data;
   } catch (err) {
@@ -28,8 +28,8 @@ const fetchCategories = async () => {
 };
 
 export default async function Home() {
-  const products: ProductType[] = await fetchProducts();
   const categories: CategoryType[] = await fetchCategories();
+  const bestSellers: ProductType[] = await fetchBestSellers();
 
   return (
     <PageTemplate>
@@ -42,7 +42,7 @@ export default async function Home() {
       </PageBody>
       <Banner />
       <PageBody>
-        <Products products={products.slice(0, 3)} title="Best Sellers" isInitialScreen={true} />
+        <Products products={ bestSellers } title="Best Sellers" isInitialScreen={ true } />
         <StayTuned />
       </PageBody>
     </PageTemplate>
