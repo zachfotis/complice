@@ -75,7 +75,7 @@ const storeCoupons: StoreCouponType[] = [
 export default function CouponStore({ ranking, setCurrentUser }: Props) {
   return (
     <motion.div
-      className="w-full max-w-[1000px] grid grid-cols-[auto_1fr] gap-x-10 gap-y-12 bg-white"
+      className="w-full max-w-[1000px] grid grid-cols-[auto_1fr] gap-x-10 gap-y-6 md:gap-y-10 pt-3 bg-white"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
