@@ -46,7 +46,7 @@ function CartPage() {
     const fetchCurrentUser = async () => {
       try {
         const baseUrl = process.env.NEXT_PUBLIC_API_URL;
-        const response = await fetch(`${baseUrl}/auth/currentuser`, {
+        const response = await fetch(`${ baseUrl }/auth/currentuser`, {
           method: 'GET',
           credentials: 'include',
           cache: 'no-cache',
@@ -64,7 +64,7 @@ function CartPage() {
     const fetchProduct = async (productId: string): Promise<ProductType | null> => {
       try {
         const baseUrl = process.env.NEXT_PUBLIC_API_URL;
-        const response = await fetch(`${baseUrl}/products/get-product/${productId}`, {
+        const response = await fetch(`${ baseUrl }/products/get-product/${ productId }`, {
           method: 'GET',
           credentials: 'include',
           cache: 'no-cache',
@@ -84,7 +84,7 @@ function CartPage() {
     const fetchShippingCountries = async () => {
       try {
         const baseUrl = process.env.NEXT_PUBLIC_API_URL;
-        const response = await fetch(`${baseUrl}/shipping/get-shipping-countries`, {
+        const response = await fetch(`${ baseUrl }/shipping/get-shipping-countries`, {
           method: 'GET',
           credentials: 'include',
           cache: 'no-store',
@@ -99,48 +99,46 @@ function CartPage() {
       }
     };
 
-    if (typeof window !== 'undefined') {
-      const queryString = window.location.search;
-      const params = new URLSearchParams(queryString);
-      const paramsObj = Object.fromEntries(params);
-      const orderId = paramsObj['orderId'];
+    const queryString = window.location.search;
+    const params = new URLSearchParams(queryString);
+    const paramsObj = Object.fromEntries(params);
+    const orderId = paramsObj['orderId'];
 
-      if (!orderId) {
-        const updateCartProducts = async () => {
-          const updatedCartProductsPromises = cartProducts.map(async (cartProduct) => {
-            const product = await fetchProduct(cartProduct.id);
-            if (product) {
-              if (product.quantity[cartProduct.size as keyof ProductType['quantity']] < cartProduct.quantity) {
-                toast.warn(`The quantity of ${ product.title } has been updated`);
-                if (product.quantity[cartProduct.size as keyof ProductType['quantity']] === 0) {
-                  return null;
-                } else {
-                  return {
-                    ...cartProduct,
-                    quantity: product.quantity[cartProduct.size as keyof ProductType['quantity']],
-                    maxQuantity: product.quantity[cartProduct.size as keyof ProductType['quantity']],
-                  };
-                }
+    if (!orderId) {
+      const updateCartProducts = async () => {
+        const updatedCartProductsPromises = cartProducts.map(async (cartProduct) => {
+          const product = await fetchProduct(cartProduct.id);
+          if (product) {
+            if (product.quantity[cartProduct.size as keyof ProductType['quantity']] < cartProduct.quantity) {
+              toast.warn(`The quantity of ${ product.title } has been updated`);
+              if (product.quantity[cartProduct.size as keyof ProductType['quantity']] === 0) {
+                return null;
               } else {
                 return {
                   ...cartProduct,
+                  quantity: product.quantity[cartProduct.size as keyof ProductType['quantity']],
                   maxQuantity: product.quantity[cartProduct.size as keyof ProductType['quantity']],
                 };
               }
             } else {
-              return null;
+              return {
+                ...cartProduct,
+                maxQuantity: product.quantity[cartProduct.size as keyof ProductType['quantity']],
+              };
             }
-          });
-          const updatedCartProducts = await Promise.all(updatedCartProductsPromises);
-          const filteredCartProducts = updatedCartProducts.filter(
-            (cartProduct) => cartProduct !== null,
-          ) as OrderProductType[];
+          } else {
+            return null;
+          }
+        });
+        const updatedCartProducts = await Promise.all(updatedCartProductsPromises);
+        const filteredCartProducts = updatedCartProducts.filter(
+          (cartProduct) => cartProduct !== null,
+        ) as OrderProductType[];
 
-          setCartProducts(filteredCartProducts);
-        };
+        setCartProducts(filteredCartProducts);
+      };
 
-        updateCartProducts();
-      }
+      updateCartProducts();
     }
 
     fetchCurrentUser();
@@ -177,45 +175,45 @@ function CartPage() {
     </div>
   ) : (
     <>
-      <CheckoutBar currentStep={currentStep} setCurrentStep={setCurrentStep} />
+      <CheckoutBar currentStep={ currentStep } setCurrentStep={ setCurrentStep } />
 
-      {currentStep === 1 && <YourCart cartProducts={cartProducts} setCartProducts={setCartProducts} />}
-      {currentStep === 2 && (
+      { currentStep === 1 && <YourCart cartProducts={ cartProducts } setCartProducts={ setCartProducts } /> }
+      { currentStep === 2 && (
         <ShippingDetails
-          shippingAddress={shippingAddress}
-          setShippingAddress={setShippingAddress}
-          shippingCountries={shippingCountries}
+          shippingAddress={ shippingAddress }
+          setShippingAddress={ setShippingAddress }
+          shippingCountries={ shippingCountries }
         />
-      )}
-      {currentStep === 3 && <PlaceOrder cartProducts={cartProducts} shippingAddress={shippingAddress} />}
+      ) }
+      { currentStep === 3 && <PlaceOrder cartProducts={ cartProducts } shippingAddress={ shippingAddress } /> }
 
       <Totals
-        currentStep={currentStep}
-        cartProducts={cartProducts}
-        shippingCost={shippingCost}
-        currentUser={user}
-        rankedCouponSelected={rankedCouponSelected}
-        setRankedCouponSelected={setRankedCouponSelected}
-        optionalCouponSelected={optionalCouponSelected}
-        setOptionalCouponSelected={setOptionalCouponSelected}
+        currentStep={ currentStep }
+        cartProducts={ cartProducts }
+        shippingCost={ shippingCost }
+        currentUser={ user }
+        rankedCouponSelected={ rankedCouponSelected }
+        setRankedCouponSelected={ setRankedCouponSelected }
+        optionalCouponSelected={ optionalCouponSelected }
+        setOptionalCouponSelected={ setOptionalCouponSelected }
       />
 
       <ProceedStep
-        currentStep={currentStep}
-        setCurrentStep={setCurrentStep}
-        cartProducts={cartProducts}
-        shippingAddress={shippingAddress}
-        isLoading={isLoading}
-        setIsLoading={setIsLoading}
-        rankedCouponSelected={rankedCouponSelected}
-        optionalCouponSelected={optionalCouponSelected}
+        currentStep={ currentStep }
+        setCurrentStep={ setCurrentStep }
+        cartProducts={ cartProducts }
+        shippingAddress={ shippingAddress }
+        isLoading={ isLoading }
+        setIsLoading={ setIsLoading }
+        rankedCouponSelected={ rankedCouponSelected }
+        optionalCouponSelected={ optionalCouponSelected }
       />
 
-      {isLoading && (
+      { isLoading && (
         <div className="fixed top-0 left-0 w-screen h-screen bg-white bg-opacity-50 z-50 flex justify-center items-center">
           <Loader />
         </div>
-      )}
+      ) }
     </>
   );
 }
