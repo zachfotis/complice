@@ -80,7 +80,7 @@ export default function CouponStore({ ranking, setCurrentUser }: Props) {
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
     >
-      <h1 className="text-base sm:text-xl font-bold">Available Points</h1>
+      <h1 className="text-base sm:text-xl font-[600]">Available Points</h1>
       <div
         title="The available points can be used to purchase coupons. For each euro spent on products, you will receive 1 point"
         className="flex justify-start items-start gap-1"
