@@ -25,6 +25,7 @@ const initialShippingAddress: ShippingAddressType = {
 };
 
 function CartPage() {
+  const [hasMounted, setHasMounted] = useState(false);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [currentStep, setCurrentStep] = useState(1);
   const [shippingCountries, setShippingCountries] = useState<ShippingCountryType[]>([]);
@@ -35,6 +36,10 @@ function CartPage() {
   const [user, setUser] = useState<UserType | null>(null);
   const [rankedCouponSelected, setRankedCouponSelected] = useState<string>('');
   const [optionalCouponSelected, setOptionalCouponSelected] = useState<string>('');
+
+  useEffect(() => {
+    setHasMounted(true);
+  }, []);
 
   //   Fetch current user
   useEffect(() => {
@@ -94,46 +99,48 @@ function CartPage() {
       }
     };
 
-    const queryString = window.location.search;
-    const params = new URLSearchParams(queryString);
-    const paramsObj = Object.fromEntries(params);
-    const orderId = paramsObj['orderId'];
+    if (typeof window !== 'undefined') {
+      const queryString = window.location.search;
+      const params = new URLSearchParams(queryString);
+      const paramsObj = Object.fromEntries(params);
+      const orderId = paramsObj['orderId'];
 
-    if (!orderId) {
-      const updateCartProducts = async () => {
-        const updatedCartProductsPromises = cartProducts.map(async (cartProduct) => {
-          const product = await fetchProduct(cartProduct.id);
-          if (product) {
-            if (product.quantity[cartProduct.size as keyof ProductType['quantity']] < cartProduct.quantity) {
-              toast.warn(`The quantity of ${product.title} has been updated`);
-              if (product.quantity[cartProduct.size as keyof ProductType['quantity']] === 0) {
-                return null;
+      if (!orderId) {
+        const updateCartProducts = async () => {
+          const updatedCartProductsPromises = cartProducts.map(async (cartProduct) => {
+            const product = await fetchProduct(cartProduct.id);
+            if (product) {
+              if (product.quantity[cartProduct.size as keyof ProductType['quantity']] < cartProduct.quantity) {
+                toast.warn(`The quantity of ${ product.title } has been updated`);
+                if (product.quantity[cartProduct.size as keyof ProductType['quantity']] === 0) {
+                  return null;
+                } else {
+                  return {
+                    ...cartProduct,
+                    quantity: product.quantity[cartProduct.size as keyof ProductType['quantity']],
+                    maxQuantity: product.quantity[cartProduct.size as keyof ProductType['quantity']],
+                  };
+                }
               } else {
                 return {
                   ...cartProduct,
-                  quantity: product.quantity[cartProduct.size as keyof ProductType['quantity']],
                   maxQuantity: product.quantity[cartProduct.size as keyof ProductType['quantity']],
                 };
               }
             } else {
-              return {
-                ...cartProduct,
-                maxQuantity: product.quantity[cartProduct.size as keyof ProductType['quantity']],
-              };
+              return null;
             }
-          } else {
-            return null;
-          }
-        });
-        const updatedCartProducts = await Promise.all(updatedCartProductsPromises);
-        const filteredCartProducts = updatedCartProducts.filter(
-          (cartProduct) => cartProduct !== null
-        ) as OrderProductType[];
+          });
+          const updatedCartProducts = await Promise.all(updatedCartProductsPromises);
+          const filteredCartProducts = updatedCartProducts.filter(
+            (cartProduct) => cartProduct !== null,
+          ) as OrderProductType[];
 
-        setCartProducts(filteredCartProducts);
-      };
+          setCartProducts(filteredCartProducts);
+        };
 
-      updateCartProducts();
+        updateCartProducts();
+      }
     }
 
     fetchCurrentUser();
@@ -160,6 +167,8 @@ function CartPage() {
 
     setCartProducts(newCartProducts);
   }, []);
+
+  if (!hasMounted) return null;
 
   return cartProducts.length === 0 ? (
     <div className="flex-auto min-h-full flex flex-col justify-center items-center gap-5">

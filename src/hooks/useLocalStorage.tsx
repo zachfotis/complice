@@ -28,7 +28,9 @@ function useLocalStorage<T>(key: string, initialValue: T): [T, (value: T) => voi
     setStoredValue(value);
 
     // Save to local storage
-    window.localStorage.setItem(key, JSON.stringify(value));
+    if (typeof window !== 'undefined') {
+      window.localStorage.setItem(key, JSON.stringify(value));
+    }
   };
 
   return [storedValue, setValue];
