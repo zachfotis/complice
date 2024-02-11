@@ -16,7 +16,7 @@ export function SearchResultRow({ product }: Props) {
         { product.onSale.discount > 0 ? (
           <div className="flex items-center justify-start gap-1">
             <p className="text-xs line-through text-gray-500">{ product.price.toFixed(2) } €</p>
-            <p className="text-xs text-primary">{ (product.price - product.onSale.discount).toFixed(2) } €</p>
+            <p className="text-xs text-primary">{ (product.price - product.price * product.onSale.discount).toFixed(2) } €</p>
           </div>
         ) : (
           <p className="text-xs">{ product.price.toFixed(2) } €</p>
