@@ -5,6 +5,9 @@ import Image from 'next/image';
 import { StoreCouponType, UserType } from '../../../typings';
 import { IoMdInformationCircle } from 'react-icons/io';
 import { Tooltip } from 'react-tooltip';
+import { useEffect, useState } from 'react';
+import ConfirmationModal from '@/components/common/ConfirmationModal';
+import { toast } from 'react-toastify';
 
 interface Props {
   ranking: UserType['ranking'];
@@ -75,6 +78,54 @@ const storeCoupons: StoreCouponType[] = [
 ];
 
 export default function CouponStore({ ranking, setCurrentUser }: Props) {
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  const [couponSelected, setCouponSelected] = useState<StoreCouponType | null>(null);
+
+  useEffect(() => {
+    if (couponSelected) {
+      setIsModalOpen(true);
+    } else {
+      setIsModalOpen(false);
+    }
+  }, [couponSelected]);
+
+  useEffect(() => {
+    if (!isModalOpen) {
+      setCouponSelected(null);
+    }
+  }, [isModalOpen]);
+
+  const handleBuyCoupon = async () => {
+    if (!couponSelected) return;
+
+    try {
+      const baseUrl = process.env.NEXT_PUBLIC_API_URL;
+      const response = await fetch(`${ baseUrl }/coupons/buy-coupon`, {
+        method: 'POST',
+        credentials: 'include',
+        cache: 'no-store',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          discountValue: couponSelected.discount.fixed,
+        }),
+      });
+      const data = await response.json();
+
+      if (data.message) {
+        toast.error(data.message);
+      } else if (data.currentUser) {
+        setCurrentUser(data.currentUser);
+        toast.success('Coupon purchased successfully!');
+      }
+    } catch (error) {
+      toast.error('Something went wrong!');
+    } finally {
+      setCouponSelected(null);
+    }
+  };
+
   return (
     <motion.div
       className="w-full max-w-[1000px] grid grid-cols-[auto_1fr] gap-x-10 gap-y-6 md:gap-y-10 pt-3 bg-white"
@@ -94,14 +145,22 @@ export default function CouponStore({ ranking, setCurrentUser }: Props) {
       <div className="col-span-2 flex justify-start md:justify-between items-start flex-wrap gap-5">
         {storeCoupons.map((coupon) => (
           <CouponForStore
+            key={ coupon.cost }
             coupon={coupon}
             userRankValue={ranking.value}
-            setCurrentUser={setCurrentUser}
-            key={coupon.cost}
+            setCouponSelected={ setCouponSelected }
           />
         ))}
       </div>
       <Tooltip id="coupon-store-tooltip" />
+      { couponSelected && (
+        <ConfirmationModal
+          title={ `Buy ${ couponSelected.discount.fixed }€ coupon` }
+          message={ `Are you sure you want to buy this coupon for ${ couponSelected.cost } points? You can use it on orders over ${ couponSelected.minimumOrder }€.` }
+          isModalOpen={ isModalOpen }
+          setIsModalOpen={ setIsModalOpen }
+          onConfirm={ handleBuyCoupon } />
+      ) }
     </motion.div>
   );
 }

@@ -84,7 +84,7 @@ function Details({ product, setIsModalOpen }: DetailsProps) {
       setCartProducts(newCartProducts);
     }
     setIsModalOpen(true);
-    toast.success('currentProduct added to cart');
+    toast.success('Product added to cart');
   };
 
   return (

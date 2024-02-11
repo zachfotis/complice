@@ -30,7 +30,7 @@ function AddToCartModal({ isModalOpen, setIsModalOpen }: AddToCartModalProps) {
   // If user clicks outside the modal, close it
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (event.target === document.querySelector('.add_to_cart_modal')) {
+      if (event.target === document.querySelector('#add_to_cart_modal')) {
         setIsModalOpen(false);
       }
     };
@@ -45,7 +45,7 @@ function AddToCartModal({ isModalOpen, setIsModalOpen }: AddToCartModalProps) {
   if (!isModalOpen) return null;
 
   return (
-    <div className="add_to_cart_modal fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-black bg-opacity-70
+    <div id="add_to_cart_modal" className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-black bg-opacity-70
      w-screen h-screen flex items-center justify-center z-50">
       <div className="bg-white rounded-lg p-5 w-[500px] max-w-[90%] flex flex-col justify-start items-start gap-3">
         <h2 className="text-h3 font-custom">Added to cart!</h2>
@@ -60,7 +60,6 @@ function AddToCartModal({ isModalOpen, setIsModalOpen }: AddToCartModalProps) {
           } />
         </div>
       </div>
-
     </div>
   );
 }
