@@ -3,6 +3,8 @@ import CouponForStore from '@/components/Account/CouponForStore';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { StoreCouponType, UserType } from '../../../typings';
+import { IoMdInformationCircle } from 'react-icons/io';
+import { Tooltip } from 'react-tooltip';
 
 interface Props {
   ranking: UserType['ranking'];
@@ -81,12 +83,13 @@ export default function CouponStore({ ranking, setCurrentUser }: Props) {
       transition={{ duration: 0.5 }}
     >
       <h1 className="text-base sm:text-xl font-[600]">Available Points</h1>
-      <div
-        title="The available points can be used to purchase coupons. For each euro spent on products, you will receive 1 point"
-        className="flex justify-start items-start gap-1"
-      >
+      <div className="flex justify-start items-center gap-1">
+        <Image src={ CoinsImage } alt="Coins" width={ 25 } height={ 25 } />
         <h1 className="text-base sm:text-xl font-normal">{ranking.pointsAvailable}</h1>
-        <Image src={CoinsImage} alt="Coins" width={25} height={25} />
+        <IoMdInformationCircle
+          className="text-primary text-lg"
+          data-tooltip-id="coupon-store-tooltip"
+          data-tooltip-content="Points can be used to purchase coupons" />
       </div>
       <div className="col-span-2 flex justify-start md:justify-between items-start flex-wrap gap-5">
         {storeCoupons.map((coupon) => (
@@ -98,6 +101,7 @@ export default function CouponStore({ ranking, setCurrentUser }: Props) {
           />
         ))}
       </div>
+      <Tooltip id="coupon-store-tooltip" />
     </motion.div>
   );
 }

@@ -196,10 +196,10 @@ function Totals({
                     key={coupon.id}
                     value={coupon.id}
                     disabled={coupon.minimumOrder > cartTotal - productDiscount - rankDiscount}
-                    title={`Minimum order: ${coupon.minimumOrder}e`}
+                    title={ `Minimum order: ${ coupon.minimumOrder }€` }
                     className="disabled:opacity-50 disabled:cursor-not-allowed disabled:bg-gray-100"
                   >
-                    {coupon.discount.fixed ? `${coupon.discount.fixed} e` : `${coupon.discount.percentage} %`}
+                    { coupon.discount.fixed ? `${ coupon.discount.fixed } €` : `${ coupon.discount.percentage } %` }
                   </option>
                 ))}
             </select>

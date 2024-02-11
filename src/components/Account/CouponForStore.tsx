@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { IoMdInformationCircle } from 'react-icons/io';
 import { toast } from 'react-toastify';
 import { StoreCouponType, UserType } from '../../../typings';
+import { Tooltip } from 'react-tooltip';
 
 interface Props {
   coupon: StoreCouponType;
@@ -13,7 +14,7 @@ interface Props {
 }
 
 export default function CouponForStore({ coupon, userRankValue, setCurrentUser }: Props) {
-  const title = `This coupon can be purchased for ${coupon.cost} points and can be applied to an order of at least ${coupon.minimumOrder}€`;
+  const title = `Costs ${ coupon.cost } points. Requires ${ coupon.minimumOrder }€ order.`;
   const isCouponAvailable = coupon.minimumRankingValue <= userRankValue;
   const rankName =
     coupon.minimumRankingValue === 0
@@ -63,7 +64,8 @@ export default function CouponForStore({ coupon, userRankValue, setCurrentUser }
       {coupon.minimumOrder > 0 && (
         <div
           className="absolute bottom-1 left-1 bg-white flex justify-center items-center gap-1"
-          title={`This coupon can be applied to an order of at least ${coupon.minimumOrder}€.`}
+          data-tooltip-id="my-coupon-store-tooltip"
+          data-tooltip-content={ `Requires ${ coupon.minimumOrder }€ order.` }
         >
           <Image src={CartImage} alt="Cart" width={15} height={15} />
           <p className="text-xs font-medium">{coupon.minimumOrder}€</p>
@@ -74,7 +76,8 @@ export default function CouponForStore({ coupon, userRankValue, setCurrentUser }
       {coupon.cost > 0 && (
         <div
           className="absolute bottom-1 right-1 bg-white flex justify-center items-center gap-1"
-          title={`This coupon can be purchased for ${coupon.cost} points.`}
+          data-tooltip-id="my-coupon-store-tooltip"
+          data-tooltip-content={ `Costs ${ coupon.cost } points.` }
         >
           <p className="text-xs font-medium">{coupon.cost}</p>
           <Image src={CoinsImage} alt="Coins" width={15} height={15} />
@@ -84,7 +87,7 @@ export default function CouponForStore({ coupon, userRankValue, setCurrentUser }
       {/* Info Icon */}
       {isCouponAvailable && (
         <div
-          title={title}
+          data-tooltip-id="my-coupon-store-tooltip" data-tooltip-content={ title }
           className="absolute top-0 right-0 bg-white transform translate-x-1/2 -translate-y-1/2 flex justify-center items-center"
         >
           <IoMdInformationCircle className="text-primary text-2xl" />
@@ -103,6 +106,7 @@ export default function CouponForStore({ coupon, userRankValue, setCurrentUser }
           <Button text="BUY" variant="sm-light" onClick={handleBuyCoupon} />
         </div>
       )}
+      <Tooltip id="my-coupon-store-tooltip" />
     </div>
   );
 }

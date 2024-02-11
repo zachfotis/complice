@@ -5,6 +5,8 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { CouponType, UserType } from '../../../typings';
 import { Trophy } from '@/components/Account/Trophy';
+import { Tooltip } from 'react-tooltip';
+import { IoMdInformationCircle } from 'react-icons/io';
 
 interface Props {
   ranking: UserType['ranking'];
@@ -59,12 +61,13 @@ function Ranking({ ranking, birthday }: Props) {
         { currentPercent <= 50 && <p className="text-white text-sm font-medium">{ nextRankText } </p> }
       </div>
       <h1 className="text-base sm:text-xl font-[600]">Available Points</h1>
-      <div
-        title="The available points can be used to purchase coupons. For each euro spent on products, you will receive 1 point"
-        className="flex justify-start items-start gap-1 col-span-2 sm:col-span-1 -mt-4 sm:mt-0 ml-1"
-      >
+      <div className="w-fit flex justify-start items-center gap-1 col-span-2 sm:col-span-1 -mt-4 sm:mt-0 ml-1">
         <Image src={ CoinsImage } alt="Coins" width={ 25 } height={ 25 } />
         <h1 className="text-base sm:text-xl font-normal">{ ranking.pointsAvailable }</h1>
+        <IoMdInformationCircle
+          className="text-primary text-lg"
+          data-tooltip-id="ranking-page-tooltip"
+          data-tooltip-content="Points can be used to purchase coupons" />
       </div>
       <div className="col-span-2 flex flex-col justify-start items-start gap-5">
         <h1 className="text-base sm:text-xl font-[600]">Permanent Discounts</h1>
@@ -108,6 +111,7 @@ function Ranking({ ranking, birthday }: Props) {
           </p>
         ) }
       </div>
+      <Tooltip id="ranking-page-tooltip" />
     </motion.div>
   );
 }
