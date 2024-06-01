@@ -1,6 +1,6 @@
 import { getPathsToRevalidate } from '@/utils/paths';
 import { revalidatePath } from 'next/cache';
-import { NextRequest } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 
 export const dynamic = 'force-dynamic';
 
@@ -12,13 +12,13 @@ interface RevalidateURLParams {
 
 export async function GET(req: NextRequest, { params }: RevalidateURLParams) {
   if (!params?.section) {
-    return new Response('Not found', { status: 404 });
+    return NextResponse.json({status: 'error', message: 'Invalid section'}, { status: 400 })
   }
 
   const paths = getPathsToRevalidate(params.section);
 
   if (!paths?.length) {
-    return new Response('Not found', { status: 404 });
+    return NextResponse.json({status: 'error', message: 'No paths to revalidate'}, { status: 400 });
   }
 
   paths.forEach((path) => {
@@ -27,5 +27,5 @@ export async function GET(req: NextRequest, { params }: RevalidateURLParams) {
     console.log(`PATH REVALIDATED: ${path} @ ${date.toISOString()}`);
   });
 
-  return Response.json({ status: 'OK' });
+  return NextResponse.json({ status: 'OK' });
 }
