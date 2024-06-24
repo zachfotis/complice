@@ -2,10 +2,13 @@ const paths: { [key: string]: () => string } = {
   home: () => '/',
   clothing: () => '/clothing',
   accessories: () => '/accessories',
+  sales: () => '/sales',
+  newArrivals: () => '/new-arrivals',
 };
 
 const sections: { [key: string]: string[] } = {
   categories: ['home', 'clothing', 'accessories'],
+  products: ['home'],
 };
 
 export const getPathsToRevalidate = (section: string): string[] | undefined => {
