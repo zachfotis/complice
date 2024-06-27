@@ -1,6 +1,6 @@
-import PageTemplate from '@/components/layout/PageTemplate';
-import PageBody from '@/components/layout/PageBody';
 import CategoriesMenu from '@/components/layout/CategoriesMenu';
+import PageBody from '@/components/layout/PageBody';
+import PageTemplate from '@/components/layout/PageTemplate';
 import PageTitle from '@/components/layout/PageTitle';
 
 function Page() {
@@ -10,20 +10,20 @@ function Page() {
         <CategoriesMenu />
         <PageTitle title="Privacy Policy" />
         <div className="w-full max-w-[1000px] flex flex-col items-start justify-start gap-5">
-          { privacyData.map((item, index) => (
-            <div key={ index } className="flex flex-col items-start justify-start gap-5 text-justify">
-              <h1 className="text-h4 font-custom">{ item.title }</h1>
-              { item.text.map((text, index) => (
-                <p key={ index } className="text-base text-secondary">{ text }</p>
-              )) }
+          {privacyData.map((item, index) => (
+            <div key={index} className="flex flex-col items-start justify-start gap-3 text-justify">
+              <h1 className="text-h4 font-custom">{item.title}</h1>
+              {item.text.map((text, index) => (
+                <p key={index} className="text-base text-secondary">
+                  {text}
+                </p>
+              ))}
             </div>
-          )) }
+          ))}
           <div className="w-full flex justify-center items-center">
-            <h3 className="mt-20 mb-10 text-lg font-medium w-full max-w-[1000px] text-center">If you have any questions or concerns, do not hesitate
-              to
-              contact our
-              customer service.
-              Thank you!</h3>
+            <h3 className="mt-20 mb-10 text-lg font-medium w-full max-w-[1000px] text-center">
+              If you have any questions or concerns, do not hesitate to contact our customer service. Thank you!
+            </h3>
           </div>
         </div>
       </PageBody>
@@ -35,146 +35,126 @@ export default Page;
 
 const privacyData = [
   {
-    title: 'Collection of Personal Information',
-    text: ['Utilizing the services of Complice may require you to provide certain personal data or allow Complice to obtain such data under the agreement. Personal data encompasses any information pertaining to an identified or identifiable individual.']
-  },
-  {
-    title: 'Situations for Data Collection by Complice',
+    title: 'Privacy Policy',
     text: [
-      'Upon visiting a Complice website.',
-      'Upon contacting Complice via phone or email.',
-      'When providing or submitting your details.',
-      'While applying for a position at Complice.',
-      'Offering services to Complice.',
-      'Entering the premises where Complice operates.'
-    ]
+      'Obtaining Personal Data',
+      'If you use the services of Complice, you provide certain personal data to Complice yourself, or personal data is obtained from you in the context of the agreement. Personal data refers to all information related to an identified or identifiable natural person.',
+      'Complice is capable of collecting personal data in the following situations:',
+      'When you visit a website of Complice.',
+      'When you contact Complice by phone or email.',
+      'When you fill in or leave your details.',
+      'When you apply for a position offered by Complice.',
+      'When you offer your services to Complice.',
+      'When you enter the premises where Complice offices are located.',
+    ],
   },
   {
-    title: 'Types of Personal Data',
-    text: ['Complice may handle data from varied relationships. The specific data collected hinges on the nature of your relationship with Complice. Always ensure the information you provide is accurate and up-to-date. Should any significant changes arise, please notify Complice to update your personal data accordingly.']
-  },
-  {
-    title: 'Data Categories for Various Users',
+    title: 'Categories of Personal Data',
     text: [
-      'Website Visitors: Visiting Complice website(s) may result in data collection through cookies upon consent. Your IP address will also be logged on the Complice server for security reasons. Different cookies may collect different types of data.',
-      'Contacting Complice: When you reach out to Complice, only essential data will be processed for handling your query.',
-      'Newsletter Subscribers: To keep abreast with Complice updates, one can subscribe to the newsletter. Data processed for this purpose includes name and contact details.'
-    ]
-  },
-  {
-    title: 'Data for Job Applicants',
-    text: [
-      'Should you be invited for an interview at Complice, we may process:',
-      'Contact and residential details.',
-      'Employment-related details as mentioned in your CV.',
-      'A copy of an identity document.',
-      'Any other personal data you provide.'
-    ]
-  },
-  {
-    title: 'Data for Business Relations',
-    text: ['When engaging in business activities, Complice may process data of individuals associated with partner companies or entities. This data processing is exclusive to the business interaction with Complice or for the purpose the data was shared in that business context.']
+      'Complice may process personal data from various types of relationships it maintains. The specific personal data collected depends on the type of relationship you have with Complice. Complice requests that you provide accurate and relevant information. If any relevant changes occur regarding the purpose for which you provided personal data to Complice, you should inform them accordingly to ensure they have correct and up-to-date personal data.',
+      'Consumers:',
+      "Website visitors: If you visit Complice website(s), they may collect personal data through cookies with your consent. Additionally, your IP address will be recorded on Complice's server for security reasons, and different types of personal data can be collected based on different cookies.",
+      'Individuals contacting them: If you contact Complice via their website, email, or phone, they will only process personal data necessary for the purpose of your inquiry.',
+      'Newsletter subscribers: If you want to stay informed about the latest developments regarding Complice functions, you can subscribe to their newsletter. The following categories of personal data are processed for this purpose: name and contact details.',
+    ],
   },
   {
     title: 'Purpose of Data Processing',
     text: [
-      'Complice processes personal data for reasons including:',
-      'Communication related to acquired services.',
-      'Provision of services.',
-      'Enhancing services.',
-      'Handling payments.',
-      'Adherence to legal mandates.',
-      'Undertaking marketing and communication activities.',
-      'Optimizing the website via visitor behavior analysis.',
-      'Dispatching newsletters.',
-      'Sharing data with third parties for service execution.'
-    ]
+      'The personal data processed by Complice serves the following purposes:',
+      "Contacting you to inform you about the services you've acquired and their execution.",
+      'Providing their services.',
+      'Improving their services.',
+      'Processing payments.',
+      'Complying with legal obligations.',
+      'Conducting marketing and communication activities.',
+      'Improving the website through the analysis of visitor behavior.',
+      'Sending newsletters.',
+      'Exchanging data with third parties for the execution of their services.',
+    ],
   },
   {
-    title: 'Basis for Data Processing',
+    title: 'Legal Basis for Data Processing',
     text: [
-      'The grounds on which Complice processes data include:',
-      'Contractual obligations.',
-      'Legal compliance.',
-      'Legitimate interests of Complice.',
-      'Consent given by the user.'
-    ]
+      'Personal data is processed based on the following legal bases:',
+      'Legal obligation.',
+      'Execution of a contract.',
+      'Obtained explicit consent from the data subject.',
+      'Legitimate interest.',
+    ],
   },
   {
-    title: 'Requirement for Data Processing',
-    text: ['Your personal data is pivotal for Complice to deliver its services. In the absence of this data, services might be hampered. For certain data processing objectives, your explicit consent might be sought, which can be provided distinctly.']
-  },
-  {
-    title: 'Automated Decision-making',
-    text: ['If decisions are automated, they are made by computer systems without human input. The responsibility of ensuring accuracy and completeness of data for such decision-making lies with the user. Incorrect or incomplete data can result in consequences including but not limited to contractual missteps.']
-  },
-  {
-    title: 'Data Retention Policy',
-    text: ['Complice retains user data in adherence to pertinent legal standards. If legal stipulations necessitate extended retention, data is preserved accordingly. All acquired data is not kept beyond its absolute necessity.']
-  },
-  {
-    title: 'Third-Party Data Processing',
+    title: 'Necessity of Data Processing',
     text: [
-      'Personal data sharing with third parties by Complice is strictly confined to contractual and legal requirements. Selling personal data to third parties is prohibited. When legally bound to share data with third parties, processing agreements are in place. Third-party entities accessing data can include:',
-      'Accounting professionals for contract fulfillment.',
-      'Software providers for contract fulfillment.',
-      'Website administrators for contract execution.',
-      'Clients or customers for service provision.',
-      'Potential candidates during business engagements.'
-    ]
+      "The processing of your personal data is necessary to perform the services provided by Complice. Without processing this data, Complice's services cannot be fully executed. For specific purposes related to personal data, explicit consent may be required, which you can provide separately.",
+    ],
   },
   {
-    title: 'Safeguarding Personal Data',
+    title: 'Automated Decision-Making',
     text: [
-      'Ensuring the integrity of your personal data is paramount to Complice. Adequate technical and organizational safeguards are in place, factoring in the nature and scope of processing as well as potential risks.',
-      'Users below 16 years: If you are below 16, processing of your data necessitates the approval of a parent or legal guardian. They should be apprised of this document and can exercise your data rights on your behalf.'
-    ]
+      'If any automated decision-making is involved, it will be carried out by computer systems and/or computer programs without human intervention. The data subject is responsible for providing accurate and complete data used during automated decision-making. If the data proves to be inaccurate or incomplete, the data subject bears the responsibility for any resulting damages, including non-performance, delayed performance, or incorrect execution of the contract.',
+    ],
   },
   {
-    title: 'Usage Agreement',
-    text: ['Accessing the website signifies agreement to this policy. Complice can modify its website content and/or this policy without prior notice. While we strive for precision, the website might contain inadvertencies. Complice is not liable for any detriment stemming from website usage. All content is protected under copyright, owned by Complice unless mentioned otherwise.']
-  },
-  {
-    title: 'Cookie Policy',
+    title: 'Data Retention',
     text: [
-      'For optimization, Complice uses technical and functional cookies. Cookies are small data files transferred to a visitor’s device for enhanced efficiency. Law mandates that Complice can only store necessary cookies. For all other cookies, user consent is imperative.',
-      'Complice uses functional cookies that do not compromise privacy. Some cookies prevent other cookies from being stored. Cookies from Google Analytics are also integrated into Complice website for analytical purposes. For inquiries, reach out to info@complice.com.'
-    ]
+      'Complice retains the processed personal data in accordance with relevant laws and regulations. If a longer retention period is required due to legal requirements, the personal data will be kept for the necessary duration. All obtained personal data is not stored longer than strictly necessary.',
+    ],
   },
   {
-    title: 'Integration with Social Media',
-    text: ['Complice uses cookies from third-party services for website optimization. These third parties include Google Analytics and various social media platforms. Each entity’s respective privacy and cookie policy governs their cookie use. Interaction with social media buttons on the website can initiate a cookie from the social media entity, allowing it to recognize your IP when sharing content.']
-  },
-  {
-    title: 'Adjusting Browser Settings',
+    title: 'Data Processing by Third Parties',
     text: [
-      'To prevent websites from saving cookies on your device, you can modify browser settings. Prior to cookie storage, you will receive a notification seeking your permission. Declining can impact website functionality. You can tailor your browser settings to decline or delete cookies. This privacy policy does not extend to third-party websites linked from this site.'
-    ]
+      'Complice shares personal data with third parties only when strictly necessary for executing a contract and complying with relevant laws and regulations. Personal data is not sold to third parties. If there is a legal obligation to share personal data with third parties, processing agreements are concluded. The third parties with which personal data is shared are:',
+      'Accountants: For the execution of a contract (contact and address details, financial data).',
+      'Software suppliers: For the execution of the contract (location data, email address, contact and address details).',
+      'Website administrators: For the execution of the contract (location data, email address, contact and address details).',
+      'Clients or customers: For the execution of the contract (location data, email address, contact and address details, employment data, CV).',
+      'Candidates: For the execution of the contract (location data, email address, contact and address details, company data).',
+    ],
   },
   {
-    title: 'Your Data Rights',
+    title: 'Security of Personal Data',
     text: [
-      'Access Right: You have the right to access, review, and obtain a copy of your personal data retained by Complice.',
-      'Rectification: If your data appears inaccurate or incomplete, you can request rectifications or amendments.',
-      'Right to Erasure: Under certain conditions, you can request the deletion of your data from Complice’s records. This is often referred to as the “right to be forgotten”.',
-      'Data Portability: You have the right to receive your personal data in a structured, commonly used, and machine-readable format, and transfer this data to another organization, if technically feasible.',
-      'Restriction on Processing: You can request that the processing of your data be restricted, especially if you contest the data’s accuracy, or if the processing is deemed unlawful.',
-      'Object: Under certain circumstances, you can object to the processing of your personal data. This especially applies if the data processing is for direct marketing purposes.',
-      'Automated Decision-making & Profiling: If Complice employs automated decision-making processes, including profiling, which affects you significantly, you have the right to contest these decisions and request human intervention.',
-      'Withdraw Consent: Where data processing is based on your consent, you can withdraw this consent at any time. This does not affect the lawfulness of processing based on consent before its withdrawal.'
-    ]
+      'Complice takes the protection of your personal data seriously and implements appropriate technical and organizational measures to ensure a level of security aligned with the risk of processing, taking into account the state of the art, implementation costs, the nature, scope, context, and purposes of processing, as well as the likelihood and severity of risks to the rights and freedoms of individuals.',
+    ],
   },
   {
-    title: 'Enacting Your Rights',
+    title: 'Younger than 16 Years Old?',
     text: [
-      'To enact any of the aforementioned rights, kindly reach out to Complice via the contact details provided. Please include a clear description of your request, and for identity verification, attach a copy of a valid identification document. Your request will be processed within a month of its receipt. However, due to complexities or the number of requests, this period might extend by two more months.'
-    ]
+      'If you are under the age of 16, you can only give consent for the processing of your personal data with the permission of one of your parents or legal guardians. It is important that your parent(s) or guardian reads this statement. They can also exercise the rights you have regarding the personal data you leave with us, such as the right to object to the (further) processing of your personal data or the right to access and correct your data.',
+    ],
   },
   {
-    title: 'Lodging Complaints',
+    title: 'Disclaimer',
     text: [
-      'If you believe that Complice has not addressed your data concerns adequately, you retain the right to lodge a complaint with the appropriate data protection authority in your country or region.'
-    ]
-  }
+      "By using the website, you agree to the disclaimer. Complice reserves the right to change the content of its website and/or this disclaimer at any time without informing its customers and/or website users of these changes. The content of the website is compiled with the utmost care but may contain inaccuracies or be incomplete. Complice accepts no liability for any damage resulting from or arising from the use of the website. Using this website is entirely at the user's own risk. No rights can be derived from the content of the website. All texts on the website are copyright protected and owned by Complice unless otherwise stated.",
+    ],
+  },
+  {
+    title: 'Cookie Statement',
+    text: [
+      "Complice uses technical and functional cookies to optimize the website. Cookies are small text files sent to the visitor's device to make user experiences more efficient. According to the law, Complice may store cookies on your device if these cookies are strictly necessary for the use of the website. For other types of cookies, your consent is required. We recommend accepting cookies for the user-friendliness of the website. Visitors of the website have the option to check this.",
+      "The cookies used by Complice are functional cookies, which do not affect the privacy, and, therefore, do not require separate consent. These cookies store your browser settings so that our website can be viewed best, or that the website remains accessible, but also cookies that ensure that no other cookies are allowed to be placed (no-follow). With your permission, we place ''tracking cookies'' on your computer. We use these cookies to keep track of which pages you visit, in order to build a profile of your online behavior. This profile is not linked to your name, address, e-mail address, and the like, but only to match advertisements to your profile so that they are as relevant to you as possible. Cookies from Google are also placed on the Complice website for the purpose of Google Analytics. This means that Complice cannot link information to a natural person. We do not keep any information about what you do on the internet. Google Analytics may be required by applicable laws and regulations to provide access to this data. If you have any questions about this, please contact us at info@complice.com.",
+    ],
+  },
+  {
+    title: 'Use of Social Media',
+    text: [
+      'Complice uses third-party cookies to optimize the website. Some cookies are placed by third-party services that appear on the website. Third parties include Google Analytics and social media (LinkedIn, Instagram, Facebook, Twitter). The privacy and cookie policy of the relevant company applies to the use of cookies from other companies (third parties). When you click on the social media button on the website, a social media cookie is placed. This allows the social media party to recognize your IP address as soon as you share an article from the website. For the cookies of social media parties and the data and/or personal data they collect with this, Complice refers you to the privacy and cookie statements of these parties.',
+    ],
+  },
+  {
+    title: 'Browser Settings',
+    text: [
+      'If you do not want websites to place cookies on your device with which you view the website, you can adjust your browser settings. Before a cookie is placed, you will receive a warning and you must give permission for the cookie. Failure to do so may, for example, result in the website not working as well. You can adjust the settings of your browser so that your browser refuses all cookies and also third-party cookies. You can also delete placed cookies. For this, you must adjust the settings of your browser via preferences and then you can adjust the privacy settings. This privacy statement does not apply to third-party websites that are linked to this website. We cannot guarantee that these third parties handle your personal data in a reliable or secure manner. We recommend that you read the privacy statement of these websites before using these websites.',
+    ],
+  },
+  {
+    title: 'Rights of Data Subjects',
+    text: [
+      'Right of access: As a data subject, you have the right to obtain confirmation as to whether or not your personal data are being processed and, if that is the case, to obtain insight into the processing thereof.',
+      'Right to rectification: You have the right to obtain rectification and completion of incorrect data.',
+      'Right to erasure.',
+    ],
+  },
 ];
-

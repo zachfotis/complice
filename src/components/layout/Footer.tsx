@@ -1,10 +1,10 @@
 'use client';
 
 import Link from 'next/link';
+import { FormEvent } from 'react';
+import { toast } from 'react-toastify';
 import Button from '../common/Button';
 import SocialMedia from '../common/SocialMedia';
-import { toast } from 'react-toastify';
-import { FormEvent } from 'react';
 
 function Footer() {
   const handleSubscribe = async (e: FormEvent<HTMLFormElement>) => {
@@ -80,6 +80,9 @@ function Footer() {
               </li>
               <li className="text-base text-accent">
                 <Link href={'/contact'}>Contact Us</Link>
+              </li>
+              <li className="text-base text-accent">
+                <Link href={'/members'}>Membership Benefits</Link>
               </li>
             </ul>
           </div>

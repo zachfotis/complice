@@ -168,7 +168,7 @@ function CartPage() {
 
   if (!hasMounted) return null;
 
-  return cartProducts.length === 0 ? (
+  return !cartProducts.length ? (
     <div className="flex-auto min-h-full flex flex-col justify-center items-center gap-5">
       <BsCartX className="text-5xl text-primary" />
       <h1 className="text-h3 font-custom">Your cart is empty</h1>

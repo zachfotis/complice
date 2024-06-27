@@ -19,6 +19,7 @@
     "jsx": "preserve",
     "incremental": true,
     "downlevelIteration": true,
+    "sourceMap": true,
     "plugins": [
       {
         "name": "next"

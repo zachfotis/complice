@@ -17,7 +17,8 @@ function ProductThumb({ product, isShort = false }: ProductThumbProps) {
           alt="Category"
           width={400}
           height={400}
-          className="h-full w-full cursor-pointer object-contain object-center transition-all duration-300 ease-in-out hover:scale-110"
+          loading="lazy"
+          className="h-full w-full cursor-pointer object-cover object-center transition-all duration-300 ease-in-out hover:scale-110"
         />
       </Link>
       <Link
