@@ -8,13 +8,14 @@ interface ClothingThumbProps {
 }
 
 function CategoryThumb({ index, category }: ClothingThumbProps) {
-  const isFullWidth = index % 3 === 0 || index === 0;
-
   return (
-    <Link href={ `/${ category.categoryType }/${ category.title }` } className={ `relative ${ isFullWidth ? 'flex-auto w-full' : 'flex-auto' } shadow-md group` }>
+    <Link
+      href={`/${category.categoryType}/${category.title}`}
+      className="relative min-w-[300px] flex-1 shadow-md group"
+    >
       <div className="w-full overflow-hidden h-[400px]">
         <Image
-          src={ category.imageURL }
+          src={category.imageURL}
           width={1680}
           height={300}
           alt={category.title}

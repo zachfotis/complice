@@ -77,7 +77,6 @@ export const fetchOnSaleProducts = async () => {
   }
 };
 
-
 export const fetchSimilarProducts = async (category: string, productId: string) => {
   try {
     const BASE_URL = process.env.API_URL;

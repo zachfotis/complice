@@ -21,6 +21,9 @@ interface PageProps {
 }
 
 async function page({ params }: PageProps) {
+
+  if(!params.productId) return null;
+
   const product: ProductType = await fetchSingleProduct(params.productId);
   const similarProducts = await fetchSimilarProducts(product.category, params.productId);
 

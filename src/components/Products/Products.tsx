@@ -27,8 +27,8 @@ function Products({
           isInitialScreen ? 'xl:grid-cols-3' : 'xl:grid-cols-4'
         } gap-8 md:gap-4`}
       >
-        {products.map((product) => (
-          <ProductThumb key={product.id} product={product} isShort={isShort} />
+        {products.map((product, index) => (
+          <ProductThumb key={product.id + index} product={product} isShort={isShort} />
         ))}
       </div>
       {showViewAll && (

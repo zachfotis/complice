@@ -12,7 +12,7 @@ import { CategoryType, ProductType } from '../../typings';
 export default async function Home() {
   const categories: CategoryType[] = await fetchAllCategories();
   const bestSellers: ProductType[] = await fetchBestSellers();
-
+  
   return (
     <PageTemplate>
       <PageBody>
