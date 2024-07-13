@@ -21,24 +21,28 @@ interface PageProps {
 }
 
 async function page({ params }: PageProps) {
-
-  if(!params.productId) return null;
+  if (!params.productId) return null;
 
   const product: ProductType = await fetchSingleProduct(params.productId);
+
+  if (!product)
+    return (
+      <PageTemplate>
+        <PageBody>
+          <CategoriesMenu />
+          <NotFound />
+        </PageBody>
+      </PageTemplate>
+    );
+
   const similarProducts = await fetchSimilarProducts(product.category, params.productId);
 
   return (
     <PageTemplate>
       <PageBody>
         <CategoriesMenu />
-        {product ? (
-          <>
-            <ProductPage product={product} />
-            <Similar products={similarProducts} />
-          </>
-        ) : (
-          <NotFound />
-        )}
+        <ProductPage product={product} />
+        <Similar products={similarProducts} />
       </PageBody>
     </PageTemplate>
   );

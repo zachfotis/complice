@@ -12,20 +12,20 @@ import { CategoryType, ProductType } from '../../typings';
 export default async function Home() {
   const categories: CategoryType[] = await fetchAllCategories();
   const bestSellers: ProductType[] = await fetchBestSellers();
-  
+
   return (
     <PageTemplate>
       <PageBody>
         <CategoriesMenu />
       </PageBody>
       <Hero />
-      {categories.length && (
+      {categories?.length && (
         <PageBody>
           <CategoriesHomeThumb categories={categories} />
         </PageBody>
       )}
       <Banner />
-      {bestSellers.length && (
+      {bestSellers?.length && (
         <PageBody>
           <Products products={bestSellers} title="Best Sellers" isInitialScreen={true} />
           <StayTuned />

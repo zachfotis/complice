@@ -5,7 +5,7 @@ import Tabs from '@/components/Account/Tabs';
 import Loader from '@/components/common/Loader';
 import PageBody from '@/components/layout/PageBody';
 import PageTemplate from '@/components/layout/PageTemplate';
-import { redirect } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { ShippingCountryType, UserType } from '../../../typings';
 
@@ -13,12 +13,13 @@ function Account() {
   const [isLoading, setIsLoading] = useState(true);
   const [currentUser, setCurrentUser] = useState<UserType | null>(null);
   const [shippingCountries, setShippingCountries] = useState<ShippingCountryType[]>([]);
+  const router = useRouter();
 
   useEffect(() => {
     if (!currentUser && !isLoading) {
-      redirect('/auth/login');
+      router.push('/auth/login');
     }
-  }, [currentUser, isLoading]);
+  }, [currentUser, isLoading, router]);
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -35,7 +36,7 @@ function Account() {
           setCurrentUser(user.currentUser);
         }
       } catch (error) {
-        redirect('/auth/login');
+        router.push('/auth/login');
       } finally {
         setIsLoading(false);
       }

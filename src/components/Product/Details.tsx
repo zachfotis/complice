@@ -1,5 +1,7 @@
 'use client';
 
+import { fetchSingleProduct } from '@/actions/serverApi';
+import NotFound from '@/app/not-found';
 import useLocalStorage from '@/hooks/useLocalStorage';
 import { useEffect, useState } from 'react';
 import { AiOutlineWarning } from 'react-icons/ai';
@@ -16,26 +18,19 @@ function Details({ product, setIsModalOpen }: DetailsProps) {
     Object.keys(product.quantity).find((size) => product.quantity[size as keyof typeof product.quantity] > 0) || ''
   );
   const [quantity, setQuantity] = useState(1);
-  const [currentProduct, setCurrentProduct] = useState<ProductType>(product);
+  const [currentProduct, setCurrentProduct] = useState<ProductType | null>(product);
   const [cartProducts, setCartProducts] = useLocalStorage<OrderProductType[]>('cartProducts', []);
 
   useEffect(() => {
     const fetchProduct = async () => {
-      try {
-        const BASE_URL = process.env.NEXT_PUBLIC_API_URL;
-        const res = await fetch(`${BASE_URL}/products/get-product/${product.id}`, {
-          method: 'GET',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        });
-        const data = await res.json();
+      const data = await fetchSingleProduct(product.id);
+      if (data) {
         setCurrentProduct(data);
         setSelectedSize(
           Object.keys(data.quantity).find((size) => data.quantity[size as keyof typeof data.quantity] > 0) || ''
         );
-      } catch (err) {
-        console.log(err);
+      } else {
+        setCurrentProduct(null);
       }
     };
 
@@ -49,6 +44,8 @@ function Details({ product, setIsModalOpen }: DetailsProps) {
   }, [selectedSize]);
 
   const handleAddToCart = () => {
+    if (!currentProduct) return;
+
     const productIndex = cartProducts.findIndex(
       (cartProduct) => cartProduct.id === currentProduct.id && cartProduct.size === selectedSize
     );
@@ -87,6 +84,7 @@ function Details({ product, setIsModalOpen }: DetailsProps) {
     toast.success('Product added to cart');
   };
 
+  if (!currentProduct) return <NotFound />;
   return (
     <div className="flex w-full flex-col items-start justify-start gap-5 md:gap-8 bg-white lg:max-w-[600px]">
       {/* Title and ID */}

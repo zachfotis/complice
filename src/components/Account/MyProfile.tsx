@@ -1,7 +1,7 @@
 'use client';
 
+import { useRouter } from 'next/navigation';
 import { useState } from 'react';
-import { redirect } from 'next/navigation';
 import { toast } from 'react-toastify';
 import { ShippingCountryType, UpdateUserType, UserType } from '../../../typings';
 
@@ -20,6 +20,7 @@ export function MyProfile({ currentUser, shippingCountries, setCurrentUser }: IM
   const [country, setCountry] = useState(currentUser?.address?.country || '');
   const [phoneNumber, setPhoneNumber] = useState(currentUser?.address?.phoneNumber || '');
   const [birthDate, setBirthDate] = useState(currentUser?.birthDate ? new Date(currentUser.birthDate) : undefined);
+  const router = useRouter();
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -58,7 +59,7 @@ export function MyProfile({ currentUser, shippingCountries, setCurrentUser }: IM
         }
       } catch (error: any) {
         toast.error(error.message);
-        redirect('/auth/login');
+        router.push('/auth/login');
       }
     };
 
