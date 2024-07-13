@@ -103,3 +103,24 @@ export const signUpUser = async (firstName: string, lastName: string, email: str
     toast.error(e?.message || 'Something went wrong');
   }
 };
+
+export const buyCoupon = async (discountValue: number) => {
+  try {
+    const baseUrl = process.env.NEXT_PUBLIC_API_URL;
+    const response = await fetch(`${baseUrl}/coupons/buy-coupon`, {
+      method: 'POST',
+      credentials: 'include',
+      cache: 'no-store',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        discountValue,
+      }),
+    });
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    toast.error('Something went wrong!');
+  }
+};

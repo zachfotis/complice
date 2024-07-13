@@ -1,13 +1,14 @@
+import { buyCoupon } from '@/actions/clientApi';
 import CoinsImage from '@/assets/coins.png';
 import CouponForStore from '@/components/Account/CouponForStore';
+import ConfirmationModal from '@/components/common/ConfirmationModal';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
-import { StoreCouponType, UserType } from '../../../typings';
-import { IoMdInformationCircle } from 'react-icons/io';
-import { Tooltip } from 'react-tooltip';
 import { useEffect, useState } from 'react';
-import ConfirmationModal from '@/components/common/ConfirmationModal';
+import { IoMdInformationCircle } from 'react-icons/io';
 import { toast } from 'react-toastify';
+import { Tooltip } from 'react-tooltip';
+import { StoreCouponType, UserType } from '../../../typings';
 
 interface Props {
   ranking: UserType['ranking'];
@@ -98,32 +99,16 @@ export default function CouponStore({ ranking, setCurrentUser }: Props) {
   const handleBuyCoupon = async () => {
     if (!couponSelected) return;
 
-    try {
-      const baseUrl = process.env.NEXT_PUBLIC_API_URL;
-      const response = await fetch(`${ baseUrl }/coupons/buy-coupon`, {
-        method: 'POST',
-        credentials: 'include',
-        cache: 'no-store',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          discountValue: couponSelected.discount.fixed,
-        }),
-      });
-      const data = await response.json();
+    const data = await buyCoupon(couponSelected.discount.fixed);
 
-      if (data.message) {
-        toast.error(data.message);
-      } else if (data.currentUser) {
-        setCurrentUser(data.currentUser);
-        toast.success('Coupon purchased successfully!');
-      }
-    } catch (error) {
-      toast.error('Something went wrong!');
-    } finally {
-      setCouponSelected(null);
+    if (data?.errors) {
+      toast.error(data?.errors.map((err: { message: string }) => err.message).join('. '));
+    } else if (data.currentUser) {
+      setCurrentUser(data.currentUser);
+      toast.success('Coupon purchased successfully!');
     }
+
+    setCouponSelected(null);
   };
 
   return (
@@ -135,32 +120,34 @@ export default function CouponStore({ ranking, setCurrentUser }: Props) {
     >
       <h1 className="text-base sm:text-xl font-[600]">Available Points</h1>
       <div className="flex justify-start items-center gap-1">
-        <Image src={ CoinsImage } alt="Coins" width={ 25 } height={ 25 } />
+        <Image src={CoinsImage} alt="Coins" width={25} height={25} />
         <h1 className="text-base sm:text-xl font-normal">{ranking.pointsAvailable}</h1>
         <IoMdInformationCircle
           className="text-primary text-lg"
           data-tooltip-id="coupon-store-tooltip"
-          data-tooltip-content="Points can be used to purchase coupons" />
+          data-tooltip-content="Points can be used to purchase coupons"
+        />
       </div>
       <div className="col-span-2 flex justify-start md:justify-between items-start flex-wrap gap-5">
         {storeCoupons.map((coupon) => (
           <CouponForStore
-            key={ coupon.cost }
+            key={coupon.cost}
             coupon={coupon}
             userRankValue={ranking.value}
-            setCouponSelected={ setCouponSelected }
+            setCouponSelected={setCouponSelected}
           />
         ))}
       </div>
       <Tooltip id="coupon-store-tooltip" />
-      { couponSelected && (
+      {couponSelected && (
         <ConfirmationModal
-          title={ `Buy ${ couponSelected.discount.fixed }€ coupon` }
-          message={ `Are you sure you want to buy this coupon for ${ couponSelected.cost } points? You can use it on orders over ${ couponSelected.minimumOrder }€.` }
-          isModalOpen={ isModalOpen }
-          setIsModalOpen={ setIsModalOpen }
-          onConfirm={ handleBuyCoupon } />
-      ) }
+          title={`Buy ${couponSelected.discount.fixed}€ coupon`}
+          message={`Are you sure you want to buy this coupon for ${couponSelected.cost} points? You can use it on orders over ${couponSelected.minimumOrder}€.`}
+          isModalOpen={isModalOpen}
+          setIsModalOpen={setIsModalOpen}
+          onConfirm={handleBuyCoupon}
+        />
+      )}
     </motion.div>
   );
 }

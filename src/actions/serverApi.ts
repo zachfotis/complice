@@ -158,11 +158,7 @@ export const fetchAllProducts = async () => {
 export const fetchShippingCountries = async () => {
   try {
     const baseUrl = process.env.API_URL;
-    const response = await fetch(`${baseUrl}/shipping/get-shipping-countries`, {
-      method: 'GET',
-      credentials: 'include',
-      cache: 'no-store',
-    });
+    const response = await fetch(`${baseUrl}/shipping/get-shipping-countries`);
     const data = await response.json();
     if (!data?.errors) {
       return data;
@@ -173,3 +169,4 @@ export const fetchShippingCountries = async () => {
     console.error(error);
   }
 };
+
