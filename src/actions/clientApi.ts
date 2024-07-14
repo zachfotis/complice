@@ -127,6 +127,52 @@ export const verifyEmail = async (email: string, token: string) => {
   }
 };
 
+export const forgotPassword = async (email: string) => {
+  try {
+    const baseUrl = process.env.NEXT_PUBLIC_API_URL;
+    const response = await fetch(`${baseUrl}/auth/forgot-password`, {
+      method: 'POST',
+      credentials: 'include',
+      cache: 'no-cache',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        email,
+      }),
+    });
+
+    const data = await response.json();
+    return data;
+  } catch (e: any) {
+    toast.error(e?.message || 'Something went wrong');
+  }
+};
+
+export const resetPassword = async (email: string, token: string, password: string) => {
+  try {
+    const baseUrl = process.env.NEXT_PUBLIC_API_URL;
+    const response = await fetch(`${baseUrl}/auth/reset-password`, {
+      method: 'POST',
+      credentials: 'include',
+      cache: 'no-cache',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        email,
+        token,
+        password,
+      }),
+    });
+
+    const data = await response.json();
+    return data;
+  } catch (e: any) {
+    toast.error(e?.message || 'Something went wrong');
+  }
+};
+
 export const buyCoupon = async (discountValue: number) => {
   try {
     const baseUrl = process.env.NEXT_PUBLIC_API_URL;
