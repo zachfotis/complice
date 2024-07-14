@@ -41,7 +41,7 @@ function ResetPasswordForm() {
       >
         <div className="w-full flex flex-col justify-start items-start gap-3">
           <label htmlFor="password" className="text-base font-medium">
-            Password
+            New Password
           </label>
           <input
             type="password"
@@ -60,7 +60,7 @@ function ResetPasswordForm() {
         {password && password.length >= 0 && (
           <div className="w-full flex flex-col justify-start items-start gap-3">
             <label htmlFor="verifyPassword" className="text-base font-medium">
-              Verify Password
+              Verify New Password
             </label>
             <input
               type="password"
