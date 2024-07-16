@@ -27,7 +27,7 @@ export default function VerifyEmailPage() {
   }, []);
 
   return (
-    <div className="flex-1 flex flex-col justify-center items-center gap-5">
+    <div className="flex-1 flex flex-col justify-center items-center gap-5 text-center">
       <h1 className="text-3xl">Your account is being verified...</h1>
       <div className="flex flex-col justify-center items-center gap-3">
         <p>
