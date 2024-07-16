@@ -2,7 +2,7 @@
 
 import { verifyEmail } from '@/actions/clientApi';
 import { useParams, useRouter } from 'next/navigation';
-import { useEffect, useRef } from 'react';
+import { useEffect } from 'react';
 import { toast } from 'react-toastify';
 
 export default function VerifyEmailPage() {
@@ -10,7 +10,6 @@ export default function VerifyEmailPage() {
   const userEmail = decodeURIComponent(params.email);
   const token = decodeURIComponent(params.token);
   const router = useRouter();
-  const isMounted = useRef(false);
 
   useEffect(() => {
     const verifyUserEmail = async () => {
@@ -24,12 +23,8 @@ export default function VerifyEmailPage() {
       }
     };
 
-    if (isMounted.current) {
-      verifyUserEmail();
-    }
-
-    isMounted.current = true;
-  }, [isMounted]);
+    verifyUserEmail();
+  }, []);
 
   return (
     <div className="flex-1 flex flex-col justify-center items-center gap-5">
