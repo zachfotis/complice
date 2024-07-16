@@ -1,7 +1,7 @@
-import Button from '../common/Button';
-import Link from 'next/link';
-import Image from 'next/image';
 import RankImage from '@/assets/rank_banner.png';
+import Image from 'next/image';
+import Link from 'next/link';
+import Button from '../common/Button';
 
 function Banner() {
   return (
