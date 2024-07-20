@@ -10,9 +10,9 @@ function CategoriesMenu() {
   const activeSegment = segments.length === 2 ? segments[1] : segments[segments.length - 2]
 
   const featuredClasses =
-    'min-w-[100px] text-center text-h3 font-custom text-whiteGrey bg-primary px-3 py-2 hover:outline-dashed hover:outline-primary';
+    'min-w-[100px] text-center text-h3 font-custom text-whiteGrey bg-primary px-3 py-2';
   const normalClasses =
-    'min-w-[100px] text-center text-h3 font-custom text-primary px-3 py-2 hover:outline-b-2 hover:outline-dashed hover:outline-primary';
+    'min-w-[100px] text-center text-h3 font-custom text-primary px-3 py-2 hover:outline-b-2 hover:bg-black hover:text-white hover:outline-primary';
 
   const getClasses = (segment: string, classType: string) => {
     const classes = classType === 'featured' ? featuredClasses : normalClasses

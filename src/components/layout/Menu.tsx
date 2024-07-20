@@ -10,7 +10,7 @@ interface Props {
 
 function Menu({ setIsMenuOpen }: Props) {
   const normalClasses =
-    'w-full text-h4 text-center font-custom text-primary px-5 py-2 outline outline-1 outline-secondary hover:outline-dashed shadow-lg';
+    'w-full text-h4 text-center font-custom text-primary px-5 py-2 outline outline-1 outline-secondary hover:bg-black hover:text-white shadow-lg';
 
   return (
     <nav
