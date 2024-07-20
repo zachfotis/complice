@@ -1,19 +1,20 @@
 'use client';
 
-import Link from 'next/link';
 import Button from '@/components/common/Button';
 import useLocalStorage from '@/hooks/useLocalStorage';
+import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
 export default function Cookies() {
   const [hasAgreed, setHasAgreed] = useLocalStorage<boolean>('cookiesConsent', false);
-  const [isVisible, setIsVisible] = useState(true);
+  const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
-    setIsVisible(!hasAgreed);
-  }, [hasAgreed]);
+    setIsClient(true);
+  }, []);
 
-  if (!isVisible) return null;
+  if (!isClient) return null;
+  if (hasAgreed) return null;
 
   return (
     <div className="fixed bottom-0 w-full bg-white px-5 md:px-10 py-5 flex flex-col md:flex-row justify-between items-center gap-10 border-t-2 border-bronze z-50">
