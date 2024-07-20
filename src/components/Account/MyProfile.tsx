@@ -4,6 +4,7 @@ import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { toast } from 'react-toastify';
 import { ShippingCountryType, UpdateUserType, UserType } from '../../../typings';
+import BirthDate from '../shared/BirthDate';
 
 interface IMyProfileProps {
   currentUser: UserType;
@@ -40,7 +41,7 @@ export function MyProfile({ currentUser, shippingCountries, setCurrentUser }: IM
     const updateUser = async (user: UpdateUserType) => {
       try {
         const baseUrl = process.env.NEXT_PUBLIC_API_URL;
-        const response = await fetch(`${ baseUrl }/auth/updateuser`, {
+        const response = await fetch(`${baseUrl}/auth/updateuser`, {
           method: 'PUT',
           credentials: 'include',
           cache: 'no-store',
@@ -67,11 +68,13 @@ export function MyProfile({ currentUser, shippingCountries, setCurrentUser }: IM
   };
 
   return (
-    <form className="w-full" onSubmit={ handleSubmit }>
-      { /* First Name - Last Name */ }
+    <form className="w-full" onSubmit={handleSubmit}>
+      {/* First Name - Last Name */}
       <div className="w-full flex flex-col md:flex-row justify-between items-center gap-5 mt-5">
         <div className="w-full flex flex-col justify-start items-start gap-2">
-          <label htmlFor="firstName" className="text-base">First Name *</label>
+          <label htmlFor="firstName" className="text-base">
+            First Name *
+          </label>
           <input
             type="text"
             name="firstName"
@@ -79,12 +82,14 @@ export function MyProfile({ currentUser, shippingCountries, setCurrentUser }: IM
             className="w-full border border-gray-400 rounded-sm px-5 py-2 focus:outline-none focus:ring-2 focus:ring-primary"
             required
             autoComplete="given-name"
-            value={ firstName }
-            onChange={ (e) => setFirstName(e.target.value) }
+            value={firstName}
+            onChange={(e) => setFirstName(e.target.value)}
           />
         </div>
         <div className="w-full flex flex-col justify-start items-start gap-2">
-          <label htmlFor="lastName" className="text-base">Last Name *</label>
+          <label htmlFor="lastName" className="text-base">
+            Last Name *
+          </label>
           <input
             type="text"
             name="lastName"
@@ -92,14 +97,16 @@ export function MyProfile({ currentUser, shippingCountries, setCurrentUser }: IM
             className="w-full border border-gray-400 rounded-sm px-5 py-2 focus:outline-none focus:ring-2 focus:ring-gray-400"
             required
             autoComplete="family-name"
-            value={ lastName }
-            onChange={ (e) => setLastName(e.target.value) }
+            value={lastName}
+            onChange={(e) => setLastName(e.target.value)}
           />
         </div>
       </div>
-      { /*  Address */ }
+      {/*  Address */}
       <div className="w-full flex flex-col justify-start items-start gap-2 mt-5">
-        <label htmlFor="address" className="text-base">Address</label>
+        <label htmlFor="address" className="text-base">
+          Address
+        </label>
         <input
           type="text"
           name="address"
@@ -107,14 +114,16 @@ export function MyProfile({ currentUser, shippingCountries, setCurrentUser }: IM
           className="w-full border border-gray-400 rounded-sm px-5 py-2 focus:outline-none focus:ring-2 focus:ring-gray-400"
           required
           autoComplete="shipping street-address"
-          value={ address }
-          onChange={ (e) => setAddress(e.target.value) }
+          value={address}
+          onChange={(e) => setAddress(e.target.value)}
         />
       </div>
-      { /*  City - Postal Code */ }
+      {/*  City - Postal Code */}
       <div className="w-full flex flex-col md:flex-row justify-between items-center gap-5 mt-5">
         <div className="w-full md:flex-[3] flex flex-col justify-start items-start gap-2">
-          <label htmlFor="city" className="text-base">City</label>
+          <label htmlFor="city" className="text-base">
+            City
+          </label>
           <input
             type="text"
             name="city"
@@ -122,12 +131,14 @@ export function MyProfile({ currentUser, shippingCountries, setCurrentUser }: IM
             className="w-full border border-gray-400 rounded-sm px-5 py-2 focus:outline-none focus:ring-2 focus:ring-gray-400"
             required
             autoComplete="shipping address-level2"
-            value={ city }
-            onChange={ (e) => setCity(e.target.value) }
+            value={city}
+            onChange={(e) => setCity(e.target.value)}
           />
         </div>
         <div className="w-full md:flex-[1] flex flex-col justify-start items-start gap-2">
-          <label htmlFor="postalCode" className="text-base">Postal Code</label>
+          <label htmlFor="postalCode" className="text-base">
+            Postal Code
+          </label>
           <input
             type="text"
             name="postalCode"
@@ -135,33 +146,39 @@ export function MyProfile({ currentUser, shippingCountries, setCurrentUser }: IM
             className="w-full border border-gray-400 rounded-sm px-5 py-2 focus:outline-none focus:ring-2 focus:ring-gray-400"
             required
             autoComplete="shipping postal-code"
-            value={ postalCode }
-            onChange={ (e) => setPostalCode(e.target.value) }
+            value={postalCode}
+            onChange={(e) => setPostalCode(e.target.value)}
           />
         </div>
       </div>
-      { /*  Country Selector*/ }
+      {/*  Country Selector*/}
       <div className="w-full flex flex-col justify-start items-start gap-2 mt-5">
-        <label htmlFor="country" className="text-base">Country</label>
+        <label htmlFor="country" className="text-base">
+          Country
+        </label>
         <select
           name="country"
           id="country"
           className="w-full border border-gray-400 rounded-sm px-5 py-2 focus:outline-none focus:ring-2 focus:ring-gray-400"
           required
           autoComplete="shipping country"
-          value={ country }
-          onChange={ (e) => setCountry(e.target.value) }
+          value={country}
+          onChange={(e) => setCountry(e.target.value)}
         >
           <option value="">Select a country</option>
-          { shippingCountries.map((country) => (
-            <option key={ country.name } value={ country.name }>{ country.name }</option>
-          )) }
+          {shippingCountries.map((country) => (
+            <option key={country.name} value={country.name}>
+              {country.name}
+            </option>
+          ))}
         </select>
       </div>
-      {/*  Phone */ }
+      {/*  Phone */}
       <div className="w-full flex flex-col md:flex-row justify-between items-center gap-5 mt-5">
         <div className="w-full flex flex-col justify-start items-start gap-2">
-          <label htmlFor="phone" className="text-base">Phone</label>
+          <label htmlFor="phone" className="text-base">
+            Phone
+          </label>
           <input
             type="text"
             name="phone"
@@ -169,28 +186,33 @@ export function MyProfile({ currentUser, shippingCountries, setCurrentUser }: IM
             required
             className="w-full border border-gray-400 rounded-sm px-5 py-2 focus:outline-none focus:ring-2 focus:ring-gray-400"
             autoComplete="tel"
-            value={ phoneNumber }
-            onChange={ (e) => setPhoneNumber(e.target.value) }
+            value={phoneNumber}
+            onChange={(e) => setPhoneNumber(e.target.value)}
           />
         </div>
         <div className="w-full flex flex-col justify-start items-start gap-2">
-          <label htmlFor="birthdate" className="text-base">Birth Date</label>
-          <input
+          <label htmlFor="birthdate" className="text-base">
+            Birth Date
+          </label>
+          {/* <input
             id="birthdate"
             name="birthdate"
             type="date"
             required
             className="w-full border border-gray-400 rounded-sm px-5 py-2 focus:outline-none focus:ring-2 focus:ring-gray-400"
-            value={ birthDate ? new Date(birthDate).toISOString().split('T')[0] : '' }
-            onChange={ (e) => {
+            value={birthDate ? new Date(birthDate).toISOString().split('T')[0] : ''}
+            onChange={(e) => {
               if (!e.target.value) return;
               setBirthDate(new Date(e.target.value));
-            } }
-          />
+            }}
+          /> */}
+        <BirthDate value={birthDate} onChange={setBirthDate} />
         </div>
       </div>
       <div className="w-full flex flex-col justify-start items-start gap-2 mt-5">
-        <button type="submit" className="w-full bg-primary text-white text-base font-medium py-2 rounded-sm">Save</button>
+        <button type="submit" className="w-full bg-primary text-white text-base font-medium py-2 rounded-sm">
+          Save
+        </button>
       </div>
     </form>
   );
