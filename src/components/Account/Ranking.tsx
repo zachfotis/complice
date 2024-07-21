@@ -58,9 +58,9 @@ function Ranking({ ranking, birthday }: Props) {
         <div className="h-full bg-lightGrey flex justify-center items-center" style={{ width: `${currentPercent}%` }}>
           {currentPercent > 40 ? (
             <p className="text-primary text-sm font-medium">{nextRankText}</p>
-          ) : (
+          ) : currentPercent >= 0.5 ? (
             <p className="text-lightGrey text-sm font-medium">-</p>
-          )}
+          ) : null}
         </div>
         {currentPercent <= 40 && <p className="text-white text-sm font-medium pl-5">{nextRankText} </p>}
       </div>
