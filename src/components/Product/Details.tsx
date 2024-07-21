@@ -3,6 +3,7 @@
 import { fetchSingleProduct } from '@/actions/serverApi';
 import NotFound from '@/app/not-found';
 import useLocalStorage from '@/hooks/useLocalStorage';
+import commonUtils from '@/utils/commonUtils';
 import { useEffect, useState } from 'react';
 import { AiOutlineWarning } from 'react-icons/ai';
 import { toast } from 'react-toastify';
@@ -89,7 +90,7 @@ function Details({ product, setIsModalOpen }: DetailsProps) {
     <div className="flex w-full flex-col items-start justify-start gap-5 md:gap-8 bg-white lg:max-w-[600px]">
       {/* Title and ID */}
       <div>
-        <h1 className="font-custom text-h3">{currentProduct.title}</h1>
+        <h1 className="font-custom text-h3">{commonUtils.toTitleCase(currentProduct.title)}</h1>
       </div>
       {/* Description */}
       <p className="text-justify text-base">{currentProduct.description}</p>

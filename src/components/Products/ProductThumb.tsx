@@ -1,3 +1,4 @@
+import commonUtils from '@/utils/commonUtils';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ProductType } from '../../../typings';
@@ -25,7 +26,7 @@ function ProductThumb({ product, isShort = false }: ProductThumbProps) {
         href={`/products/${product.id}`}
         className="flex w-full cursor-pointer flex-col items-start px-5 pb-3 justify-start"
       >
-        <h3 className="text-center text-base font-[500]">{product.title}</h3>
+        <h3 className="text-center text-base font-[500]">{commonUtils.toTitleCase(product.title)}</h3>
         {product.onSale.isOnSale ? (
           <div className="flex items-center justify-center gap-2">
             <p className="text-center text-base text-secondary opacity-70 line-through">{product.price} &euro;</p>
