@@ -10,7 +10,7 @@ function Hero() {
         alt="Banner"
         width={1680}
         height={600}
-        className="w-full flex-1 object-cover object-center brightness-[50%] contrast-50 h-[600px]"
+        className="w-full flex-1 object-cover object-left brightness-[50%] contrast-50 h-[600px]"
       />
       <div className="absolute w-full p-5 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 transform text-center">
         <h1 className="mb-4 drop-shadow-lg text-h1 text-whiteGrey font-custom whitespace-pre-wrap">
