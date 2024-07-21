@@ -7,7 +7,6 @@ import StayTuned from '@/components/common/StayTuned';
 import CategoriesMenu from '@/components/layout/CategoriesMenu';
 import PageBody from '@/components/layout/PageBody';
 import PageTemplate from '@/components/layout/PageTemplate';
-import { Suspense } from 'react';
 import { CategoryType, ProductType } from '../../typings';
 
 export default async function Home() {
@@ -18,9 +17,7 @@ export default async function Home() {
     <PageTemplate>
       <PageBody>
         <CategoriesMenu />
-        <Suspense fallback={<div>Loading...</div>}>
-          <Hero />
-        </Suspense>
+        <Hero />
         {categories?.length && <CategoriesHomeThumb categories={categories} />}
         <Banner />
         {bestSellers?.length && (

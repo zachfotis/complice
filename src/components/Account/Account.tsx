@@ -72,7 +72,7 @@ function Account() {
     <PageTemplate>
       <PageBody>
         {isLoading && !currentUser && (
-          <div className="flex-1 w-full flex justify-center items-center">
+          <div className="flex-1 w-full min-h-screen flex justify-center items-center">
             <Loader />
           </div>
         )}

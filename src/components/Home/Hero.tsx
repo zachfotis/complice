@@ -1,5 +1,3 @@
-'use client';
-
 import BannerImage1 from '@/assets/Alex.jpg';
 import BannerImage2 from '@/assets/Tasos.jpg';
 import Image from 'next/image';
