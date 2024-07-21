@@ -26,32 +26,32 @@ export async function generateMetadata({ params }: PageProps, parent: ResolvingM
   const product: ProductType = await fetchSingleProduct(params.productId);
 
   return {
-    title: `${commonUtils.toTitleCase(product?.title) || 'Unknown Product'}`,
+    title: `${commonUtils.toTitleCase(product?.title) || 'Unknown Product'} | Complice Team`,
     description: product?.description,
     openGraph: {
       type: 'website',
       url: `https://www.compliceteam.com/products/${product?.id}`,
-      title: `${commonUtils.toTitleCase(product?.title)}`,
+      title: `${commonUtils.toTitleCase(product?.title) || 'Unknown Product'} | Complice Team`,
       description: product?.description,
       images: [
         {
           url: product?.imagesURL.image1 || 'https://complice.fra1.cdn.digitaloceanspaces.com/banner.png',
           width: product?.imagesURL.image1 ? 1920 : 1640,
           height: product?.imagesURL.image1 ? 2400 : 600,
-          alt: `${commonUtils.toTitleCase(product?.title) || 'Unknown Product'}`,
+          alt: `${commonUtils.toTitleCase(product?.title) || 'Unknown Product'} | Complice Team`,
         },
       ],
     },
     twitter: {
       card: 'summary_large_image',
-      title: `${commonUtils.toTitleCase(product?.title)}`,
+      title: `${commonUtils.toTitleCase(product?.title) || 'Unknown Product'} | Complice Team`,
       description: product?.description,
       images: [
         {
           url: product?.imagesURL.image1 || 'https://complice.fra1.cdn.digitaloceanspaces.com/banner.png',
           width: product?.imagesURL.image1 ? 1920 : 1640,
           height: product?.imagesURL.image1 ? 2400 : 600,
-          alt: `${commonUtils.toTitleCase(product?.title) || 'Unknown Product'}`,
+          alt: `${commonUtils.toTitleCase(product?.title) || 'Unknown Product'} | Complice Team`,
         },
       ],
     },
