@@ -7,6 +7,13 @@ import NavMap from '@/components/layout/NavMap';
 import PageBody from '@/components/layout/PageBody';
 import PageTemplate from '@/components/layout/PageTemplate';
 import PageTitle from '@/components/layout/PageTitle';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'New Arrivals',
+  description: 'Discover the latest arrivals at Complice. Shop new clothing, shoes, and accessories',
+};
+
 
 async function Page() {
   const products = await fetchNewArrivals();

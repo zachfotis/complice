@@ -51,9 +51,9 @@ export const metadata: Metadata = {
       'A group of friends and family coming together to unveil themselves through fashion. Complice is a slow fashion brand born and made in Greece. This commitment to slow fashion emphasizes quality over quantity and means that each piece is designed to be timeless, durable, and versatile, offering long-lasting value to its wearers.',
     images: [
       {
-        url: 'https://cf.bstatic.com/xdata/images/hotel/max1280x900/559754621.jpg?k=7d21b149515d31b8e2cf5aa28e83f945c21cc7744589f1fe3bc91e831f02e975&o=&hp=1',
-        width: 1024,
-        height: 684,
+        url: 'https://complice.fra1.cdn.digitaloceanspaces.com/banner.png',
+        width: 1640,
+        height: 600,
         alt: 'Complice Team',
       },
     ],
@@ -65,9 +65,9 @@ export const metadata: Metadata = {
       'A group of friends and family coming together to unveil themselves through fashion. Complice is a slow fashion brand born and made in Greece. This commitment to slow fashion emphasizes quality over quantity and means that each piece is designed to be timeless, durable, and versatile, offering long-lasting value to its wearers.',
     images: [
       {
-        url: 'https://cf.bstatic.com/xdata/images/hotel/max1280x900/559754621.jpg?k=7d21b149515d31b8e2cf5aa28e83f945c21cc7744589f1fe3bc91e831f02e975&o=&hp=1',
-        width: 1024,
-        height: 684,
+        url: 'https://complice.fra1.cdn.digitaloceanspaces.com/banner.png',
+        width: 1640,
+        height: 600,
         alt: 'Complice Team',
       },
     ],

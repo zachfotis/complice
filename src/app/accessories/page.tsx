@@ -6,7 +6,14 @@ import PageBody from '@/components/layout/PageBody';
 import PageTemplate from '@/components/layout/PageTemplate';
 import PageTitle from '@/components/layout/PageTitle';
 import NoCategories from '@/components/shared/NoCategories';
+import { Metadata } from 'next';
 import { CategoryType } from '../../../typings';
+
+export const metadata: Metadata = {
+  title: 'Accessories',
+  description:
+    'Complice offers a wide range of accessories to complement your style and elevate your look.',
+};
 
 async function page() {
   const categories: CategoryType[] = await fetchAccessoriesCategories();

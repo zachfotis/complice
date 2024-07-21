@@ -2,7 +2,14 @@ import LOGO from '@/assets/logo.png';
 import SocialMedia from '@/components/common/SocialMedia';
 import PageBody from '@/components/layout/PageBody';
 import PageTemplate from '@/components/layout/PageTemplate';
+import { Metadata } from 'next';
 import Image from 'next/image';
+
+export const metadata: Metadata = {
+  title: 'About Us',
+  description:
+    'A group of friends and family coming together to unveil themselves through fashion. Complice is a slow fashion brand born and made in Greece. This commitment to slow fashion emphasizes quality over quantity and means that each piece is designed to be timeless, durable, and versatile, offering long-lasting value to its wearers.',
+};
 
 function Page() {
   const theBrand = [

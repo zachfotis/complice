@@ -2,6 +2,12 @@ import CategoriesMenu from '@/components/layout/CategoriesMenu';
 import PageBody from '@/components/layout/PageBody';
 import PageTemplate from '@/components/layout/PageTemplate';
 import PageTitle from '@/components/layout/PageTitle';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Shipping Policy',
+  description: 'Learn about our shipping policy and how we deliver your orders promptly and efficiently',
+};
 
 function Page() {
   return (

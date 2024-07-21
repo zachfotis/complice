@@ -8,6 +8,12 @@ import PageBody from '@/components/layout/PageBody';
 import PageTemplate from '@/components/layout/PageTemplate';
 import PageTitle from '@/components/layout/PageTitle';
 import NoProducts from '@/components/shared/NoProducts';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Sales',
+  description: 'Discover the latest sales at Complice. Shop discounted clothing, and accessories',
+};
 
 async function Page() {
   const products = await fetchOnSaleProducts();

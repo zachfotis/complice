@@ -2,6 +2,12 @@ import CategoriesMenu from '@/components/layout/CategoriesMenu';
 import PageBody from '@/components/layout/PageBody';
 import PageTemplate from '@/components/layout/PageTemplate';
 import PageTitle from '@/components/layout/PageTitle';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Privacy Policy',
+  description: 'Complice Privacy Policy',
+};
 
 function Page() {
   return (

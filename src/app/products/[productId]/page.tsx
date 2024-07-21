@@ -5,6 +5,8 @@ import ProductPage from '@/components/Products/ProductPage';
 import CategoriesMenu from '@/components/layout/CategoriesMenu';
 import PageBody from '@/components/layout/PageBody';
 import PageTemplate from '@/components/layout/PageTemplate';
+import commonUtils from '@/utils/commonUtils';
+import { Metadata, ResolvingMetadata } from 'next';
 import { ProductType } from '../../../../typings';
 
 export async function generateStaticParams() {
@@ -17,6 +19,42 @@ export async function generateStaticParams() {
 interface PageProps {
   params: {
     productId: string;
+  };
+}
+
+export async function generateMetadata({ params }: PageProps, parent: ResolvingMetadata): Promise<Metadata> {
+  const product: ProductType = await fetchSingleProduct(params.productId);
+
+  return {
+    title: `${commonUtils.toTitleCase(product?.title) || 'Unknown Product'}`,
+    description: product?.description,
+    openGraph: {
+      type: 'website',
+      url: `https://www.compliceteam.com/products/${product?.id}`,
+      title: `${commonUtils.toTitleCase(product?.title)}`,
+      description: product?.description,
+      images: [
+        {
+          url: product?.imagesURL.image1 || 'https://complice.fra1.cdn.digitaloceanspaces.com/banner.png',
+          width: product?.imagesURL.image1 ? 1920 : 1640,
+          height: product?.imagesURL.image1 ? 2400 : 600,
+          alt: `${commonUtils.toTitleCase(product?.title) || 'Unknown Product'}`,
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: `${commonUtils.toTitleCase(product?.title)}`,
+      description: product?.description,
+      images: [
+        {
+          url: product?.imagesURL.image1 || 'https://complice.fra1.cdn.digitaloceanspaces.com/banner.png',
+          width: product?.imagesURL.image1 ? 1920 : 1640,
+          height: product?.imagesURL.image1 ? 2400 : 600,
+          alt: `${commonUtils.toTitleCase(product?.title) || 'Unknown Product'}`,
+        },
+      ],
+    },
   };
 }
 
