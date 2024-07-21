@@ -18,22 +18,18 @@ export default async function Home() {
     <PageTemplate>
       <PageBody>
         <CategoriesMenu />
+        <Suspense fallback={<div>Loading...</div>}>
+          <Hero />
+        </Suspense>
+        {categories?.length && <CategoriesHomeThumb categories={categories} />}
+        <Banner />
+        {bestSellers?.length && (
+          <>
+            <Products products={bestSellers} title="Best Sellers" isInitialScreen={true} />
+            <StayTuned />
+          </>
+        )}
       </PageBody>
-      <Suspense fallback={<div>Loading...</div>}>
-        <Hero />
-      </Suspense>
-      {categories?.length && (
-        <PageBody>
-          <CategoriesHomeThumb categories={categories} />
-        </PageBody>
-      )}
-      <Banner />
-      {bestSellers?.length && (
-        <PageBody>
-          <Products products={bestSellers} title="Best Sellers" isInitialScreen={true} />
-          <StayTuned />
-        </PageBody>
-      )}
     </PageTemplate>
   );
 }

@@ -8,7 +8,7 @@ import Button from '../common/Button';
 
 function Hero() {
   return (
-    <article className="relative w-full mx-auto flex justify-center items-center bg-black md:p-3 md:max-w-[1680px] -mt-20 md:mt-0">
+    <article className="relative w-full mx-auto flex justify-center items-center bg-black md:p-1 md:max-w-[1680px] -mt-20 md:mt-0">
       <Image
         src={BannerImage1}
         alt="Banner"
@@ -24,15 +24,14 @@ function Hero() {
         className="w-full flex-1 object-cover brightness-[50%] contrast-50 object-center h-[600px]"
       />
       <div className="absolute w-full p-5 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 transform text-center">
-        <h1 className="mb-4 drop-shadow-lg text-h1 text-whiteGrey font-custom whitespace-pre-wrap">The Complice Team</h1>
+        <h1 className="mb-4 drop-shadow-lg text-h1 text-whiteGrey font-custom whitespace-pre-wrap">
+          The Complice Team
+        </h1>
         <p className="mb-8 drop-shadow-lg text-h5 text-whiteGrey">Discover Timeless Fashion</p>
         <Link href="/new-arrivals">
           <Button text="Shop Now" variant="sm-black" />
         </Link>
       </div>
-      {/* <div className="absolute flex max-w-full justify-center items-center top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center bg-black md:px-5 md:py-2 text-white">
-        <ReactPlayer height={300} loop muted controls url="https://complice.fra1.cdn.digitaloceanspaces.com/video/complice.mp4" />
-      </div> */}
     </article>
   );
 }
