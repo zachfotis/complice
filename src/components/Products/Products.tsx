@@ -23,9 +23,9 @@ function Products({
       {title && <h1 className="text-h2 font-custom">{title}</h1>}
       {/* Products */}
       <div
-        className={`w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 ${
+        className={`w-full grid grid-cols-2 lg:grid-cols-3 ${
           isInitialScreen ? 'xl:grid-cols-3' : 'xl:grid-cols-4'
-        } gap-8 md:gap-4`}
+        } gap-x-3 gap-y-5 md:gap-8`}
       >
         {products.map((product, index) => (
           <ProductThumb key={product.id + index} product={product} isShort={isShort} />
