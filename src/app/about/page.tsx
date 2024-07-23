@@ -7,6 +7,7 @@ import PageBody from '@/components/layout/PageBody';
 import PageTemplate from '@/components/layout/PageTemplate';
 import { Metadata } from 'next';
 import Image from 'next/image';
+import { Fragment } from 'react';
 
 export const metadata: Metadata = {
   title: 'About Us',
@@ -49,7 +50,7 @@ function Page() {
         <div className="w-full max-w-[1280px] grid grid-cols-1 lg:grid-cols-2 gap-5 lg:gap-10">
           {theBrand.map((member, index) =>
             index % 2 === 0 ? (
-              <>
+              <Fragment key={member.title}>
                 <Image
                   src={member.image}
                   alt={member.title}
@@ -61,9 +62,9 @@ function Page() {
                   <h2 className="text-h3 font-custom">{member.title}</h2>
                   <p className="text-base text-justify">{member.description}</p>
                 </div>
-              </>
+              </Fragment>
             ) : (
-              <>
+              <Fragment key={member.title}>
                 <div className="flex-col justify-start hidden lg:flex items-start gap-1 md:gap-2 w-full p-5">
                   <h2 className="text-h3 font-custom">{member.title}</h2>
                   <p className="text-base text-justify">{member.description}</p>
@@ -79,7 +80,7 @@ function Page() {
                   <h2 className="text-h3 font-custom">{member.title}</h2>
                   <p className="text-base text-justify">{member.description}</p>
                 </div>
-              </>
+              </Fragment>
             )
           )}
         </div>
