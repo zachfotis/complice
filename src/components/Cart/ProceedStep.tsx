@@ -80,9 +80,9 @@ function ProceedStep({
       const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/checkout/create-checkout-session`, {
         method: 'POST',
         credentials: 'include',
+        cache: 'no-cache',
         headers: {
           'Content-Type': 'application/json',
-          'Access-Control-Allow-Origin': '*',
         },
         body: JSON.stringify({
           orderProducts: cartProducts,
