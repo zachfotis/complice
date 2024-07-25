@@ -22,7 +22,7 @@ export function VideoBanner({ isVideoOpen, setIsVideoOpen }: VideoBannerProps) {
       onClick={handleClose}
     >
       <div className="relative w-full max-w-[800px] p-5 text-center bg-black">
-        <video controls autoPlay loop muted playsInline className="w-full h-full object-cover">
+        <video controls autoPlay loop playsInline className="w-full h-full object-cover">
           <source src="https://complice.fra1.cdn.digitaloceanspaces.com/video/complice.mp4" type="video/mp4" />
         </video>
         <AiOutlineClose
