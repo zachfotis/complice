@@ -88,16 +88,17 @@ function Totals({
   }, [currentUser]);
 
   useEffect(() => {
-    const isFreeShipping = currentUser?.ranking.coupons.permanent.find(
+    const isFreeShippingCoupon = currentUser?.ranking.coupons.permanent.find(
       (coupon) => coupon.couponType.isFreeShipping === true
     );
+    const isFreeShippingTotal = cartTotal - productDiscount - rankDiscount - couponDiscount > 300;
 
-    if (isFreeShipping) {
+    if (isFreeShippingCoupon || isFreeShippingTotal) {
       setFreeShippingDiscount(shippingCost);
     } else {
       setFreeShippingDiscount(0);
     }
-  }, [shippingCost, currentUser]);
+  }, [shippingCost, currentUser, cartTotal, productDiscount, rankDiscount, couponDiscount]);
 
   useEffect(() => {
     setOrderTotal(cartTotal - productDiscount - rankDiscount - couponDiscount + shippingCost - freeShippingDiscount);
@@ -133,13 +134,16 @@ function Totals({
       {/* Separator */}
       <div className="w-full border-b border-gray-200" />
       {/* Free Shipping Discount*/}
-      {currentUser && currentUser?.ranking.coupons.permanent.find((coupon) => coupon.couponType.isFreeShipping) && (
+      {freeShippingDiscount > 0 && (
         <div className="w-full flex justify-between items-center gap-10">
           <div className="flex justify-start items-center gap-2">
             <p className="text-h4 sm:text-h3 font-custom">
               Free Shipping <span className="hidden sm:inline">Discount</span>
             </p>
-            <Trophy rankingName={currentUser?.ranking.name as RankingNamesEnum} size="2xl" />
+            {currentUser &&
+              currentUser?.ranking.coupons.permanent.find((coupon) => coupon.couponType.isFreeShipping) && (
+                <Trophy rankingName={currentUser?.ranking.name as RankingNamesEnum} size="2xl" />
+              )}
           </div>
           <p className="text-base font-medium whitespace-nowrap"> - {freeShippingDiscount.toFixed(2)} &euro;</p>
         </div>
@@ -196,10 +200,10 @@ function Totals({
                     key={coupon.id}
                     value={coupon.id}
                     disabled={coupon.minimumOrder > cartTotal - productDiscount - rankDiscount}
-                    title={ `Minimum order: ${ coupon.minimumOrder }€` }
+                    title={`Minimum order: ${coupon.minimumOrder}€`}
                     className="disabled:opacity-50 disabled:cursor-not-allowed disabled:bg-gray-100"
                   >
-                    { coupon.discount.fixed ? `${ coupon.discount.fixed } €` : `${ coupon.discount.percentage } %` }
+                    {coupon.discount.fixed ? `${coupon.discount.fixed} €` : `${coupon.discount.percentage} %`}
                   </option>
                 ))}
             </select>

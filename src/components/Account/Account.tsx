@@ -63,7 +63,7 @@ function Account() {
     if (!currentUser) {
       fetchUser();
     }
-    if (shippingCountries.length === 0) {
+    if (!shippingCountries?.length) {
       fetchShippingCountries();
     }
   }, []);
